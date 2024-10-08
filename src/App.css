@@ -1,0 +1,502 @@
+.body {
+  background-color: #d8dcff;
+}
+
+.buttonfornav {
+  width: fit-content;
+  border: none;
+  color: #191d32;
+  text-decoration: none;
+  background-color: #d8dcff;
+}
+
+.buttonholderinlandingnav {
+  width: 60%;
+}
+
+.Linkfornav {
+  width: fit-content;
+  border: none;
+  color: #191d32;
+  background: rgb(255, 255, 255);
+  text-decoration: none;
+  background-color: #d8dcff;
+}
+.Linkforsidenav {
+  width: fit-content;
+  border: none;
+  color: #d8dcff;
+  background: rgb(255, 255, 255);
+  text-decoration: none;
+  background-color: #191d32;
+  border-radius: 10px;
+}
+.Linkforsidenav:hover {
+  box-shadow: 0px 0px 10px #191d32;
+}
+nav {
+  background-color: #191d32;
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  width: 100%;
+}
+.usernav {
+  height: 10vh;
+  color: #d8dcff;
+}
+.profileimginusernav {
+  height: 65px;
+  width: 65px;
+  border: none;
+  border-radius: 50px;
+  color: #191d32;
+  background: rgb(255, 255, 255);
+  text-decoration: none;
+  background-color: #d8dcff;
+  box-shadow: 0px 0px 10px #d8dcff;
+}
+.profileimginusernavimg {
+  width: 70px;
+}
+.applogo {
+  width: 100px;
+}
+.section1img {
+  width: 40%;
+  height: 500px;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  box-shadow: 10px 10px 10px #191d32;
+}
+
+.section1 {
+  display: flex;
+  background-color: #d8dcff;
+}
+.findyourroom {
+  font-size: 70px;
+  text-shadow: 5px 5px 5px #ffffff;
+}
+.findyourroomsecond {
+  font-size: 50px;
+  /* text-shadow: 5px 5px 5px #ffffff; */
+}
+.section1second {
+  height: 50vh;
+  width: 90%;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  background-image: linear-gradient(#191d32a5, #191d32a5),
+    url(./assets/section1img.jpg);
+  background-position: center;
+  background-blend-mode: hard-light;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: #d8dcff;
+  display: none;
+}
+
+@media screen and (max-width: 1360px) {
+  .section1 {
+  }
+  .section1img {
+    width: 40%;
+    height: 400px;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    box-shadow: 10px 10px 10px #191d32;
+  }
+  .findyourroom {
+    font-size: 50px;
+    text-shadow: 5px 5px 5px #ffffff;
+  }
+}
+@media screen and (max-width: 1120px) {
+  .section1 {
+  }
+  .section1img {
+    width: 40%;
+    height: 350px;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    box-shadow: 10px 10px 10px #191d32;
+  }
+  .findyourroom {
+    font-size: 40px;
+    text-shadow: 5px 5px 5px #ffffff;
+  }
+}
+@media screen and (max-width: 850px) {
+  .section1 {
+    display: none;
+  }
+  .section1second {
+    display: flex;
+  }
+}
+
+.section2 {
+  background-color: #191d32;
+}
+.roomtypediv {
+  height: 200px;
+  width: 250px;
+  border: 2px solid rgb(255, 255, 255);
+  background-color: white;
+  color: #191d32;
+  flex-grow: 2;
+  flex-basis: 200;
+  transition: linear all 0.5;
+}
+.roomtypediv {
+  font-size: 60px;
+}
+.roomtypediv:hover {
+  transform: scale(1.05);
+  transition: linear all 0.5;
+
+  box-shadow: 0px 0px 10px white;
+}
+.section3 {
+  /* background-color: #191d32; */
+}
+.section3text {
+  font-size: 60px;
+}
+.section3imgholder {
+}
+.section3img {
+  height: 350px;
+}
+.theimg11 {
+  background-image: url(./assets/hall.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 10px;
+}
+.theimg12 {
+  background-image: url(./assets/lab.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 10px;
+}
+.theimg13 {
+  background-image: url(./assets/libary.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 10px;
+}
+.theimg14 {
+  background-image: url(./assets/sport.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 10px;
+}
+
+@media screen and (max-width: 1150px) {
+  .section3text {
+    font-size: 45px;
+  }
+  .section3img {
+    height: 250px;
+  }
+}
+@media screen and (max-width: 1150px) {
+  .section3text {
+    font-size: 45px;
+  }
+  .section3img {
+    height: 200px;
+  }
+}
+
+.section4imgholder {
+  height: 200px;
+
+  background-color: #d8dcff;
+}
+
+.section4img {
+  width: 70%;
+  height: 70%;
+}
+
+.section1,
+.section3,
+.section4 {
+  color: #191d32;
+}
+.section4 {
+  background-color: #191d32;
+}
+
+/* loginsection */
+
+.loginsection1 {
+  height: 100vh;
+  width: 100vw;
+  background-image: url(./assets/logback2.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.logformholder {
+  background-color: rgba(255, 255, 255, 0.775);
+}
+
+.loglogoimg {
+  width: 100px;
+  height: 70px;
+}
+.buttonforlog {
+  width: fit-content;
+  border: none;
+  background: #191d32;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+.loginput {
+  display: block;
+  width: 100%;
+  padding: 7px;
+  border-radius: 5px;
+  background-color: #191d32;
+  color: #d8dcff;
+  outline: none;
+}
+.loginput:focus-within {
+  box-shadow: 0px 5px 10px #191d32;
+}
+.sidenavholder {
+}
+.sidenav {
+  /* width: 200px; */
+  height: 90vh;
+  overflow: auto;
+  background-color: #d8dcff;
+  border-right: #191d32 2px solid;
+}
+.outletdivholder {
+  overflow-y: scroll;
+  height: 90vh;
+}
+
+/* page not found */
+.pagenotfoundsection {
+  height: 100vh;
+}
+.pagenotfoundimgholder {
+  border: none;
+  border-radius: 50%;
+  overflow: hidden;
+  height: 50%;
+  width: 50%;
+}
+/* .pagenotfoundimgholderimg{
+  border: none;
+  border-radius: 50%;
+} */
+
+.onecategoryholder {
+  background-color: #191d32;
+  color: #d8dcff;
+}
+.categorytypediv {
+  background-color: #d8dcff;
+  color: #191d32;
+  text-decoration: none;
+}
+.categorytypeicon {
+  font-size: 600%;
+}
+.smalltextnote {
+  font-size: 12px;
+}
+.smalltextbunkernumber {
+  font-size: 12px;
+}
+.textinoneschoolroom {
+  width: 30%;
+  border-right: 2px solid #d8dcff;
+}
+.contentofoneschoolroom {
+  background-color: #191d32;
+  color: #d8dcff;
+}
+.searchbarholder {
+  /* z-index: ; */
+}
+.searchbar {
+  background-color: #191d32;
+}
+.searchinputindiv {
+  border: none;
+  outline: none;
+  background-color: #d8dcff;
+  color: #191d32;
+  width: 90%;
+}
+.searchbuttonindiv {
+  /* width: 5%; */
+}
+
+.oneuserholder {
+  background-color: #191d32;
+  color: #d8dcff;
+}
+.onelinetext {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+}
+
+.flotnavposition {
+  z-index: 99;
+  width: 250px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  background-color: #d8dcff;
+  right: 0;
+  top: 10vh;
+  box-shadow: 0px 10px 10px #191d32;
+  padding: 10px;
+  border-radius: 0 0 0 20px;
+  display: none;
+}
+.flotdropinnav:focus-within .flotnavposition {
+  display: flex;
+}
+.categorytypeicontext{
+  font-size: 150%;
+}
+@media screen and (max-width:1000px) {
+  .categorytypeicon {
+    font-size: 400%;
+  }
+  .categorytypeicontext{
+    font-size: 120%;
+  }
+}
+
+@media screen and (max-width:800px) {
+  .categorytypeicon {
+    font-size: 300%;
+  }
+}
+
+@media screen and (max-width:450px) {
+  .categorytypeicon {
+    font-size: 250%;
+  }
+  .categorytypeicontext{
+    font-size: 120%;
+  }
+}
+
+
+.todisplayoneroominadmin{
+  border: 2px solid #191d32;
+}
+.oneroomdetailsheader{
+  background-color: #191d32;
+  color: #d8dcff;
+}
+.bodydetailsoneroom{
+  
+  background-color: #d8dcff;
+  color: #191d32;
+}
+.showingoneuserforroom{
+  background-color: #191d32;
+  color: #d8dcff;
+}
+.flotbuttonspecial{
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  background-color: #191d32;
+  color: #d8dcff; 
+  padding: 20px;
+  position: fixed;
+  right: 50px;
+  bottom: 30px;
+}
+.flotbuttonspecial:hover{
+  box-shadow: 0px 0px 15px #191d32;
+}
+
+
+@media screen and (max-width:700px) {
+  .flotbuttonspecial{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    background-color: #191d32;
+    color: #d8dcff; 
+    padding: 20px;
+    position: fixed;
+    right: 20px;
+    bottom: 30px;
+  }
+}
+
+.addingformholder{
+  background-color: #191d32;
+  color: #d8dcff;
+}
+.buttononadmindash{
+  height: 200px;
+  background-color: #191d32;
+  color: #d8dcff;
+  border: none;
+  
+}
+.iconinbuttononadmindash{
+  font-size: 500%;
+
+}
+.textinbuttononadmindash{
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+
+@media screen and (max-width:700px) {
+
+  .buttononadmindash{
+    height: 200px;
+    background-color: #191d32;
+    color: #d8dcff;
+    border: none;
+    
+  }
+  .iconinbuttononadmindash{
+    font-size: 300%;
+  
+  }
+  .textinbuttononadmindash{
+    font-size: 20px;
+    font-weight: bolder;
+  }
+  
+
+}
+
+.adminshowingoneuser{
+  background-color: #191d32;
+  color: #d8dcff;
+}
+.adminshowingoneuserroomdetails{
+  background-color: #191d32;
+  color: #d8dcff;
+}
