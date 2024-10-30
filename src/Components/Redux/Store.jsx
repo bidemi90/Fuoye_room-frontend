@@ -5,6 +5,8 @@ import { combineReducers } from "redux";
 import userdata from "./userdata";
 import Allschoolmalehostel from "./Allschoolmalehostel";
 import Allschoolfemalehostel from "./Allschoolfemalehostel";
+import Allprivatemalehostel from "./Allprivatemalehostel"
+import Allprivatefemalehostel from "./Allprivatefemalehostel"
 import admindata from "./admindata";
 import alluserdata from "./alluserdata";
 
@@ -16,9 +18,14 @@ const persistConfig = {
 const rootReducer = combineReducers({
   userdata: userdata,
   admindata: admindata,
+  // 
+  alluserdata: alluserdata,
+// 
   Allschoolmalehostel: Allschoolmalehostel,
   Allschoolfemalehostel: Allschoolfemalehostel,
-  alluserdata: alluserdata,
+  // 
+  Allprivatemalehostel: Allprivatemalehostel,
+  Allprivatefemalehostel: Allprivatefemalehostel,
   // Add other reducers here if needed
 });
 

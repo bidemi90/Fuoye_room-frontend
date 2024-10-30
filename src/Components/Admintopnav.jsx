@@ -13,6 +13,7 @@ import { BsFillHouseGearFill } from "react-icons/bs";
 import { VscGitPullRequestGoToChanges } from "react-icons/vsc";
 import { RiSecurePaymentFill } from "react-icons/ri";
 import { IoMenu } from "react-icons/io5";
+import profiimg from "../assets/proimg.png"
 
 const Admintopnav = () => {
   const [currentTime, setCurrentTime] = useState("");
@@ -47,7 +48,7 @@ const Admintopnav = () => {
               <button className="  profileimginusernav d-flex justify-content-center align-items-center">
                 <img
                   className="  profileimginusernavimg"
-                  src={applogo}
+                  src={profiimg}
                   alt=""
                 />
               </button>

@@ -7,6 +7,7 @@ import { FaHistory } from "react-icons/fa";
 import { FaHouseChimneyUser } from "react-icons/fa6";
 import { RiDashboardFill } from "react-icons/ri";
 import { BsPersonBoundingBox } from "react-icons/bs";
+import profiimg from "../assets/proimg.png"
 
 import { IoMenu } from "react-icons/io5";
 
@@ -43,7 +44,7 @@ const Topnav = () => {
               <button className="  profileimginusernav d-flex justify-content-center align-items-center">
                 <img
                   className="  profileimginusernavimg"
-                  src={applogo}
+                  src={profiimg}
                   alt=""
                 />
               </button>

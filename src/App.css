@@ -58,6 +58,7 @@ nav {
 }
 .profileimginusernavimg {
   width: 70px;
+  border-radius: 50%;
 }
 .applogo {
   width: 100px;
@@ -499,4 +500,44 @@ nav {
 .adminshowingoneuserroomdetails{
   background-color: #191d32;
   color: #d8dcff;
+}
+
+.oneprivateroomholder{
+  background-color: #191d32;
+  color: #d8dcff;
+
+}
+
+
+
+
+.oneprivatehouseholder{
+  border: 10px solid #191d32;
+  background-color: #191d32;
+  color: #d8dcff;
+   border-radius: 20px;
+}
+.oneprivatehouseholderimg{
+  max-height: 350px;
+  min-height: 0px;
+  min-width: 0px;
+  max-width: 350px;
+}
+.oneprivatehouseholderroom{
+  background-color: #191d32;
+  color: #d8dcff;
+}
+
+/*  */
+
+.addingform{
+  background-color: #191d32;
+  
+}
+.addingform label{
+  color: #191d32;
+  background-color: #191d3200;
+}
+.addingform input{
+  padding-top: 30px;
 }

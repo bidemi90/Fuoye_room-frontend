@@ -30,6 +30,21 @@ import {
 } from "./Redux/Allschoolfemalehostel";
 
 
+import {
+  fetchUpdatedAllprivatemalehosteldata,
+  fetchingAllprivatemalehostel,
+  fetchingAllprivatemalehostelFailed,
+  fetchingAllprivatemalehostelSuccessful,
+} from "./Redux/Allprivatemalehostel";
+
+import {
+  fetchUpdatedAllprivatefemalehosteldata,
+  fetchingAllprivatefemalehostel,
+  fetchingAllprivatefemalehostelFailed,
+  fetchingAllprivatefemalehostelSuccessful,
+} from "./Redux/Allprivatefemalehostel";
+
+
 import { useDispatch, useSelector } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
@@ -56,6 +71,18 @@ const Dashboard = () => {
   } = useSelector((state) => state.Allschoolfemalehostel);
   
 
+  const {
+    isFetchingAllprivatemalehostel,
+    allprivatemalehostel,
+    isFetchingAllprivatemalehostelFailed,
+  } = useSelector((state) => state.Allprivatemalehostel);
+
+  const {
+    isFetchingAllprivatefemalehostel,
+    allprivatefemalehostel,
+    isFetchingAllprivatefemalehostelFailed,
+  } = useSelector((state) => state.Allprivatefemalehostel);
+
   useEffect(() => {
     axios
       .get("http://localhost:5000/user/verifyuserondashbord", {
@@ -77,6 +104,8 @@ const Dashboard = () => {
 
       dispatch(fetchUpdatedAllschoolmalehosteldata())
       dispatch(fetchUpdatedAllschoolfemalehosteldata())
+      dispatch(fetchUpdatedAllprivatemalehosteldata());
+      dispatch(fetchUpdatedAllprivatefemalehosteldata());
   }, []);
 
   // useEffect(() => {

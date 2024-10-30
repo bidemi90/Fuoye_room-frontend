@@ -19,9 +19,7 @@ const Adminviewoneschoolfemaleroom = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { isFetchinguser, userdata, isFeatchinguserfailed } = useSelector(
-    (state) => state.userdata
-  );
+ 
 
   const {
     isFetchingAllschoolfemalehostel,

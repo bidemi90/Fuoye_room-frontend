@@ -38,6 +38,20 @@ import {
   fetchingalluserSuccessful,
 } from "./Redux/alluserdata";
 
+import {
+  fetchUpdatedAllprivatemalehosteldata,
+  fetchingAllprivatemalehostel,
+  fetchingAllprivatemalehostelFailed,
+  fetchingAllprivatemalehostelSuccessful,
+} from "./Redux/Allprivatemalehostel";
+
+import {
+  fetchUpdatedAllprivatefemalehosteldata,
+  fetchingAllprivatefemalehostel,
+  fetchingAllprivatefemalehostelFailed,
+  fetchingAllprivatefemalehostelSuccessful,
+} from "./Redux/Allprivatefemalehostel";
+
 const Admindashboard = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -46,12 +60,9 @@ const Admindashboard = () => {
     (state) => state.admindata
   );
 
-
-  const {
-    isFetchingalluser,
-    alluser,
-    isFetchingalluserFailed,
-  } = useSelector((state) => state.Allschoolmalehostel);
+  const { isFetchingalluser, alluser, isFetchingalluserFailed } = useSelector(
+    (state) => state.alluserdata
+  );
 
   const {
     isFetchingAllschoolmalehostel,
@@ -65,7 +76,18 @@ const Admindashboard = () => {
     isFetchingAllschoolfemalehostelFailed,
   } = useSelector((state) => state.Allschoolfemalehostel);
 
-  
+  const {
+    isFetchingAllprivatemalehostel,
+    allprivatemalehostel,
+    isFetchingAllprivatemalehostelFailed,
+  } = useSelector((state) => state.Allprivatemalehostel);
+
+  const {
+    isFetchingAllprivatefemalehostel,
+    allprivatefemalehostel,
+    isFetchingAllprivatefemalehostelFailed,
+  } = useSelector((state) => state.Allprivatefemalehostel);
+
   useEffect(() => {
     axios
       .get("http://localhost:5000/user/verifyadminondashbord", {
@@ -85,12 +107,14 @@ const Admindashboard = () => {
         }
       });
 
-      dispatch(fetchUpdatedalluserdata())
-      dispatch(fetchUpdatedAllschoolmalehosteldata())
-      dispatch(fetchUpdatedAllschoolfemalehosteldata())
+    dispatch(fetchUpdatedalluserdata());
+    dispatch(fetchUpdatedAllschoolmalehosteldata());
+    dispatch(fetchUpdatedAllschoolfemalehosteldata());
+    dispatch(fetchUpdatedAllprivatemalehosteldata());
+    dispatch(fetchUpdatedAllprivatefemalehosteldata());
   }, []);
 
- // useEffect(() => {
+  // useEffect(() => {
 
   //   console.log("is it working");
 

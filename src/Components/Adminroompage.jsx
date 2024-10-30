@@ -38,7 +38,7 @@ const Adminroompage = () => {
 
           <div className=" d-flex justify-content-between align-items-center flex-wrap">
             <div className=" col-6  col-md-3 ">
-              <Link className=" categorytypediv m-auto col-11 mb-3  p-2 border-0 rounded-3 d-flex flex-column justify-content-center align-items-center py-5">
+              <Link to="/management_page/private_male_hostel" className=" categorytypediv m-auto col-11 mb-3  p-2 border-0 rounded-3 d-flex flex-column justify-content-center align-items-center py-5">
                 <FaMale className=" categorytypeicon" />
                 <p className="  categorytypeicontext fw-bold text-capitalize mt-3 text-center">
                   male only hostel
@@ -46,7 +46,7 @@ const Adminroompage = () => {
               </Link>
             </div>
             <div className=" col-6  col-md-3 ">
-              <Link className=" categorytypediv m-auto col-11 mb-3  p-2 border-0 rounded-3 d-flex flex-column justify-content-center align-items-center py-5">
+              <Link to="/management_page/private_female_hostel" className=" categorytypediv m-auto col-11 mb-3  p-2 border-0 rounded-3 d-flex flex-column justify-content-center align-items-center py-5">
                 <FaFemale className=" categorytypeicon" />
                 <p className="  categorytypeicontext fw-bold text-capitalize mt-3 text-center">
                   female only hostel
@@ -54,7 +54,7 @@ const Adminroompage = () => {
               </Link>
             </div>
             <div className=" col-6  col-md-3 ">
-              <Link className=" categorytypediv m-auto col-11 mb-3  p-2 border-0 rounded-3 d-flex flex-column justify-content-center align-items-center py-5">
+              <Link  to="/management_page/mixed_hostel" className=" categorytypediv m-auto col-11 mb-3  p-2 border-0 rounded-3 d-flex flex-column justify-content-center align-items-center py-5">
                 <BiMaleFemale className=" categorytypeicon" />
                 <p className="  categorytypeicontext fw-bold text-capitalize mt-3 text-center">
                   mixed gender hostel
