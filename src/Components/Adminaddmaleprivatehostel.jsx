@@ -145,13 +145,17 @@ const Adminaddmaleprivatehostel = () => {
             fill form to add to private male hostel
         </p>
         <form onSubmit={formik.handleSubmit}>
-          <div>
+          <div className=" addingform p-3 rounded-3">
             <div className="mb-3">
-              <div>
-                <img className=" img-fluid" src={img} alt="preview selected image" />
+              <div  className=" d-flex justify-content-center align-items-center ">
+                <img
+                  className=" img-fluid col-10 col-lg-6"
+                  src={img}
+                  alt="preview selected image"
+                />
               </div>
               <label
-                className="text-capitalize fw-bold fs-5"
+                className="text-capitalize fw-bold fs-6"
                 htmlFor="img_array"
               >
                 Choose file
@@ -191,7 +195,7 @@ const Adminaddmaleprivatehostel = () => {
               />
               <label
                 htmlFor="building_name"
-                className="text-capitalize fw-bold fs-5"
+                className="text-capitalize fw-bold fs-6"
               >
                 Building name
               </label>
@@ -214,7 +218,7 @@ const Adminaddmaleprivatehostel = () => {
                 onBlur={formik.handleBlur}
                 placeholder=""
               />
-              <label htmlFor="address" className="text-capitalize fw-bold fs-5">
+              <label htmlFor="address" className="text-capitalize fw-bold fs-6">
                 Address
               </label>
               <div className="form-text text-capitalize fw-semibold text-danger">
@@ -238,7 +242,7 @@ const Adminaddmaleprivatehostel = () => {
               />
               <label
                 htmlFor="room_description"
-                className="text-capitalize fw-bold fs-5"
+                className="text-capitalize fw-bold fs-6"
               >
                 Room description
               </label>
@@ -262,7 +266,7 @@ const Adminaddmaleprivatehostel = () => {
                 onBlur={formik.handleBlur}
                 placeholder=""
               />
-              <label htmlFor="rent" className="text-capitalize fw-bold fs-5">
+              <label htmlFor="rent" className="text-capitalize fw-bold fs-6">
                 Rent
               </label>
               <div className="form-text text-capitalize fw-semibold text-danger">
@@ -286,7 +290,7 @@ const Adminaddmaleprivatehostel = () => {
               />
               <label
                 htmlFor="room_capacity"
-                className="text-capitalize fw-bold fs-5"
+                className="text-capitalize fw-bold fs-6"
               >
                 Room capacity
               </label>
@@ -311,7 +315,7 @@ const Adminaddmaleprivatehostel = () => {
               />
               <label
                 htmlFor="numbers_of_room"
-                className="text-capitalize fw-bold fs-5"
+                className="text-capitalize fw-bold fs-6"
               >
                 Numbers of room
               </label>
@@ -336,7 +340,7 @@ const Adminaddmaleprivatehostel = () => {
               />
               <label
                 htmlFor="building_amenities"
-                className="text-capitalize fw-bold fs-5"
+                className="text-capitalize fw-bold fs-6"
               >
                 Building amenities
               </label>
@@ -362,7 +366,7 @@ const Adminaddmaleprivatehostel = () => {
               />
               <label
                 htmlFor="building_rules"
-                className="text-capitalize fw-bold fs-5"
+                className="text-capitalize fw-bold fs-6"
               >
                 Building rules
               </label>
@@ -377,7 +381,7 @@ const Adminaddmaleprivatehostel = () => {
             <div className="form-control mb-3">
               <label
                 htmlFor="is_furnished"
-                className="text-capitalize fw-bold fs-5"
+                className="text-capitalize fw-bold fs-6"
               >
                 Furnished
               </label>
@@ -391,7 +395,7 @@ const Adminaddmaleprivatehostel = () => {
               />
             </div>
 
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className=" buttonfornav fs-5 fw-bold py-2 rounded-2 px-3 ">
               Submit
               <ToastContainer />
             </button>

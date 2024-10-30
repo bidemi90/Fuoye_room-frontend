@@ -385,7 +385,7 @@ const Adminaddfemaleprivatehostel = () => {
               />
             </div>
 
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className=" buttonfornav fs-5 fw-bold py-2 rounded-2 px-3 ">
               Submit
               <ToastContainer />
             </button>
