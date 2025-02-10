@@ -30,7 +30,10 @@ const Adminviewonemaleprivatehostel = () => {
   }, []);
   return (
     <>
-      <section>
+      <section><h3 className=" text-capitalize text-center fw-bold ">
+      private male only hostel
+        </h3>
+        <hr />{" "}
         <p className=" fs-6 fw-semibold fst-italic">
           Note: You can update the details, add occupants, adjust the price, and
           change the availability status.
@@ -60,7 +63,7 @@ const Adminviewonemaleprivatehostel = () => {
               {allprivatemalehostel[id].room_count}
             </p>
             <p className=" onelinetext text-capitalize fw-semibold ">
-              <span className=" text-uppercase fw-bold"> rent per room :</span>{" "}
+              <span className=" text-uppercase fw-bold"> rent per room :</span> ₦{" "}
               {allprivatemalehostel[id].rent}
             </p>
             <p className=" onelinetext text-capitalize fw-semibold ">
@@ -108,9 +111,10 @@ const Adminviewonemaleprivatehostel = () => {
         </div>
 
         <div className=" d-flex justify-content-center align-items-center">
-          <button className="Linkforsidenav px-4 py-2  text-capitalize fw-bold">
+          <Link  to={`/management_page/editonemaleprivatehostel/${id}`} className="Linkforsidenav px-4 py-2  text-capitalize fw-bold">
             edit hostel details
-          </button>
+          </Link>
+        
         </div>
       </section>
     </>

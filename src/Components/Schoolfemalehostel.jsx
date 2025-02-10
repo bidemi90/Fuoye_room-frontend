@@ -2,6 +2,16 @@ import React, { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+import {
+  featchinguser,
+  featchinguserfailed,
+  featchinguserSuccessful,
+  fetchUpdatedUserData,
+} from "./Redux/userdata";
+
+
 
 import {
   fetchUpdatedAllschoolfemalehosteldata,
@@ -76,8 +86,14 @@ const Schoolfemalehostel = () => {
                     ))}
                   </div>
                 </div>
-                <button className=" buttonforlog p-2 rounded-2 px-3 m-1">view</button>
-              </div>
+                <div className=" mt-4">
+                    <Link
+                      className=" buttonforlog  px-3 py-2 rounded-2"
+                      to={`/dashboard/Viewoneschoolfemalehostel/${index}`}
+                    >
+                      View
+                    </Link>
+                  </div>              </div>
             ))}
           </section>
         </div>

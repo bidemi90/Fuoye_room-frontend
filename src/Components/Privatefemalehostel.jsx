@@ -6,34 +6,59 @@ import { Link } from "react-router-dom";
 import { VscDiffAdded } from "react-icons/vsc";
 
 import {
-  fetchUpdatedAllprivatemalehosteldata,
-  fetchingAllprivatemalehostel,
-  fetchingAllprivatemalehostelFailed,
-  fetchingAllprivatemalehostelSuccessful,
-} from "./Redux/Allprivatemalehostel";
+    featchinguser,
+    featchinguserfailed,
+    featchinguserSuccessful,
+    fetchUpdatedUserData,
+  } from "./Redux/userdata";
+  
 
-const Adminprivatemalehostel = () => {
+  import {
+    fetchUpdatedAllprivatefemalehosteldata,
+    fetchingAllprivatefemalehostel,
+    fetchingAllprivatefemalehostelFailed,
+    fetchingAllprivatefemalehostelSuccessful,
+  } from "./Redux/Allprivatefemalehostel";
+  
+
+const Privatefemalehostel = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const { isFetchinguser, userdata, isFeatchinguserfailed } = useSelector(
+    (state) => state.userdata
+  );
+
+
+
   const {
-    isFetchingAllprivatemalehostel,
-    allprivatemalehostel,
-    isFetchingAllprivatemalehostelFailed,
-  } = useSelector((state) => state.Allprivatemalehostel);
+    isFetchingAllprivatefemalehostel,
+    allprivatefemalehostel,
+    isFetchingAllprivatefemalehostelFailed,
+  } = useSelector((state) => state.Allprivatefemalehostel);
 
   useEffect(() => {
-    console.log(allprivatemalehostel);
+    console.log(allprivatefemalehostel);
   }, []);
 
   return (
     <>
       <section>
         <p className=" onelinetext  text-capitalize text-center fw-bold fs-4">
-          private male only hostel
+          private female only hostel
         </p>
+
+        <div className=" mb-2  p-1  ">
+            <p className=" m-0  smalltextnote fst-italic fw-bold font">
+            <span className="  text-uppercase fs-6">note</span>: <span className=" text-capitalize fs-6 fw-bold">
+                        numbers of active room:
+                      </span> is the number of the room available in a buliding <br />
+             
+            </p>
+          </div>
+
         <div className=" d-flex flex-wrap justify-content-center">
-          {allprivatemalehostel.map((item, index) => (
+          {allprivatefemalehostel.map((item, index) => (
             <div className=" col-12 col-md-6 ">
               <div className=" oneprivateroomholder p-2 rounded-2 col-11">
                 <div className=" d-flex ">
@@ -75,7 +100,7 @@ const Adminprivatemalehostel = () => {
               </div>
               <div className=" py-3">
                 <Link
-                  to={`/management_page/manageoneprivatemaleroom/${index}`}
+                  to={`/dashboard/check_one_privatefemale_hostel/${index}`}
                   className=" Linkforsidenav p-2 px-3 rounded-1 fw-bold my-2"
                 >
                   {" "}
@@ -86,13 +111,9 @@ const Adminprivatemalehostel = () => {
           ))}
         </div>
       </section>
-      <Link to="/management_page/addprivatemaleroom">
-        <button className=" flotbuttonspecial text-capitalize fs-3">
-          <VscDiffAdded />
-        </button>
-      </Link>
+      
     </>
   );
 };
 
-export default Adminprivatemalehostel;
+export default Privatefemalehostel;

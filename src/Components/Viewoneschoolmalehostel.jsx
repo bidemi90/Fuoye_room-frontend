@@ -12,7 +12,7 @@ import {
   fetchingAllschoolmalehostel,
 } from "./Redux/Allschoolmalehostel";
 
-const Adminviewoneschoolmaleroom = () => {
+const Viewoneschoolmalehostel = () => {
   const { id } = useParams();
   console.log(id);
 
@@ -36,14 +36,11 @@ const Adminviewoneschoolmaleroom = () => {
 
   return (
     <>
-      <section><h3 className=" text-capitalize text-center fw-bold ">
-      school male hostel
+      <section>
+        <h3 className=" text-capitalize text-center fw-bold ">
+          school male hostel
         </h3>
-        <hr />{" "}
-      <p className=" fs-6 fw-semibold fst-italic">
-  Note: You can update the details, add occupants, adjust the price, and change the availability status.
-</p>
-
+        <hr /> <p className=" fs-6 fw-semibold fst-italic">Note:</p>
         <div className=" col-11 mx-auto rounded-2 todisplayoneroominadmin">
           <p className=" text-capitalize fs-4 p-3 fw-bold mb-0 oneroomdetailsheader d-flex justify-content-between align-items-center">
             <span> room number : {allschoolmalehostel[id].roomNumber}</span>
@@ -73,17 +70,11 @@ const Adminviewoneschoolmaleroom = () => {
               ))}
             </div>
           </div>
-      
         </div>
-       <div className=" text-center mt-4">
-       <button  className=" buttonforlog text-capitalize  px-4 py-2 rounded-2">
-        edit details 
-       </button>
-       </div>
+       
       </section>
-   
     </>
   );
 };
 
-export default Adminviewoneschoolmaleroom;
+export default Viewoneschoolmalehostel;

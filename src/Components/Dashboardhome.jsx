@@ -43,7 +43,7 @@ const Dashboardhome = () => {
 
           <div className=" d-flex justify-content-between align-items-center flex-wrap">
             <div className=" col-6  col-md-3 ">
-              <Link className=" categorytypediv m-auto col-11 mb-3  p-2 border-0 rounded-3 d-flex flex-column justify-content-center align-items-center py-5">
+              <Link to="/dashboard/privatemalehostel" className=" categorytypediv m-auto col-11 mb-3  p-2 border-0 rounded-3 d-flex flex-column justify-content-center align-items-center py-5">
                 <FaMale className=" categorytypeicon" />
                 <p className="  categorytypeicontext fw-bold text-capitalize mt-3 text-center">
                   male only hostel
@@ -51,7 +51,7 @@ const Dashboardhome = () => {
               </Link>
             </div>
             <div className=" col-6  col-md-3 ">
-              <Link className=" categorytypediv m-auto col-11 mb-3  p-2 border-0 rounded-3 d-flex flex-column justify-content-center align-items-center py-5">
+              <Link to="/dashboard/privatefemalehostel"  className=" categorytypediv m-auto col-11 mb-3  p-2 border-0 rounded-3 d-flex flex-column justify-content-center align-items-center py-5">
                 <FaFemale className=" categorytypeicon" />
                 <p className="  categorytypeicontext fw-bold text-capitalize mt-3 text-center">
                   female only hostel
@@ -59,15 +59,15 @@ const Dashboardhome = () => {
               </Link>
             </div>
             <div className=" col-6  col-md-3 ">
-              <Link className=" categorytypediv m-auto col-11 mb-3  p-2 border-0 rounded-3 d-flex flex-column justify-content-center align-items-center py-5">
+              <Link to="/dashboard/Mixedhostel"  className=" categorytypediv m-auto col-11 mb-3  p-2 border-0 rounded-3 d-flex flex-column justify-content-center align-items-center py-5">
                 <BiMaleFemale className=" categorytypeicon" />
                 <p className="  categorytypeicontext fw-bold text-capitalize mt-3 text-center">
-                  mixed gender hostel
+                  mixed hostel
                 </p>
               </Link>
             </div>
             <div className=" col-6  col-md-3 ">
-              <Link className=" categorytypediv m-auto col-11 mb-3  p-2 border-0 rounded-3 d-flex flex-column justify-content-center align-items-center py-5">
+              <Link to="/dashboard/Coupleshostel" className=" categorytypediv m-auto col-11 mb-3  p-2 border-0 rounded-3 d-flex flex-column justify-content-center align-items-center py-5">
                 <IoIosBed className=" categorytypeicon" />
                 <p className="  categorytypeicontext fw-bold text-capitalize mt-3 text-center">
                   couples hostel

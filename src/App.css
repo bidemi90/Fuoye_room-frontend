@@ -541,3 +541,16 @@ nav {
 .addingform input{
   padding-top: 30px;
 }
+.firsttablehead{
+  background-color: #d8dcff;
+  border:  2px solid #191d32;
+}
+.secondtablehead{
+  background-color: #191d32;
+  color: #d8dcff;
+  border:  2px solid #191d32;
+  font-weight: bold;
+}
+.tableholder{
+  background-color: #191d32;
+}

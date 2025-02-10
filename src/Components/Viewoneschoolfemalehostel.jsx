@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import { Navigate, useParams } from "react-router-dom";
 
@@ -6,64 +7,64 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import {
-  fetchUpdatedAllschoolmalehosteldata,
-  fetchingAllschoolmalehostelFailed,
-  fetchingAllschoolmalehostelSuccessful,
-  fetchingAllschoolmalehostel,
-} from "./Redux/Allschoolmalehostel";
+  fetchUpdatedAllschoolfemalehosteldata,
+  fetchingAllschoolfemalehostelFailed,
+  fetchingAllschoolfemalehostelSuccessful,
+  fetchingAllschoolfemalehostel,
+} from "./Redux/Allschoolfemalehostel";
 
-const Adminviewoneschoolmaleroom = () => {
+const Viewoneschoolfemalehostel = () => {
   const { id } = useParams();
   console.log(id);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { isFetchinguser, userdata, isFeatchinguserfailed } = useSelector(
-    (state) => state.userdata
-  );
+ 
 
   const {
-    isFetchingAllschoolmalehostel,
-    allschoolmalehostel,
-    isFetchingAllschoolmalehostelFailed,
-  } = useSelector((state) => state.Allschoolmalehostel);
+    isFetchingAllschoolfemalehostel,
+    allschoolfemalehostel,
+    isFetchingAllschoolfemalehostelFailed,
+  } = useSelector((state) => state.Allschoolfemalehostel);
 
   useEffect(() => {
-    console.log(allschoolmalehostel);
-    console.log(allschoolmalehostel[id]);
+    console.log(allschoolfemalehostel);
+    console.log(allschoolfemalehostel[id]);
   }, []);
 
   return (
     <>
       <section><h3 className=" text-capitalize text-center fw-bold ">
-      school male hostel
+      school female hostel
         </h3>
         <hr />{" "}
-      <p className=" fs-6 fw-semibold fst-italic">
-  Note: You can update the details, add occupants, adjust the price, and change the availability status.
-</p>
+        <p className=" fs-6 fw-semibold fst-italic">
+          Note: 
+        </p>
 
         <div className=" col-11 mx-auto rounded-2 todisplayoneroominadmin">
           <p className=" text-capitalize fs-4 p-3 fw-bold mb-0 oneroomdetailsheader d-flex justify-content-between align-items-center">
-            <span> room number : {allschoolmalehostel[id].roomNumber}</span>
+            <span> room number : {allschoolfemalehostel[id].roomNumber}</span>
             <span className=" fs-6">
               Availability :{" "}
-              {allschoolmalehostel[id].availability
+              {allschoolfemalehostel[id].availability
                 ? "Available"
                 : "Not Available"}
             </span>
           </p>
           <div className=" bodydetailsoneroom text-capitalize fs-6 p-3 fw-bold mb-0 ">
             <p className=" mb-0 fs-6">
-              bunker Space :{allschoolmalehostel[id].bunkerSpace}
+              bunker Space :{allschoolfemalehostel[id].bunkerSpace}
             </p>
-            <p className=" mb-0 fs-6">rent : ₦{allschoolmalehostel[id].rent}</p>
+            <p className=" mb-0 fs-6">
+              rent :₦{allschoolfemalehostel[id].rent}
+            </p>
 
             <p className=" mb-0 fs-5 mt-2 mb-2">bunkerDetails</p>
 
             <div className=" d-flex flex-wrap">
-              {allschoolmalehostel[id].bunkerDetails.map((item, index) => (
+              {allschoolfemalehostel[id].bunkerDetails.map((item, index) => (
                 <div key={index} className=" col-12 col-md-6 col-lg-4 my-1">
                   <div className=" col-11 mx-auto rounded-2 showingoneuserforroom p-2">
                     <p>bunker : {item.id}</p>
@@ -73,17 +74,11 @@ const Adminviewoneschoolmaleroom = () => {
               ))}
             </div>
           </div>
-      
         </div>
-       <div className=" text-center mt-4">
-       <button  className=" buttonforlog text-capitalize  px-4 py-2 rounded-2">
-        edit details 
-       </button>
-       </div>
+       
       </section>
-   
     </>
   );
 };
 
-export default Adminviewoneschoolmaleroom;
+export default Viewoneschoolfemalehostel;

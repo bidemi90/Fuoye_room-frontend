@@ -7,6 +7,12 @@ import Allschoolmalehostel from "./Allschoolmalehostel";
 import Allschoolfemalehostel from "./Allschoolfemalehostel";
 import Allprivatemalehostel from "./Allprivatemalehostel"
 import Allprivatefemalehostel from "./Allprivatefemalehostel"
+import Allmixedhostel from "./Allmixedhostel";
+import Allcoupleshostel from "./Allcoupleshostel";
+
+
+
+
 import admindata from "./admindata";
 import alluserdata from "./alluserdata";
 
@@ -26,6 +32,9 @@ const rootReducer = combineReducers({
   // 
   Allprivatemalehostel: Allprivatemalehostel,
   Allprivatefemalehostel: Allprivatefemalehostel,
+  Allmixedhostel: Allmixedhostel,
+  Allcoupleshostel: Allcoupleshostel,
+  
   // Add other reducers here if needed
 });
 

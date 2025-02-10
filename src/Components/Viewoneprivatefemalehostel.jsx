@@ -4,16 +4,36 @@ import { Navigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import {
-  fetchUpdatedAllprivatefemalehosteldata,
-  fetchingAllprivatefemalehostel,
-  fetchingAllprivatefemalehostelFailed,
-  fetchingAllprivatefemalehostelSuccessful,
-} from "./Redux/Allprivatefemalehostel";
 
-const Adminviewonefemaleprivatehostel = () => {
+
+import {
+    featchinguser,
+    featchinguserfailed,
+    featchinguserSuccessful,
+    fetchUpdatedUserData,
+  } from "./Redux/userdata";
+  
+
+
+  import {
+    fetchUpdatedAllprivatefemalehosteldata,
+    fetchingAllprivatefemalehostel,
+    fetchingAllprivatefemalehostelFailed,
+    fetchingAllprivatefemalehostelSuccessful,
+  } from "./Redux/Allprivatefemalehostel";
+  
+const Viewoneprivatefemalehostel = () => {
   const { id } = useParams();
   console.log(id);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+
+  const { isFetchinguser, userdata, isFeatchinguserfailed } = useSelector(
+    (state) => state.userdata
+  );
+
 
   const {
     isFetchingAllprivatefemalehostel,
@@ -21,23 +41,21 @@ const Adminviewonefemaleprivatehostel = () => {
     isFetchingAllprivatefemalehostelFailed,
   } = useSelector((state) => state.Allprivatefemalehostel);
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
   useEffect(() => {
     console.log(allprivatefemalehostel);
     console.log(allprivatefemalehostel[id]);
   }, []);
   return (
     <>
-      <section> <h3 className=" text-capitalize text-center fw-bold ">
-      private female only hostel
-        </h3>
-        <hr />{" "}
-        <p className=" fs-6 fw-semibold fst-italic">
-          Note: You can update the details, add occupants, adjust the price, and
-          change the availability status.
-        </p>
+      <section>
+      <div className=" mb-2  p-1  ">
+            <p className=" m-0  smalltextnote fst-italic fw-bold font">
+              <span className=" text-capitalize fs-6">Checkbox behavior</span>:
+              If a checkbox is checked, it means that the corresponding room
+              (either top or bottom) is occupied. If it's unchecked, the room is
+              unoccupied.
+            </p>
+          </div>
 
         <div className=" d-flex justify-content-evenly oneprivatehouseholder flex-wrap ">
           <div className=" col-12 col-lg-4 d-flex justify-content-center align-items-center">
@@ -88,9 +106,7 @@ const Adminviewonefemaleprivatehostel = () => {
         </div>
         <br />
         <hr />
-        <p className=" m-0 text-capitalize fw-bold ">
-          Note : checked rooms are occupied
-        </p>
+       
         <div className=" d-flex flex-wrap ">
           {allprivatefemalehostel[id].rooms.map((item, index) => (
             <div className="col-6 col-md-4 col-lg-3 my-2" key={index}>
@@ -110,14 +126,10 @@ const Adminviewonefemaleprivatehostel = () => {
           ))}
         </div>
 
-        <div className=" d-flex justify-content-center align-items-center">
-          <button className="Linkforsidenav px-4 py-2  text-capitalize fw-bold"  >
-            edit hostel details
-          </button>
-        </div>
+      
       </section>
     </>
   );
 };
 
-export default Adminviewonefemaleprivatehostel;
+export default Viewoneprivatefemalehostel;

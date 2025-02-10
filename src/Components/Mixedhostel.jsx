@@ -6,38 +6,48 @@ import { Link } from "react-router-dom";
 import { VscDiffAdded } from "react-icons/vsc";
 
 import {
-  fetchUpdatedAllprivatemalehosteldata,
-  fetchingAllprivatemalehostel,
-  fetchingAllprivatemalehostelFailed,
-  fetchingAllprivatemalehostelSuccessful,
-} from "./Redux/Allprivatemalehostel";
+  featchinguser,
+  featchinguserfailed,
+  featchinguserSuccessful,
+  fetchUpdatedUserData,
+} from "./Redux/userdata";
 
-const Adminprivatemalehostel = () => {
+import {
+  fetchUpdatedAllmixedhosteldata,
+  fetchingAllmixedhostel,
+  fetchingAllmixedhostelFailed,
+  fetchingAllmixedhostelSuccessful,
+} from "./Redux/Allmixedhostel";
+
+const Mixedhostel = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const { isFetchinguser, userdata, isFeatchinguserfailed } = useSelector(
+    (state) => state.userdata
+  );
   const {
-    isFetchingAllprivatemalehostel,
-    allprivatemalehostel,
-    isFetchingAllprivatemalehostelFailed,
-  } = useSelector((state) => state.Allprivatemalehostel);
+    isFetchingAllmixedhostel,
+    allmixedhostel,
+    isFetchingAllmixedhostelFailed,
+  } = useSelector((state) => state.Allmixedhostel);
 
   useEffect(() => {
-    console.log(allprivatemalehostel);
+    console.log(allmixedhostel);
   }, []);
 
   return (
     <>
       <section>
         <p className=" onelinetext  text-capitalize text-center fw-bold fs-4">
-          private male only hostel
+          mixed gender hostel
         </p>
         <div className=" d-flex flex-wrap justify-content-center">
-          {allprivatemalehostel.map((item, index) => (
+          {allmixedhostel.map((item, index) => (
             <div className=" col-12 col-md-6 ">
               <div className=" oneprivateroomholder p-2 rounded-2 col-11">
                 <div className=" d-flex ">
-                  <div className=" col-4 d-flex justify-content-center align-items-center ">
+                  <div className=" col-4 d-flex justify-content-center align-items-center">
                     <img
                       className=" img-fluid my-auto mx-auto"
                       src={item.img_array}
@@ -75,7 +85,7 @@ const Adminprivatemalehostel = () => {
               </div>
               <div className=" py-3">
                 <Link
-                  to={`/management_page/manageoneprivatemaleroom/${index}`}
+                  to={`/dashboard/check_one_mixedgender_hostel/${index}`}
                   className=" Linkforsidenav p-2 px-3 rounded-1 fw-bold my-2"
                 >
                   {" "}
@@ -86,13 +96,9 @@ const Adminprivatemalehostel = () => {
           ))}
         </div>
       </section>
-      <Link to="/management_page/addprivatemaleroom">
-        <button className=" flotbuttonspecial text-capitalize fs-3">
-          <VscDiffAdded />
-        </button>
-      </Link>
+    
     </>
   );
 };
 
-export default Adminprivatemalehostel;
+export default Mixedhostel;

@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
 import axios from "axios";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { VscDiffAdded } from "react-icons/vsc";
-
 import {
   fetchUpdatedAllprivatefemalehosteldata,
   fetchingAllprivatefemalehostel,
@@ -30,19 +25,10 @@ const Adminaddfemaleprivatehostel = () => {
   } = useSelector((state) => state.Allprivatefemalehostel);
 
   const [img, setimg] = useState("");
-  // const oneimage = (e) => {
-  //     let file = e.target.files[0];
-  //     let reader = new FileReader();
-  //     reader.onload = (e) => {
-  //       console.log(e.target.result);
-  //       setimg(e.target.result);
-  //     };
-  //     reader.readAsDataURL(file);
-  //   };
 
   // Define validation schema using Yup
   const validationSchema = Yup.object({
-    img_array: Yup.string().required("image can not be empty"),
+    img_array: Yup.string().required("Image cannot be empty"),
     building_name: Yup.string().required("Building name is required"),
     room_description: Yup.string().required("Room description is required"),
     address: Yup.string().required("Address is required"),
@@ -60,6 +46,10 @@ const Adminaddfemaleprivatehostel = () => {
     building_amenities: Yup.string(),
     building_rules: Yup.string(),
     is_furnished: Yup.boolean(),
+    bank_name: Yup.string().required("Bank name is required"), // New field
+    bank_account: Yup.string()
+      .required("Bank account is required")
+      .matches(/^\d+$/, "Bank account must be a number"), // New field
   });
 
   // Initialize Formik
@@ -74,15 +64,14 @@ const Adminaddfemaleprivatehostel = () => {
       building_amenities: "",
       building_rules: "",
       is_furnished: false,
-      img_array: "", // for handling image uploads
+      img_array: "",
+      bank_name: "", // New field
+      bank_account: "", // New field
     },
     validationSchema,
     onSubmit: (values) => {
       console.log(values);
-      // Submit the form
-
       try {
-        // dispatch(featchingadmin);
         axios
           .post("http://localhost:5000/user/addingprivatefemalehostel", {
             building_name: values.building_name,
@@ -94,60 +83,48 @@ const Adminaddfemaleprivatehostel = () => {
             building_amenities: values.building_amenities,
             building_rules: values.building_rules,
             is_furnished: values.is_furnished,
-            img_array: values.img_array, // for handling image uploads
+            img_array: values.img_array,
+            bank_name: values.bank_name, // New field
+            bank_account: values.bank_account, // New field
           })
           .then((res) => {
             console.log(res.data);
-            console.log(res.data.message);
             toast.success(res.data.message);
-
-            // dispatch(featchingadminSuccessful(res.data));
             dispatch(fetchUpdatedAllprivatefemalehosteldata());
-
             setTimeout(() => {
               navigate("/management_page/private_female_hostel");
             }, 5000);
           })
           .catch((err) => {
             console.log(err);
-
             toast.error(err.message);
             toast.error(err.response.data.message);
-
-            // dispatch(featchingadminfailed(err.response.data.message));
-          })
-          .finally(() => {});
+          });
       } catch (error) {
         console.log(error);
         toast.error(error);
-        // dispatch(featchingadminfailed(error));
       }
     },
   });
 
-  console.log(formik.errors);
-  console.log(formik.touched);
-
   return (
     <>
       <section>
-        <p className=" text-capitalize text-center fs-4 fw-bold">
-          fill form to add to private female hostel
+        <p className="text-capitalize text-center fs-4 fw-bold">
+          Fill form to add to private female hostel
         </p>
         <form onSubmit={formik.handleSubmit}>
-          <div className=" addingform p-3 rounded-3">
+          <div className="addingform p-3 rounded-3 col-8 m-auto">
+            {/* Image Upload */}
             <div className="mb-3">
-              <div  className=" d-flex justify-content-center align-items-center ">
+              <div className="d-flex justify-content-center align-items-center bg-white py-2">
                 <img
-                  className=" img-fluid col-10 col-lg-6"
+                  className="img-fluid col-10 col-lg-6"
                   src={img}
                   alt="preview selected image"
                 />
               </div>
-              <label
-                className="text-capitalize fw-bold fs-6"
-                htmlFor="img_array"
-              >
+              <label className="text-capitalize fw-bold fs-6" htmlFor="img_array">
                 Choose file
               </label>
               <input
@@ -159,7 +136,6 @@ const Adminaddfemaleprivatehostel = () => {
                   let file = e.target.files[0];
                   let reader = new FileReader();
                   reader.onload = (e) => {
-                    console.log(e.target.result);
                     formik.setFieldValue("img_array", e.target.result);
                     setimg(e.target.result);
                   };
@@ -183,10 +159,7 @@ const Adminaddfemaleprivatehostel = () => {
                 onBlur={formik.handleBlur}
                 placeholder=""
               />
-              <label
-                htmlFor="building_name"
-                className="text-capitalize fw-bold fs-6"
-              >
+              <label htmlFor="building_name" className="text-capitalize fw-bold fs-6">
                 Building name
               </label>
               <div className="form-text text-capitalize fw-semibold text-danger">
@@ -230,15 +203,11 @@ const Adminaddfemaleprivatehostel = () => {
                 onBlur={formik.handleBlur}
                 placeholder=""
               />
-              <label
-                htmlFor="room_description"
-                className="text-capitalize fw-bold fs-6"
-              >
+              <label htmlFor="room_description" className="text-capitalize fw-bold fs-6">
                 Room description
               </label>
               <div className="form-text text-capitalize fw-semibold text-danger">
-                {formik.touched.room_description &&
-                formik.errors.room_description
+                {formik.touched.room_description && formik.errors.room_description
                   ? formik.errors.room_description
                   : ""}
               </div>
@@ -257,7 +226,7 @@ const Adminaddfemaleprivatehostel = () => {
                 placeholder=""
               />
               <label htmlFor="rent" className="text-capitalize fw-bold fs-6">
-                Rent
+                Rent in ₦
               </label>
               <div className="form-text text-capitalize fw-semibold text-danger">
                 {formik.touched.rent && formik.errors.rent
@@ -278,10 +247,7 @@ const Adminaddfemaleprivatehostel = () => {
                 onBlur={formik.handleBlur}
                 placeholder=""
               />
-              <label
-                htmlFor="room_capacity"
-                className="text-capitalize fw-bold fs-6"
-              >
+              <label htmlFor="room_capacity" className="text-capitalize fw-bold fs-6">
                 Room capacity
               </label>
               <div className="form-text text-capitalize fw-semibold text-danger">
@@ -303,10 +269,7 @@ const Adminaddfemaleprivatehostel = () => {
                 onBlur={formik.handleBlur}
                 placeholder=""
               />
-              <label
-                htmlFor="numbers_of_room"
-                className="text-capitalize fw-bold fs-6"
-              >
+              <label htmlFor="numbers_of_room" className="text-capitalize fw-bold fs-6">
                 Numbers of room
               </label>
               <div className="form-text text-capitalize fw-semibold text-danger">
@@ -328,15 +291,11 @@ const Adminaddfemaleprivatehostel = () => {
                 onBlur={formik.handleBlur}
                 placeholder=""
               />
-              <label
-                htmlFor="building_amenities"
-                className="text-capitalize fw-bold fs-6"
-              >
+              <label htmlFor="building_amenities" className="text-capitalize fw-bold fs-6">
                 Building amenities
               </label>
               <div className="form-text text-capitalize fw-semibold text-danger">
-                {formik.touched.building_amenities &&
-                formik.errors.building_amenities
+                {formik.touched.building_amenities && formik.errors.building_amenities
                   ? formik.errors.building_amenities
                   : ""}
               </div>
@@ -354,10 +313,7 @@ const Adminaddfemaleprivatehostel = () => {
                 onBlur={formik.handleBlur}
                 placeholder=""
               />
-              <label
-                htmlFor="building_rules"
-                className="text-capitalize fw-bold fs-6"
-              >
+              <label htmlFor="building_rules" className="text-capitalize fw-bold fs-6">
                 Building rules
               </label>
               <div className="form-text text-capitalize fw-semibold text-danger">
@@ -369,10 +325,7 @@ const Adminaddfemaleprivatehostel = () => {
 
             {/* Furnished */}
             <div className="form-control mb-3">
-              <label
-                htmlFor="is_furnished"
-                className="text-capitalize fw-bold fs-6"
-              >
+              <label htmlFor="is_furnished" className="text-capitalize fw-bold fs-6">
                 Furnished
               </label>
               <input
@@ -385,7 +338,52 @@ const Adminaddfemaleprivatehostel = () => {
               />
             </div>
 
-            <button type="submit" className=" buttonfornav fs-5 fw-bold py-2 rounded-2 px-3 ">
+            {/* Bank Name */}
+            <div className="form-floating mb-3">
+              <input
+                type="text"
+                className="form-control"
+                name="bank_name"
+                id="bank_name"
+                value={formik.values.bank_name}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                placeholder=""
+              />
+              <label htmlFor="bank_name" className="text-capitalize fw-bold fs-6">
+                Bank Name
+              </label>
+              <div className="form-text text-capitalize fw-semibold text-danger">
+                {formik.touched.bank_name && formik.errors.bank_name
+                  ? formik.errors.bank_name
+                  : ""}
+              </div>
+            </div>
+
+            {/* Bank Account */}
+            <div className="form-floating mb-3">
+              <input
+                type="text"
+                className="form-control"
+                name="bank_account"
+                id="bank_account"
+                value={formik.values.bank_account}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                placeholder=""
+              />
+              <label htmlFor="bank_account" className="text-capitalize fw-bold fs-6">
+                Bank Account
+              </label>
+              <div className="form-text text-capitalize fw-semibold text-danger">
+                {formik.touched.bank_account && formik.errors.bank_account
+                  ? formik.errors.bank_account
+                  : ""}
+              </div>
+            </div>
+
+            {/* Submit Button */}
+            <button type="submit" className="buttonfornav fs-5 fw-bold py-2 rounded-2 px-3">
               Submit
               <ToastContainer />
             </button>

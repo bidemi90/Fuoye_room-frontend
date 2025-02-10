@@ -1,3 +1,5 @@
+
+
 import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -5,7 +7,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { VscDiffAdded } from "react-icons/vsc";
 import {
   fetchUpdatedAllprivatemalehosteldata,
@@ -14,7 +16,16 @@ import {
   fetchingAllprivatemalehostelSuccessful,
 } from "./Redux/Allprivatemalehostel";
 
-const Adminaddmaleprivatehostel = () => {
+const Admineditmaleprivatehostel = () => {
+
+      const { id } = useParams();
+  console.log(id);
+
+  useEffect(() => {
+    console.log(allprivatemalehostel);
+    console.log(allprivatemalehostel[id]);
+  }, []);
+
   const [img, setimg] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -393,4 +404,4 @@ const Adminaddmaleprivatehostel = () => {
   );
 };
 
-export default Adminaddmaleprivatehostel;
+export default Admineditmaleprivatehostel;

@@ -35,10 +35,26 @@ import Adminviewoneuser from "./Components/Adminviewoneuser";
 import Adminprivatemalehostel from "./Components/Adminprivatemalehostel";
 import Adminprivatefemalehostle from "./Components/Adminprivatefemalehostle";
 import Adminaddmaleprivatehostel from "./Components/Adminaddmaleprivatehostel";
-import Adminaddfemaleprivatehostel from "./Components/adminaddfemaleprivatehostel";
+import Adminaddfemaleprivatehostel from "./Components/Adminaddfemaleprivatehostel";
 import Adminviewonemaleprivatehostel from "./Components/Adminviewonemaleprivatehostel";
 import Adminviewonefemaleprivatehostel from "./Components/Adminviewonefemaleprivatehostel";
 import Adminmixedhostel from "./Components/Adminmixedhostel";
+import Adminaddmixedhostel from "./Components/Adminaddmixedhostel";
+import Adminviewonemixedhostel from "./Components/Adminviewonemixedhostel";
+import Admincoupleshostel from "./Components/Admincoupleshostel";
+import Adminaddcoupleshostel from "./Components/Adminaddcoupleshostel";
+import Adminviewonecoulpeshostel from "./Components/Adminviewonecoulpeshostel";
+import Privatemalehostel from "./Components/Privatemalehostel";
+import Viewonemaleprivatemalehostel from "./Components/Viewonemaleprivatemalehostel";
+import Privatefemalehostel from "./Components/Privatefemalehostel";
+import Viewoneprivatefemalehostel from "./Components/Viewoneprivatefemalehostel";
+import Mixedhostel from "./Components/Mixedhostel";
+import Viewonemixedhostel from "./Components/Viewonemixedhostel";
+import Coupleshostel from "./Components/Coupleshostel";
+import Viewonecoupleshostel from "./Components/Viewonecoupleshostel";
+import Viewoneschoolmalehostel from "./Components/Viewoneschoolmalehostel";
+import Viewoneschoolfemalehostel from "./Components/Viewoneschoolfemalehostel";
+import Admineditmaleprivatehostel from "./Components/Admineditmaleprivatehostel";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -56,11 +72,6 @@ function App() {
               <Route path="management_login" element={<Adminlogin />} />
               <Route path="management_signup" element={<Adminsignup />} />
               <Route path="addnewhostel" element={<Addnewhostel />} />
-
-
-
-
-
 
               {/* admin nested routes */}
               <Route path="management_page" element={<Admindashboard />}>
@@ -119,18 +130,30 @@ function App() {
                   path="addprivatefemaleroom"
                   element={<Adminaddfemaleprivatehostel />}
                 />
+                <Route path="mixed_hostel" element={<Adminmixedhostel />} />
                 <Route
-                  path="mixed_hostel"
-                  element={<Adminmixedhostel />}
+                  path="adding_mixed_hostel"
+                  element={<Adminaddmixedhostel />}
+                />
+                <Route
+                  path="manageonemixedbuliding/:id"
+                  element={<Adminviewonemixedhostel />}
                 />
 
+                <Route path="couples_hostel" element={<Admincoupleshostel />} />
+                <Route
+                  path="adding_couples_hostel"
+                  element={<Adminaddcoupleshostel />}
+                />
+                <Route
+                  path="manageonecouplesbuliding/:id"
+                  element={<Adminviewonecoulpeshostel />}
+                />
 
-
-
-
-
-
-
+                <Route
+                  path="editonemaleprivatehostel/:id"
+                  element={<Admineditmaleprivatehostel />}
+                />
 
                 <Route path="*" element={<Pagenotfound />} />
               </Route>
@@ -152,33 +175,68 @@ function App() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
               {/* this is a nested routes for user dashboard */}
               <Route path="dashboard" element={<Dashboard />}>
                 <Route path="" element={<Dashboardhome />} />
-                <Route path="schoolmalehostel" element={<Schoolmalehostel />} />
                 <Route path="currentroom" element={<Currentroom />} />
+                <Route path="schoolmalehostel" element={<Schoolmalehostel />} />
+                <Route
+                  path="Viewoneschoolmalehostel/:id"
+                  element={<Viewoneschoolmalehostel />}
+                />
                 <Route
                   path="schoolfemalehostel"
                   element={<Schoolfemalehostel />}
                 />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                <Route
+                  path="Viewoneschoolfemalehostel/:id"
+                  element={<Viewoneschoolfemalehostel />}
+                />
+                <Route
+                  path="privatemalehostel"
+                  element={<Privatemalehostel />}
+                />
+                <Route
+                  path="check_one_privatemale_hostel/:id"
+                  element={<Viewonemaleprivatemalehostel />}
+                />
+                <Route
+                  path="privatefemalehostel"
+                  element={<Privatefemalehostel />}
+                />
+                <Route
+                  path="check_one_privatefemale_hostel/:id"
+                  element={<Viewoneprivatefemalehostel />}
+                />{" "}
+                <Route path="Mixedhostel" element={<Mixedhostel />} />
+                <Route
+                  path="check_one_mixedgender_hostel/:id"
+                  element={<Viewonemixedhostel />}
+                />
+                <Route path="Coupleshostel" element={<Coupleshostel />} />
+                <Route
+                  path="check_one_couples_hostel/:id"
+                  element={<Viewonecoupleshostel />}
+                />
                 <Route path="*" element={<Pagenotfound />} />
                 {/* Add other routes inside this nested structure if needed */}
               </Route>

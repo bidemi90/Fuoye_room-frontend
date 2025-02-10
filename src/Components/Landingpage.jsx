@@ -1,5 +1,4 @@
 import React from "react";
-import Adminnav from "./Adminnav";
 import section1img from "../assets/section1img.jpg";
 
 import { FaRestroom } from "react-icons/fa";

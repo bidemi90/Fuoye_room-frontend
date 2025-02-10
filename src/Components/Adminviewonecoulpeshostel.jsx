@@ -4,85 +4,86 @@ import { Navigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import {
-  fetchUpdatedAllprivatefemalehosteldata,
-  fetchingAllprivatefemalehostel,
-  fetchingAllprivatefemalehostelFailed,
-  fetchingAllprivatefemalehostelSuccessful,
-} from "./Redux/Allprivatefemalehostel";
 
-const Adminviewonefemaleprivatehostel = () => {
+import {
+  fetchUpdatedAllcoupleshosteldata,
+  fetchingAllcoupleshostel,
+  fetchingAllcoupleshostelFailed,
+  fetchingAllcoupleshostelSuccessful,
+} from "./Redux/Allcoupleshostel";
+
+const Adminviewonecoulpeshostel = () => {
   const { id } = useParams();
   console.log(id);
 
   const {
-    isFetchingAllprivatefemalehostel,
-    allprivatefemalehostel,
-    isFetchingAllprivatefemalehostelFailed,
-  } = useSelector((state) => state.Allprivatefemalehostel);
+    isFetchingAllcoupleshostel,
+    allcoupleshostel,
+    isFetchingAllcoupleshostelFailed,
+  } = useSelector((state) => state.Allcoupleshostel);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(allprivatefemalehostel);
-    console.log(allprivatefemalehostel[id]);
+    console.log(allcoupleshostel);
+    console.log(allcoupleshostel[id]);
   }, []);
   return (
     <>
-      <section> <h3 className=" text-capitalize text-center fw-bold ">
-      private female only hostel
+      <section>
+        <h3 className=" text-capitalize text-center fw-bold ">
+          couples hostel
         </h3>
         <hr />{" "}
         <p className=" fs-6 fw-semibold fst-italic">
           Note: You can update the details, add occupants, adjust the price, and
           change the availability status.
         </p>
-
         <div className=" d-flex justify-content-evenly oneprivatehouseholder flex-wrap ">
           <div className=" col-12 col-lg-4 d-flex justify-content-center align-items-center">
             <img
               className="  oneprivatehouseholderimg"
-              src={allprivatefemalehostel[id].img_array}
+              src={allcoupleshostel[id].img_array}
               alt=""
             />
           </div>
           <div className=" ms-3 col-12 col-lg-6  pt-3 ">
             <p className=" onelinetext text-capitalize fw-semibold ">
               <span className=" text-uppercase fw-bold">building name:</span>{" "}
-              {allprivatefemalehostel[id].building_name}
+              {allcoupleshostel[id].building_name}
             </p>
             <p className=" onelinetext text-capitalize fw-semibold ">
               <span className=" text-uppercase fw-bold">building address:</span>{" "}
-              {allprivatefemalehostel[id].building_address}
+              {allcoupleshostel[id].building_address}
             </p>
             <p className=" onelinetext text-capitalize fw-semibold ">
               <span className=" text-uppercase fw-bold">
                 numbers of active room:
               </span>{" "}
-              {allprivatefemalehostel[id].room_count}
+              {allcoupleshostel[id].room_count}
             </p>
             <p className=" onelinetext text-capitalize fw-semibold ">
               <span className=" text-uppercase fw-bold"> rent per room :</span>₦{" "}
-              {allprivatefemalehostel[id].rent}
+              {allcoupleshostel[id].rent}
             </p>
             <p className=" onelinetext text-capitalize fw-semibold ">
               <span className=" text-uppercase fw-bold">
                 {" "}
                 one room capacity:
               </span>{" "}
-              {allprivatefemalehostel[id].one_room_capacity} per room
+              {allcoupleshostel[id].one_room_capacity} per room
             </p>
             <p className=" onelinetext text-capitalize fw-semibold ">
               <span className=" text-uppercase fw-bold">
                 {" "}
                 room description :
               </span>{" "}
-              {allprivatefemalehostel[id].room_description}
+              {allcoupleshostel[id].room_description}
             </p>
             <p className=" onelinetext text-capitalize fw-semibold ">
               <span className=" text-uppercase fw-bold"> hostel rules :</span>{" "}
-              {allprivatefemalehostel[id].rules}
+              {allcoupleshostel[id].rules}
             </p>
           </div>
         </div>
@@ -92,7 +93,7 @@ const Adminviewonefemaleprivatehostel = () => {
           Note : checked rooms are occupied
         </p>
         <div className=" d-flex flex-wrap ">
-          {allprivatefemalehostel[id].rooms.map((item, index) => (
+          {allcoupleshostel[id].rooms.map((item, index) => (
             <div className="col-6 col-md-4 col-lg-3 my-2" key={index}>
               <div className="oneprivatehouseholderroom d-flex p-2 col-11 rounded justify-content-evenly align-items-center">
                 <p className="m-0 text-capitalize fs-5 fw-bold">
@@ -109,9 +110,8 @@ const Adminviewonefemaleprivatehostel = () => {
             </div>
           ))}
         </div>
-
         <div className=" d-flex justify-content-center align-items-center">
-          <button className="Linkforsidenav px-4 py-2  text-capitalize fw-bold"  >
+          <button className="Linkforsidenav px-4 py-2  text-capitalize fw-bold">
             edit hostel details
           </button>
         </div>
@@ -120,4 +120,4 @@ const Adminviewonefemaleprivatehostel = () => {
   );
 };
 
-export default Adminviewonefemaleprivatehostel;
+export default Adminviewonecoulpeshostel;

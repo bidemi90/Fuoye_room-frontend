@@ -52,6 +52,21 @@ import {
   fetchingAllprivatefemalehostelSuccessful,
 } from "./Redux/Allprivatefemalehostel";
 
+import {
+  fetchUpdatedAllmixedhosteldata,
+  fetchingAllmixedhostel,
+  fetchingAllmixedhostelFailed,
+  fetchingAllmixedhostelSuccessful,
+} from "./Redux/Allmixedhostel";
+
+import {
+  fetchUpdatedAllcoupleshosteldata,
+  fetchingAllcoupleshostel,
+  fetchingAllcoupleshostelFailed,
+  fetchingAllcoupleshostelSuccessful,
+} from "./Redux/Allcoupleshostel";
+
+
 const Admindashboard = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -88,6 +103,20 @@ const Admindashboard = () => {
     isFetchingAllprivatefemalehostelFailed,
   } = useSelector((state) => state.Allprivatefemalehostel);
 
+  const {
+    isFetchingAllmixedhostel,
+    allmixedhostel,
+    isFetchingAllmixedhostelFailed,
+  } = useSelector((state) => state.Allmixedhostel);
+
+  
+  const {
+    isFetchingAllcoupleshostel,
+    allcoupleshostel,
+    isFetchingAllcoupleshostelFailed,
+  } = useSelector((state) => state.Allcoupleshostel);
+
+
   useEffect(() => {
     axios
       .get("http://localhost:5000/user/verifyadminondashbord", {
@@ -112,6 +141,9 @@ const Admindashboard = () => {
     dispatch(fetchUpdatedAllschoolfemalehosteldata());
     dispatch(fetchUpdatedAllprivatemalehosteldata());
     dispatch(fetchUpdatedAllprivatefemalehosteldata());
+    dispatch(fetchUpdatedAllmixedhosteldata());
+    dispatch(fetchUpdatedAllcoupleshosteldata());
+    
   }, []);
 
   // useEffect(() => {

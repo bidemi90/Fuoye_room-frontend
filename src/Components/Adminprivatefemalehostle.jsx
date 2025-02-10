@@ -66,7 +66,7 @@ const Adminprivatefemalehostle = () => {
                     <p className=" onelinetext text-capitalize">
                       <span className=" text-capitalize fs-6 fw-bold">
                         {" "}
-                        rent per room :
+                        rent per room :₦
                       </span>{" "}
                       {item.rent}
                     </p>

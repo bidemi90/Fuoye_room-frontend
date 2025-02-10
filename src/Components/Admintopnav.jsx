@@ -43,7 +43,7 @@ const Admintopnav = () => {
           <div className=" d-flex justify-content-evenly align-items-center">
             <div className=" d-none d-xl-flex align-items-center ">
               <button className="d-flex justify-content-evenly align-items-center Linkfornav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 rounded-3 mx-2 fw-bold">
-                profile page <BsPersonBoundingBox className=" mx-2" />
+                admin profile <BsPersonBoundingBox className=" mx-2" />
               </button>
               <button className="  profileimginusernav d-flex justify-content-center align-items-center">
                 <img
@@ -82,7 +82,7 @@ const Admintopnav = () => {
                     payment <RiSecurePaymentFill className=" mx-3" />
                   </Link>
                   <Link className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2  w-75">
-                    profile page <BsPersonBoundingBox className=" mx-3" />
+                    admin profile <BsPersonBoundingBox className=" mx-3" />
                   </Link>
                 </div>
                 <div className=" w-100">

@@ -34,7 +34,10 @@ const Adminviewoneschoolfemaleroom = () => {
 
   return (
     <>
-      <section>
+      <section><h3 className=" text-capitalize text-center fw-bold ">
+      school female hostel
+        </h3>
+        <hr />{" "}
         <p className=" fs-6 fw-semibold fst-italic">
           Note: You can update the details, add occupants, adjust the price, and
           change the availability status.
@@ -55,7 +58,7 @@ const Adminviewoneschoolfemaleroom = () => {
               bunker Space :{allschoolfemalehostel[id].bunkerSpace}
             </p>
             <p className=" mb-0 fs-6">
-              rent :{allschoolfemalehostel[id].rent}₦
+              rent :₦{allschoolfemalehostel[id].rent}
             </p>
 
             <p className=" mb-0 fs-5 mt-2 mb-2">bunkerDetails</p>
