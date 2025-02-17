@@ -27,7 +27,7 @@ const Adminaddschoolmaleroom = () => {
     isFetchingAllschoolmalehostel,
     allschoolmalehostel,
     isFetchingAllschoolmalehostelFailed,
-  } = useSelector((state) => state.admindata);
+  } = useSelector((state) => state.Allschoolmalehostel);
 
   const formik = useFormik({
     initialValues: {

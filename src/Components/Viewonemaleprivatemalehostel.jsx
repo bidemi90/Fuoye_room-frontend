@@ -50,9 +50,9 @@ const Viewonemaleprivatemalehostel = () => {
       <div className=" mb-2  p-1  ">
             <p className=" m-0  smalltextnote fst-italic fw-bold font">
               <span className=" text-capitalize fs-6">Checkbox behavior</span>:
-              If a checkbox is checked, it means that the corresponding room
-              (either top or bottom) is occupied. If it's unchecked, the room is
-              unoccupied.
+              Checkbox behavior: If a checkbox is checked, it means that the corresponding room is occupied. If it's unchecked, the room is unoccupied.
+              
+              
             </p>
           </div>
 

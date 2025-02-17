@@ -1,33 +1,49 @@
 import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+
 import axios from "axios";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { VscDiffAdded } from "react-icons/vsc";
-import {
-  fetchUpdatedAllprivatefemalehosteldata,
-  fetchingAllprivatefemalehostel,
-  fetchingAllprivatefemalehostelFailed,
-  fetchingAllprivatefemalehostelSuccessful,
-} from "./Redux/Allprivatefemalehostel";
 
-const Adminaddfemaleprivatehostel = () => {
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { VscDiffAdded } from "react-icons/vsc";
+
+import {
+  fetchUpdatedAllmixedhosteldata,
+  fetchingAllmixedhostel,
+  fetchingAllmixedhostelFailed,
+  fetchingAllmixedhostelSuccessful,
+} from "./Redux/Allmixedhostel";
+
+const Admineditmixedhostel = () => {
   const [img, setimg] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const {
-    isFetchingAllprivatefemalehostel,
-    allprivatefemalehostel,
-    isFetchingAllprivatefemalehostelFailed,
-  } = useSelector((state) => state.Allprivatefemalehostel);
+    isFetchingAllmixedhostel,
+    allmixedhostel,
+    isFetchingAllmixedhostelFailed,
+  } = useSelector((state) => state.Allmixedhostel);
+
+  const { id } = useParams();
+  console.log(id);
+
+  useEffect(() => {
+    console.log(allmixedhostel);
+    console.log(allmixedhostel[id]);
+  }, []);
+
+  // Find the hostel data by ID
+  const hostelData = allmixedhostel[id] || {};
 
   // Define validation schema using Yup
   const validationSchema = Yup.object({
-    img_array: Yup.string().required("Image cannot be empty"),
+    img_array: Yup.string().required("image can not be empty"),
     building_name: Yup.string().required("Building name is required"),
     room_description: Yup.string().required("Room description is required"),
     address: Yup.string().required("Address is required"),
@@ -49,81 +65,100 @@ const Adminaddfemaleprivatehostel = () => {
     bank_account: Yup.string()
       .required("Bank account is required")
       .matches(/^\d+$/, "Bank account must be a number"), // New field
-    whatsappcontact: Yup.string()
-      .required("whatsapp contact is required")
-      .matches(/^\d+$/, "whatsapp contact must be a number"), // New field
-  });
+  whatsappcontact: Yup.string()
+       .required("whatsapp contact is required")
+       .matches(/^\d+$/, "whatsapp contact must be a number"), // New field
+   });
 
   // Initialize Formik
   const formik = useFormik({
     initialValues: {
-      building_name: "",
-      room_description: "",
-      address: "",
-      rent: "",
-      room_capacity: "",
-      numbers_of_room: "",
-      building_amenities: "",
-      building_rules: "",
-      is_furnished: false,
-      img_array: "",
-      bank_name: "", // New field
-      bank_account: "", // New field
-      whatsappcontact: "", // New field
-    },
+        building_name: hostelData.building_name || "",
+        room_description: hostelData.room_description || "",
+        address: hostelData.building_address || "",
+        rent: hostelData.rent || "",
+        room_capacity: hostelData.one_room_capacity || "",
+        numbers_of_room: hostelData.room_count || "",
+        building_amenities: hostelData.building_amenities || "",
+        building_rules: hostelData.rules || "",
+        is_furnished: hostelData.is_furnished || false,
+        img_array: hostelData.img_array || "",
+        bank_name: hostelData.bank_name || "",
+        bank_account: hostelData.bank_account || "",
+        whatsappcontact: hostelData.whatsappcontact || "",
+
+      },
     validationSchema,
     onSubmit: (values) => {
       console.log(values);
       try {
+                // dispatch(fetchingAllmixedhostel);
+
         axios
-          .post("http://localhost:5000/user/addingprivatefemalehostel", {
-            building_name: values.building_name,
-            room_description: values.room_description,
-            address: values.address,
-            rent: values.rent,
-            room_capacity: values.room_capacity,
-            numbers_of_room: values.numbers_of_room,
-            building_amenities: values.building_amenities,
-            building_rules: values.building_rules,
-            is_furnished: values.is_furnished,
-            img_array: values.img_array,
-            bank_name: values.bank_name, // New field
-            bank_account: values.bank_account, // New field
-            whatsappcontact: values.whatsappcontact, // New field
-          })
+          .put(
+            `http://localhost:5000/user/edit-mixed-hostel/${hostelData._id}`,
+            {
+              img_array: values.img_array, // Only send if updating image
+              building_name: values.building_name,
+              room_description: values.room_description,
+              address: values.address,
+              rent: values.rent,
+              room_capacity: values.room_capacity,
+              numbers_of_room: values.numbers_of_room,
+              building_amenities: values.building_amenities,
+              building_rules: values.building_rules,
+              is_furnished: values.is_furnished,
+              bank_name: values.bank_name, // New field
+              bank_account: values.bank_account, // New field
+              whatsappcontact: values.whatsappcontact, // New field
+
+            }
+          )
           .then((res) => {
             console.log(res.data);
             toast.success(res.data.message);
-            dispatch(fetchUpdatedAllprivatefemalehosteldata());
+            
+                      // dispatch(fetchingAllmixedhostelSuccessful(res.data));
+                        dispatch(fetchUpdatedAllmixedhosteldata());
+
+                        
             setTimeout(() => {
-              navigate("/management_page/private_female_hostel");
+              navigate("/management_page/mixed_hostel");
             }, 5000);
           })
           .catch((err) => {
             console.log(err);
-            toast.error(err.message);
-            toast.error(err.response.data.message);
+            toast.error(err.response?.data?.message || "Error updating hostel");
+              // dispatch(
+            //   fetchingAllmixedhostelFailed(
+            //     err.response?.data?.message || "Error updating room"
+            //   )
+            // );
           });
       } catch (error) {
         console.log(error);
         toast.error(error);
+                // dispatch(fetchingAllmixedhostelFailed(error));
+
       }
     },
   });
 
+  console.log(formik.errors);
+  console.log(formik.touched);
+
   return (
     <>
       <section>
-        <p className="text-capitalize text-center fs-4 fw-bold">
-          Fill form to add to private female hostel
+        <p className=" text-capitalize text-center fs-4 fw-bold">
+         edit mixed gender hostel
         </p>
         <form onSubmit={formik.handleSubmit}>
-          <div className="addingform p-3 rounded-3 col-8 m-auto">
-            {/* Image Upload */}
+          <div className=" addingform p-3 rounded-3 col-8 m-auto">
             <div className="mb-3">
-              <div className="d-flex justify-content-center align-items-center bg-white py-2">
+              <div className=" d-flex justify-content-center align-items-center bg-white  py-2">
                 <img
-                  className="img-fluid col-10 col-lg-6"
+                  className=" img-fluid col-10 col-lg-6"
                   src={img}
                   alt="preview selected image"
                 />
@@ -143,6 +178,7 @@ const Adminaddfemaleprivatehostel = () => {
                   let file = e.target.files[0];
                   let reader = new FileReader();
                   reader.onload = (e) => {
+                    console.log(e.target.result);
                     formik.setFieldValue("img_array", e.target.result);
                     setimg(e.target.result);
                   };
@@ -417,8 +453,9 @@ const Adminaddfemaleprivatehostel = () => {
                   : ""}
               </div>
             </div>
-            {/* whatsappcontact */}
-            <div className="form-floating mb-3">
+
+  {/* whatsappcontact  */}
+  <div className="form-floating mb-3">
               <input
                 type="text"
                 className="form-control"
@@ -441,11 +478,10 @@ const Adminaddfemaleprivatehostel = () => {
                   : ""}
               </div>
             </div>
-            
-            {/* Submit Button */}
+
             <button
               type="submit"
-              className="buttonfornav fs-5 fw-bold py-2 rounded-2 px-3"
+              className=" buttonfornav fs-5 fw-bold py-2 rounded-2 px-3 "
             >
               Submit
               <ToastContainer />
@@ -457,4 +493,4 @@ const Adminaddfemaleprivatehostel = () => {
   );
 };
 
-export default Adminaddfemaleprivatehostel;
+export default Admineditmixedhostel;

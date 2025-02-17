@@ -2,6 +2,9 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+
 import { BrowserRouter, Route, Routes, Router } from "react-router-dom";
 import Landingpage from "./Components/Landingpage";
 import Addnewhostel from "./Components/Addnewhostel";
@@ -55,6 +58,11 @@ import Viewonecoupleshostel from "./Components/Viewonecoupleshostel";
 import Viewoneschoolmalehostel from "./Components/Viewoneschoolmalehostel";
 import Viewoneschoolfemalehostel from "./Components/Viewoneschoolfemalehostel";
 import Admineditmaleprivatehostel from "./Components/Admineditmaleprivatehostel";
+import Admineditfemaleprivatehostel from "./Components/Admineditfemaleprivatehostel";
+import Admineditmixedhostel from "./Components/Admineditmixedhostel";
+import Admineditcoupleshostel from "./Components/Admineditcoupleshostel";
+import Admineditschoolmalehostel from "./Components/Admineditschoolmalehostel";
+import Admineditschoolfemalehostel from "./Components/Admineditschoolfemalehostel";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -153,6 +161,26 @@ function App() {
                 <Route
                   path="editonemaleprivatehostel/:id"
                   element={<Admineditmaleprivatehostel />}
+                />
+                <Route
+                  path="editonefemaleprivatehostel/:id"
+                  element={<Admineditfemaleprivatehostel />}
+                />
+                <Route
+                  path="editonemixedhostel/:id"
+                  element={<Admineditmixedhostel />}
+                />
+                <Route
+                  path="editonecoupleshostel/:id"
+                  element={<Admineditcoupleshostel />}
+                />
+                <Route
+                  path="editschoolmaleroom/:id"
+                  element={<Admineditschoolmalehostel />}
+                />
+                <Route
+                  path="editschoolfemaleroom/:id"
+                  element={<Admineditschoolfemalehostel />}
                 />
 
                 <Route path="*" element={<Pagenotfound />} />

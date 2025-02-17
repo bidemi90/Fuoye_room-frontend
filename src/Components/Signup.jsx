@@ -5,7 +5,6 @@ import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -17,6 +16,8 @@ const Signup = () => {
   const formik = useFormik({
     initialValues: {
       matric_number: "",
+      username: "",
+      full_name: "",
       email: "",
       gender: "",
       password: "",
@@ -24,6 +25,8 @@ const Signup = () => {
     },
     validationSchema: yup.object({
       matric_number: yup.string().required("matric number is required"),
+      username: yup.string().required("username is required"),
+      full_name: yup.string().required("full_name  is required"),
       email: yup
         .string()
         .email("email must be valid")
@@ -50,6 +53,8 @@ const Signup = () => {
       console.log(values);
       console.log({
         matric_number: values.matric_number,
+        username: values.username,
+        full_name: values.full_name,
         email: values.email,
         gender: values.gender,
         password: values.password,
@@ -59,6 +64,8 @@ const Signup = () => {
         axios
           .post("http://localhost:5000/user/signup", {
             matric_number: values.matric_number,
+            username: values.username,
+            full_name: values.full_name,
             email: values.email,
             gender: values.gender,
             password: values.password,
@@ -67,14 +74,14 @@ const Signup = () => {
             console.log(res.data);
             console.log(res.data.message);
             toast.success(res.data.message);
-      
+
             setTimeout(() => {
               navigate("/login");
             }, 5000);
           })
           .catch((err) => {
             console.log(err);
-            
+
             toast.error(err.message);
             toast.error(err.response.data.message);
           })
@@ -119,6 +126,50 @@ const Signup = () => {
               <small id="helpId" className=" text-danger">
                 {formik.touched.matric_number
                   ? formik.errors.matric_number
+                  : ""}
+              </small>
+            </div>
+            <div className="mb-3">
+              <label
+                htmlFor="matric_number"
+                className="form-label fs-6 fw-bold text-capitalize"
+              >
+                username
+              </label>
+              <input
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                type="text"
+                className=" loginput"
+                name="username"
+                id="username"
+                aria-describedby="helpId"
+                placeholder="username"
+              />
+              <small id="helpId" className=" text-danger">
+                {formik.touched.username ? formik.errors.username : ""}
+              </small>
+            </div>
+            <div className="mb-3">
+              <label
+                htmlFor="matric_number"
+                className="form-label fs-6 fw-bold text-capitalize"
+              >
+                full name
+              </label>
+              <input
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                type="text"
+                className=" loginput"
+                name="full_name"
+                id="full_name"
+                aria-describedby="helpId"
+                placeholder="full name"
+              />
+              <small id="helpId" className=" text-danger">
+                {formik.touched.full_name
+                  ? formik.errors.full_name
                   : ""}
               </small>
             </div>

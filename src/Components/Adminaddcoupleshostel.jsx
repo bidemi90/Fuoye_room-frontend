@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -7,48 +7,29 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { VscDiffAdded } from "react-icons/vsc";
 
-
-
 import {
-    fetchUpdatedAllcoupleshosteldata,
-    fetchingAllcoupleshostel,
-    fetchingAllcoupleshostelFailed,
-    fetchingAllcoupleshostelSuccessful,
-  } from "./Redux/Allcoupleshostel";
-  
+  fetchUpdatedAllcoupleshosteldata,
+  fetchingAllcoupleshostel,
+  fetchingAllcoupleshostelFailed,
+  fetchingAllcoupleshostelSuccessful,
+} from "./Redux/Allcoupleshostel";
 
 const Adminaddcoupleshostel = () => {
   const [img, setimg] = useState("");
 
-  
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  
-   
 
   const {
     isFetchingAllcoupleshostel,
     allcoupleshostel,
     isFetchingAllcoupleshostelFailed,
   } = useSelector((state) => state.Allcoupleshostel);
-
-  // const oneimage = (e) => {
-  //     let file = e.target.files[0];
-  //     let reader = new FileReader();
-  //     reader.onload = (e) => {
-  //       console.log(e.target.result);
-  //       setimg(e.target.result);
-  //     };
-  //     reader.readAsDataURL(file);
-  //   };
 
   // Define validation schema using Yup
   const validationSchema = Yup.object({
@@ -70,10 +51,13 @@ const Adminaddcoupleshostel = () => {
     building_amenities: Yup.string(),
     building_rules: Yup.string(),
     is_furnished: Yup.boolean(),
-        bank_name: Yup.string().required("Bank name is required"), // New field
-        bank_account: Yup.string()
-          .required("Bank account is required")
-          .matches(/^\d+$/, "Bank account must be a number"), // New field
+    bank_name: Yup.string().required("Bank name is required"), // New field
+    bank_account: Yup.string()
+      .required("Bank account is required")
+      .matches(/^\d+$/, "Bank account must be a number"), // New field
+    whatsappcontact: Yup.string()
+      .required("whatsapp contact is required")
+      .matches(/^\d+$/, "whatsapp contact must be a number"), // New field
   });
 
   // Initialize Formik
@@ -91,6 +75,7 @@ const Adminaddcoupleshostel = () => {
       img_array: "", // for handling image uploads
       bank_name: "", // New field
       bank_account: "", // New field
+      whatsappcontact: "", // New field
     },
     validationSchema,
     onSubmit: (values) => {
@@ -113,6 +98,7 @@ const Adminaddcoupleshostel = () => {
             img_array: values.img_array, // for handling image uploads
             bank_name: values.bank_name, // New field
             bank_account: values.bank_account, // New field
+            whatsappcontact: values.whatsappcontact, // New field
           })
           .then((res) => {
             console.log(res.data);
@@ -150,12 +136,12 @@ const Adminaddcoupleshostel = () => {
     <>
       <section>
         <p className=" text-capitalize text-center fs-4 fw-bold">
-            fill form to add to couples hostel
+          fill form to add to couples hostel
         </p>
         <form onSubmit={formik.handleSubmit}>
-        <div className=" addingform p-3 rounded-3 col-8 m-auto">
+          <div className=" addingform p-3 rounded-3 col-8 m-auto">
             <div className="mb-3">
-              <div  className=" d-flex justify-content-center align-items-center bg-white  py-2">
+              <div className=" d-flex justify-content-center align-items-center bg-white  py-2">
                 <img
                   className=" img-fluid col-10 col-lg-6"
                   src={img}
@@ -403,8 +389,8 @@ const Adminaddcoupleshostel = () => {
               />
             </div>
 
-  {/* Bank Name */}
-  <div className="form-floating mb-3">
+            {/* Bank Name */}
+            <div className="form-floating mb-3">
               <input
                 type="text"
                 className="form-control"
@@ -415,7 +401,10 @@ const Adminaddcoupleshostel = () => {
                 onBlur={formik.handleBlur}
                 placeholder=""
               />
-              <label htmlFor="bank_name" className="text-capitalize fw-bold fs-6">
+              <label
+                htmlFor="bank_name"
+                className="text-capitalize fw-bold fs-6"
+              >
                 Bank Name
               </label>
               <div className="form-text text-capitalize fw-semibold text-danger">
@@ -437,7 +426,10 @@ const Adminaddcoupleshostel = () => {
                 onBlur={formik.handleBlur}
                 placeholder=""
               />
-              <label htmlFor="bank_account" className="text-capitalize fw-bold fs-6">
+              <label
+                htmlFor="bank_account"
+                className="text-capitalize fw-bold fs-6"
+              >
                 Bank Account
               </label>
               <div className="form-text text-capitalize fw-semibold text-danger">
@@ -446,8 +438,36 @@ const Adminaddcoupleshostel = () => {
                   : ""}
               </div>
             </div>
-            
-            <button type="submit" className=" buttonfornav fs-5 fw-bold py-2 rounded-2 px-3 ">
+
+            {/* whatsappcontact */}
+            <div className="form-floating mb-3">
+              <input
+                type="text"
+                className="form-control"
+                name="whatsappcontact"
+                id="whatsappcontact"
+                value={formik.values.whatsappcontact}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                placeholder=""
+              />
+              <label
+                htmlFor="whatsappcontact"
+                className="text-capitalize fw-bold fs-6"
+              >
+                Bank Account
+              </label>
+              <div className="form-text text-capitalize fw-semibold text-danger">
+                {formik.touched.whatsappcontact && formik.errors.whatsappcontact
+                  ? formik.errors.whatsappcontact
+                  : ""}
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              className=" buttonfornav fs-5 fw-bold py-2 rounded-2 px-3 "
+            >
               Submit
               <ToastContainer />
             </button>

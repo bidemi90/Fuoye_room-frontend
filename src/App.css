@@ -249,7 +249,23 @@ nav {
 
 .logformholder {
   background-color: rgba(255, 255, 255, 0.775);
+  max-height: 85vh;
+  overflow-y: scroll;
 }
+/* Customizing the scrollbar */
+.logformholder::-webkit-scrollbar {
+  width: 10px; /* Thin scrollbar */
+}
+
+.logformholder::-webkit-scrollbar-thumb {
+  background-color: #191d32; /* Blue scrollbar thumb */
+  border-radius: 10px; /* Rounded edges */
+}
+
+.logformholder::-webkit-scrollbar-track {
+  background-color: lightblue; /* Light blue track */
+}
+
 
 .loglogoimg {
   width: 100px;
@@ -286,6 +302,19 @@ nav {
 .outletdivholder {
   overflow-y: scroll;
   height: 90vh;
+}
+/* Customizing the scrollbar */
+.outletdivholder::-webkit-scrollbar {
+  width: 10px; /* Thin scrollbar */
+}
+
+.outletdivholder::-webkit-scrollbar-thumb {
+  background-color: #191d32; /* Blue scrollbar thumb */
+  border-radius: 10px; /* Rounded edges */
+}
+
+.outletdivholder::-webkit-scrollbar-track {
+  background-color: lightblue; /* Light blue track */
 }
 
 /* page not found */
@@ -421,6 +450,10 @@ nav {
   background-color: #191d32;
   color: #d8dcff;
 }
+.showingoneuserforroom:hover{
+  box-shadow: 0px 0px 20px #191d32;
+}
+
 .flotbuttonspecial{
   width: 100px;
   height: 100px;
@@ -527,6 +560,9 @@ nav {
   background-color: #191d32;
   color: #d8dcff;
 }
+.oneprivatehouseholderroom:hover{
+  box-shadow: 0px 0px 20px #191d32;
+}
 
 /*  */
 
@@ -554,3 +590,15 @@ nav {
 .tableholder{
   background-color: #191d32;
 }
+
+
+
+
+/* modal edit */
+.modalbgcolorchange{
+  background-color: #191d32;
+  color: #d8dcff;
+}
+
+
+/* bunker div hover */

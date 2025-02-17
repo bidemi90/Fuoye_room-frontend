@@ -59,7 +59,7 @@ const Adminviewoneuser = () => {
         <div className=" col-12 col-lg-10 col-xl-8 mx-auto  adminshowingoneuserroomdetails rounded-3 overflow-hidden p-3">
           <p className=" text-capitalize ">
             <span className=" fw-bold fs-5">room details:</span>{" "}
-            {alluser[id].roomDetails}
+            {/* {alluser[id].roomDetails} */}
           </p>
         </div>
        

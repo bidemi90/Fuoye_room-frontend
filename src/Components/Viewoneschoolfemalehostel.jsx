@@ -39,9 +39,12 @@ const Viewoneschoolfemalehostel = () => {
       school female hostel
         </h3>
         <hr />{" "}
-        <p className=" fs-6 fw-semibold fst-italic">
-          Note: 
-        </p>
+        <p className="fs-6 fw-semibold fst-italic">
+  <span className="fw-bold">Note:</span> Select your preferred 
+  <span className="fw-bold"> bunker</span> and complete the 
+  <span className="fw-bold"> required payment</span> to apply.
+</p>
+
 
         <div className=" col-11 mx-auto rounded-2 todisplayoneroominadmin">
           <p className=" text-capitalize fs-4 p-3 fw-bold mb-0 oneroomdetailsheader d-flex justify-content-between align-items-center">

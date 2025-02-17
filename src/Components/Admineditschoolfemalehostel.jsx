@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import applogo from "../assets/sochool management system logog.png";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -19,7 +19,7 @@ import {
   fetchingAllschoolfemalehostelSuccessful,
 } from "./Redux/Allschoolfemalehostel";
 
-const Adminaddschoolfemaleroom = () => {
+const Admineditschoolfemalehostel = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -27,13 +27,25 @@ const Adminaddschoolfemaleroom = () => {
     isFetchingAllschoolfemalehostel,
     allschoolfemalehostel,
     isFetchingAllschoolfemalehostelFailed,
-  } = useSelector((state) => state.Allschoolmalehostel);
+  } = useSelector((state) => state.Allschoolfemalehostel);
+
+  const { id } = useParams();
+  console.log(id);
+
+  useEffect(() => {
+    console.log(allschoolfemalehostel);
+    console.log(allschoolfemalehostel[id]);
+  }, []);
+
+  // Find the hostel data by ID
+  const hostelData = allschoolfemalehostel[id] || {};
+  console.log(hostelData);
 
   const formik = useFormik({
     initialValues: {
-      roomNumber: "",
-      bunkerSpace: "",
-      rent: "",
+      roomNumber: hostelData.roomNumber || "",
+      bunkerSpace: hostelData.bunkerSpace || "",
+      rent: hostelData.rent || "",
     },
     validationSchema: yup.object({
       roomNumber: yup
@@ -51,38 +63,43 @@ const Adminaddschoolfemaleroom = () => {
       console.log(values);
 
       try {
-        // dispatch(featchingadmin);
+        // dispatch(fetchingAllschoolfemalehostel);
         axios
-          .post("http://localhost:5000/user/addingschoolfemalehostel", {
-            roomNumber: values.roomNumber,
-            bunkerSpace: values.bunkerSpace,
-            rent: values.rent,
-          })
+          .put(
+            `http://localhost:5000/user/edit-school-female-hostel/${hostelData._id}`,
+            {
+              roomNumber: values.roomNumber,
+              bunkerSpace: values.bunkerSpace,
+              rent: values.rent,
+            }
+          )
           .then((res) => {
             console.log(res.data);
-            console.log(res.data.message);
             toast.success(res.data.message);
 
-            // dispatch(featchingadminSuccessful(res.data));
+          // dispatch(featchingadminSuccessful(res.data));
             dispatch(fetchUpdatedAllschoolfemalehosteldata());
 
             setTimeout(() => {
               navigate("/management_page/school_female_hostel");
             }, 5000);
+
           })
           .catch((err) => {
             console.log(err);
-
-            toast.error(err.message);
-            toast.error(err.response.data.message);
-
-            // dispatch(featchingadminfailed(err.response.data.message));
+            toast.error(err.response?.data?.message || "Error updating room");
+            
+            // dispatch(
+            //   fetchingAllschoolfemalehostelFailed(
+            //     err.response?.data?.message || "Error updating room"
+            //   )
+            // );
           })
           .finally(() => {});
       } catch (error) {
         console.log(error);
         toast.error(error);
-        // dispatch(featchingadminfailed(error));
+        // dispatch(fetchingAllschoolfemalehostelFailed(error));
       }
     },
   });
@@ -98,15 +115,19 @@ const Adminaddschoolfemaleroom = () => {
           className=" col-11 col-md-8 col-xl-6 mx-auto addingformholder p-4 rounded-2"
         >
           <p className=" text-capitalize text-center fw-bold fs-4">
-            to add female room fill the form below{" "}
+            edit room details
           </p>
-
+          <p className=" text-capitalize fs-6">
+            <span className=" fw-bold">note:</span> this will clear the
+            occupants details
+          </p>
           <div className="">
             <div class="mb-3">
               <label for="" class="form-label fs-5 fw-semibold text-capitalize">
                 Room number:
               </label>
               <input
+                value={formik.values.roomNumber}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 type="number"
@@ -125,6 +146,7 @@ const Adminaddschoolfemaleroom = () => {
                 bunker Space :
               </label>
               <input
+                value={formik.values.bunkerSpace}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 type="number"
@@ -144,6 +166,7 @@ const Adminaddschoolfemaleroom = () => {
                 rent:
               </label>
               <input
+                value={formik.values.rent}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 type="number"
@@ -170,4 +193,4 @@ const Adminaddschoolfemaleroom = () => {
   );
 };
 
-export default Adminaddschoolfemaleroom;
+export default Admineditschoolfemalehostel;
