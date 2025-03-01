@@ -1,15 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { Navigate, useParams } from "react-router-dom";
+
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import axios from "axios";
+
 import applogo from "../assets/APPLOGO.png";
 
-import { Link } from "react-router-dom";
 import { LuArrowRightFromLine } from "react-icons/lu";
 import { FaHistory } from "react-icons/fa";
 import { FaHouseChimneyUser } from "react-icons/fa6";
 import { RiDashboardFill } from "react-icons/ri";
 import { BsPersonBoundingBox } from "react-icons/bs";
-import profiimg from "../assets/proimg.png"
+import profiimg from "../assets/proimg.png";
 
 import { IoMenu } from "react-icons/io5";
+import {
+  featchinguser,
+  featchinguserfailed,
+  featchinguserSuccessful,
+  fetchUpdatedUserData,
+} from "./Redux/userdata";
 
 const Topnav = () => {
   const [currentTime, setCurrentTime] = useState("");
@@ -26,6 +38,10 @@ const Topnav = () => {
     return () => clearInterval(timer); // Cleanup timer on component unmount
   }, []);
 
+  const { isFetchinguser, userdata, isFeatchinguserfailed } = useSelector(
+    (state) => state.userdata
+  );
+
   return (
     <>
       <nav className=" d-flex justify-content-between align-items-center usernav">
@@ -39,7 +55,9 @@ const Topnav = () => {
           <div className=" d-flex justify-content-evenly align-items-center">
             <div className=" d-none d-xl-flex align-items-center ">
               <p className=" mb-0 fs-6 mx-3 text-uppercase fw-bold ">
-                csc/2022/2006
+                {!userdata || (Array.isArray(userdata) && userdata.length === 0)
+                  ? "loading..."
+                  : userdata?.ifusermatricnumber?.matric_number}
               </p>
               <button className="  profileimginusernav d-flex justify-content-center align-items-center">
                 <img
@@ -62,7 +80,10 @@ const Topnav = () => {
                   >
                     dashboard <RiDashboardFill className=" mx-3" />
                   </Link>
-                  <Link to="currentroom" className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2  w-75">
+                  <Link
+                    to="currentroom"
+                    className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2  w-75"
+                  >
                     current room <FaHouseChimneyUser className=" mx-3" />
                   </Link>
                   <Link className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2  w-75">

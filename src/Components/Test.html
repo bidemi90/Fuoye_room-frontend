@@ -1,76 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Ensures optimal rendering on mobile devices. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Optimal Internet Explorer compatibility -->
+    <script type="text/javascript" src="testscript.js"></script>
+
 </head>
+
 <body>
-    <button class=" ">
-        click 
-    </button>
-    
-</body>
-</html>
+    <form onsubmit="makePayment()" id="payment-form">
+        <ul class="form-style-1">
+            <li>
+                <label>Full Name <span class="required">*</span></label>
+                <input type="text" id="js-firstName" name="firstName" class="field-divided" placeholder="First" />&nbsp;
 
-<!-- Modal trigger button -->
-<button
-    type="button"
-    class="btn btn-primary btn-lg"
-    data-bs-toggle="modal"
-    data-bs-target="#modalId"
->
-    Launch
-</button>
-
-<!-- Modal Body -->
-<!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-<div
-    class="modal fade"
-    id="modalId"
-    tabindex="-1"
-    data-bs-backdrop="static"
-    data-bs-keyboard="false"
-    
-    role="dialog"
-    aria-labelledby="modalTitleId"
-    aria-hidden="true"
->
-    <div
-        class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
-        role="document"
-    >
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalTitleId">
-                    Modal title
-                </h5>
-                <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                ></button>
-            </div>
-            <div class="modal-body">Body</div>
-            <div class="modal-footer">
-                <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                >
-                    Close
-                </button>
-                <button type="button" class="btn btn-primary">Save</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Optional: Place to the bottom of scripts -->
-<script>
-    const myModal = new bootstrap.Modal(
-        document.getElementById("modalId"),
-        options,
-    );
-</script>
+                <input type="text" id="js-lastName" name="lastName" class="field-divided" placeholder="Last" />
+            </li>
+            <li>
+                <label>Email <span class="required">*</span></label>
+                <input type="email" id="js-email" name="email" class="field-long" />
+            </li>
+            <li>
+                <label>Narration <span class="required">*</span></label>
+                <input type="text" id="js-narration" name="narration" class="field-long" />
+            </li>
+            <li>
+                <label>Amount <span class="required">*</span></label>
+                <input type="number" id="js-amount" name="amount" class="field-long" />
+            </li>
+            <li>
+                <input type="button" onclick="makePayment()" value="Pay" />
+            </li>
+        </ul>
+    </form>
+<!-- <script type="text/javascript" src="https://login.remita.net/payment/v1/remita-pay-inline.bundle.js"></script> -->

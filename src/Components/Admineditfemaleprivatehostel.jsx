@@ -56,10 +56,7 @@ const Admineditfemaleprivatehostel = () => {
     building_amenities: Yup.string(),
     building_rules: Yup.string(),
     is_furnished: Yup.boolean(),
-    bank_name: Yup.string().required("Bank name is required"), // New field
-    bank_account: Yup.string()
-      .required("Bank account is required")
-      .matches(/^\d+$/, "Bank account must be a number"), // New field
+    subaccount: Yup.string().required(" subaccount is required"), // New field
     whatsappcontact: Yup.string()
       .required("whatsapp contact is required")
       .matches(/^\d+$/, "whatsapp contact must be a number"), // New field
@@ -78,8 +75,7 @@ const Admineditfemaleprivatehostel = () => {
       building_rules: hostelData.rules || "",
       is_furnished: hostelData.is_furnished || false,
       img_array: hostelData.img_array || "",
-      bank_name: hostelData.bank_name || "",
-      bank_account: hostelData.bank_account || "",
+      subaccount: hostelData.subaccount || "",
       whatsappcontact: hostelData.whatsappcontact || "",
     },
     validationSchema,
@@ -102,8 +98,7 @@ const Admineditfemaleprivatehostel = () => {
               building_amenities: values.building_amenities,
               building_rules: values.building_rules,
               is_furnished: values.is_furnished,
-              bank_name: values.bank_name, // New field
-              bank_account: values.bank_account, // New field
+              subaccount: values.subaccount, // New field
               whatsappcontact: values.whatsappcontact, // New field
             }
           )
@@ -392,52 +387,31 @@ const Admineditfemaleprivatehostel = () => {
               />
             </div>
 
-            {/* Bank Name */}
+            <p className=" text-white fw-semibold fst-italic small text-capitalize ">
+              Create a subaccount using the recipient's account details for
+              receiving the rent.
+            </p>
+            {/* subaccount  */}
             <div className="form-floating mb-3">
               <input
                 type="text"
                 className="form-control"
-                name="bank_name"
-                id="bank_name"
-                value={formik.values.bank_name}
+                name="subaccount"
+                id="subaccount"
+                value={formik.values.subaccount}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 placeholder=""
               />
               <label
-                htmlFor="bank_name"
+                htmlFor="subaccount"
                 className="text-capitalize fw-bold fs-6"
               >
-                Bank Name
+                sub account code
               </label>
               <div className="form-text text-capitalize fw-semibold text-danger">
-                {formik.touched.bank_name && formik.errors.bank_name
-                  ? formik.errors.bank_name
-                  : ""}
-              </div>
-            </div>
-
-            {/* Bank Account */}
-            <div className="form-floating mb-3">
-              <input
-                type="text"
-                className="form-control"
-                name="bank_account"
-                id="bank_account"
-                value={formik.values.bank_account}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                placeholder=""
-              />
-              <label
-                htmlFor="bank_account"
-                className="text-capitalize fw-bold fs-6"
-              >
-                Bank Account
-              </label>
-              <div className="form-text text-capitalize fw-semibold text-danger">
-                {formik.touched.bank_account && formik.errors.bank_account
-                  ? formik.errors.bank_account
+                {formik.touched.subaccount && formik.errors.subaccount
+                  ? formik.errors.subaccount
                   : ""}
               </div>
             </div>
@@ -458,7 +432,7 @@ const Admineditfemaleprivatehostel = () => {
                 htmlFor="whatsappcontact"
                 className="text-capitalize fw-bold fs-6"
               >
-                Bank Account
+                whats app contact
               </label>
               <div className="form-text text-capitalize fw-semibold text-danger">
                 {formik.touched.whatsappcontact && formik.errors.whatsappcontact

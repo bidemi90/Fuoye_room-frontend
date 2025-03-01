@@ -5,11 +5,32 @@ import { FaMale } from "react-icons/fa";
 import { FaFemale } from "react-icons/fa";
 import { BiMaleFemale } from "react-icons/bi";
 import { IoIosBed } from "react-icons/io";
+import axios from "axios";
+
+import { useDispatch, useSelector } from "react-redux";
+
+import { useNavigate } from "react-router-dom";
+
+
+import {
+  featchinguser,
+  featchinguserfailed,
+  featchinguserSuccessful,
+  fetchUpdatedUserData,
+} from "./Redux/userdata";
 
 
 
 const Dashboardhome = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+
+  const { isFetchinguser, userdata, isFeatchinguserfailed } = useSelector(
+    (state) => state.userdata
+  );
+
+      // dispatch(fetchUpdatedUserData(userdata.ifusermatricnumber.email))
 
 
   return (

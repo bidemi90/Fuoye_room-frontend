@@ -35,6 +35,14 @@ const Coupleshostel = () => {
 <p className=" onelinetext  text-capitalize text-center fw-bold fs-4">
           couples hostel
         </p>
+        <div className=" mb-2  p-1  ">
+            <p className=" m-0  smalltextnote fst-italic fw-bold font">
+            <span className="  text-uppercase fs-6">note</span>: <span className=" text-capitalize fs-6 fw-bold">
+                        numbers of active room:
+                      </span> is the number of the room available in a buliding <br />
+             
+            </p>
+          </div>
         <div className=" d-flex flex-wrap justify-content-center">
           {allcoupleshostel.map((item, index) => (
             <div className=" col-12 col-md-6 ">

@@ -63,6 +63,12 @@ import Admineditmixedhostel from "./Components/Admineditmixedhostel";
 import Admineditcoupleshostel from "./Components/Admineditcoupleshostel";
 import Admineditschoolmalehostel from "./Components/Admineditschoolmalehostel";
 import Admineditschoolfemalehostel from "./Components/Admineditschoolfemalehostel";
+import Payment_successfull from "./Components/Payment_successfull";
+import Payment_successfullschoolfemale from "./Components/Payment_successfullschoolfemale";
+import Payment_successfullforprivatemale from "./Components/Payment_successfullforprivatemale";
+import Payment_successfullforprivatefemale from "./Components/Payment_successfullforprivatefemale";
+import Payment_successfullforprivatemixed from "./Components/Payment_successfullforprivatemixed";
+import Payment_successfullforprivatecouples from "./Components/Payment_successfullforprivatecouples";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -265,6 +271,34 @@ function App() {
                   path="check_one_couples_hostel/:id"
                   element={<Viewonecoupleshostel />}
                 />
+                <Route
+                  path="Payment_successfull_formaleschoolhostel"
+                  element={<Payment_successfull />}
+                />
+                <Route
+                  path="Payment_successfull_forfemaleschoolhostel"
+                  element={<Payment_successfullschoolfemale />}
+                />
+                <Route
+                  path="Payment_successfullforprivatemalehostel"
+                  element={<Payment_successfullforprivatemale />}
+                />
+                <Route
+                  path="Payment_successfullforprivatefemalehostel"
+                  element={<Payment_successfullforprivatefemale />}
+                />
+                <Route
+                  path="Payment_successfullforprivatemixedhostel"
+                  element={<Payment_successfullforprivatemixed />}
+                />
+                <Route
+                  path="Payment_successfullforprivatcoupleshostel"
+                  element={<Payment_successfullforprivatecouples />}
+                />
+
+
+
+
                 <Route path="*" element={<Pagenotfound />} />
                 {/* Add other routes inside this nested structure if needed */}
               </Route>

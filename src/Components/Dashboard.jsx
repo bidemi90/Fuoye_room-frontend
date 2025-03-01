@@ -127,6 +127,7 @@ const Dashboard = () => {
           navigate("/login");
         }
       });
+      // dispatch(fetchUpdatedUserData(userdata.ifusermatricnumber.email))
 
       dispatch(fetchUpdatedAllschoolmalehosteldata())
       dispatch(fetchUpdatedAllschoolfemalehosteldata())

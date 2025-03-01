@@ -61,38 +61,33 @@ const Admineditmixedhostel = () => {
     building_amenities: Yup.string(),
     building_rules: Yup.string(),
     is_furnished: Yup.boolean(),
-    bank_name: Yup.string().required("Bank name is required"), // New field
-    bank_account: Yup.string()
-      .required("Bank account is required")
-      .matches(/^\d+$/, "Bank account must be a number"), // New field
-  whatsappcontact: Yup.string()
-       .required("whatsapp contact is required")
-       .matches(/^\d+$/, "whatsapp contact must be a number"), // New field
-   });
+    subaccount: Yup.string().required(" subaccount is required"), // New field
+    whatsappcontact: Yup.string()
+      .required("whatsapp contact is required")
+      .matches(/^\d+$/, "whatsapp contact must be a number"), // New field
+  });
 
   // Initialize Formik
   const formik = useFormik({
     initialValues: {
-        building_name: hostelData.building_name || "",
-        room_description: hostelData.room_description || "",
-        address: hostelData.building_address || "",
-        rent: hostelData.rent || "",
-        room_capacity: hostelData.one_room_capacity || "",
-        numbers_of_room: hostelData.room_count || "",
-        building_amenities: hostelData.building_amenities || "",
-        building_rules: hostelData.rules || "",
-        is_furnished: hostelData.is_furnished || false,
-        img_array: hostelData.img_array || "",
-        bank_name: hostelData.bank_name || "",
-        bank_account: hostelData.bank_account || "",
-        whatsappcontact: hostelData.whatsappcontact || "",
-
-      },
+      building_name: hostelData.building_name || "",
+      room_description: hostelData.room_description || "",
+      address: hostelData.building_address || "",
+      rent: hostelData.rent || "",
+      room_capacity: hostelData.one_room_capacity || "",
+      numbers_of_room: hostelData.room_count || "",
+      building_amenities: hostelData.building_amenities || "",
+      building_rules: hostelData.rules || "",
+      is_furnished: hostelData.is_furnished || false,
+      img_array: hostelData.img_array || "",
+      subaccount: hostelData.subaccount || "",
+      whatsappcontact: hostelData.whatsappcontact || "",
+    },
     validationSchema,
     onSubmit: (values) => {
       console.log(values);
       try {
-                // dispatch(fetchingAllmixedhostel);
+        // dispatch(fetchingAllmixedhostel);
 
         axios
           .put(
@@ -108,20 +103,17 @@ const Admineditmixedhostel = () => {
               building_amenities: values.building_amenities,
               building_rules: values.building_rules,
               is_furnished: values.is_furnished,
-              bank_name: values.bank_name, // New field
-              bank_account: values.bank_account, // New field
+              subaccount: values.subaccount, // New field
               whatsappcontact: values.whatsappcontact, // New field
-
             }
           )
           .then((res) => {
             console.log(res.data);
             toast.success(res.data.message);
-            
-                      // dispatch(fetchingAllmixedhostelSuccessful(res.data));
-                        dispatch(fetchUpdatedAllmixedhosteldata());
 
-                        
+            // dispatch(fetchingAllmixedhostelSuccessful(res.data));
+            dispatch(fetchUpdatedAllmixedhosteldata());
+
             setTimeout(() => {
               navigate("/management_page/mixed_hostel");
             }, 5000);
@@ -129,7 +121,7 @@ const Admineditmixedhostel = () => {
           .catch((err) => {
             console.log(err);
             toast.error(err.response?.data?.message || "Error updating hostel");
-              // dispatch(
+            // dispatch(
             //   fetchingAllmixedhostelFailed(
             //     err.response?.data?.message || "Error updating room"
             //   )
@@ -138,8 +130,7 @@ const Admineditmixedhostel = () => {
       } catch (error) {
         console.log(error);
         toast.error(error);
-                // dispatch(fetchingAllmixedhostelFailed(error));
-
+        // dispatch(fetchingAllmixedhostelFailed(error));
       }
     },
   });
@@ -151,7 +142,7 @@ const Admineditmixedhostel = () => {
     <>
       <section>
         <p className=" text-capitalize text-center fs-4 fw-bold">
-         edit mixed gender hostel
+          edit mixed gender hostel
         </p>
         <form onSubmit={formik.handleSubmit}>
           <div className=" addingform p-3 rounded-3 col-8 m-auto">
@@ -404,58 +395,37 @@ const Admineditmixedhostel = () => {
               />
             </div>
 
-            {/* Bank Name */}
+            <p className=" text-white fw-semibold fst-italic small text-capitalize ">
+              Create a subaccount using the recipient's account details for
+              receiving the rent.
+            </p>
+            {/* subaccount  */}
             <div className="form-floating mb-3">
               <input
                 type="text"
                 className="form-control"
-                name="bank_name"
-                id="bank_name"
-                value={formik.values.bank_name}
+                name="subaccount"
+                id="subaccount"
+                value={formik.values.subaccount}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 placeholder=""
               />
               <label
-                htmlFor="bank_name"
+                htmlFor="subaccount"
                 className="text-capitalize fw-bold fs-6"
               >
-                Bank Name
+                sub account code
               </label>
               <div className="form-text text-capitalize fw-semibold text-danger">
-                {formik.touched.bank_name && formik.errors.bank_name
-                  ? formik.errors.bank_name
+                {formik.touched.subaccount && formik.errors.subaccount
+                  ? formik.errors.subaccount
                   : ""}
               </div>
             </div>
 
-            {/* Bank Account */}
+            {/* whatsappcontact  */}
             <div className="form-floating mb-3">
-              <input
-                type="text"
-                className="form-control"
-                name="bank_account"
-                id="bank_account"
-                value={formik.values.bank_account}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                placeholder=""
-              />
-              <label
-                htmlFor="bank_account"
-                className="text-capitalize fw-bold fs-6"
-              >
-                Bank Account
-              </label>
-              <div className="form-text text-capitalize fw-semibold text-danger">
-                {formik.touched.bank_account && formik.errors.bank_account
-                  ? formik.errors.bank_account
-                  : ""}
-              </div>
-            </div>
-
-  {/* whatsappcontact  */}
-  <div className="form-floating mb-3">
               <input
                 type="text"
                 className="form-control"
@@ -470,7 +440,7 @@ const Admineditmixedhostel = () => {
                 htmlFor="whatsappcontact"
                 className="text-capitalize fw-bold fs-6"
               >
-                Bank Account
+                whats app contact
               </label>
               <div className="form-text text-capitalize fw-semibold text-danger">
                 {formik.touched.whatsappcontact && formik.errors.whatsappcontact

@@ -1,39 +1,38 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import axios from "axios";
 
 import {
-    featchinguser,
-    featchinguserfailed,
-    featchinguserSuccessful,
-    fetchUpdatedUserData,
-  } from "./Redux/userdata";
-  
+  featchinguser,
+  featchinguserfailed,
+  featchinguserSuccessful,
+  fetchUpdatedUserData,
+} from "./Redux/userdata";
 
+import {
+  fetchUpdatedAllprivatefemalehosteldata,
+  fetchingAllprivatefemalehostel,
+  fetchingAllprivatefemalehostelFailed,
+  fetchingAllprivatefemalehostelSuccessful,
+} from "./Redux/Allprivatefemalehostel";
 
-  import {
-    fetchUpdatedAllprivatefemalehosteldata,
-    fetchingAllprivatefemalehostel,
-    fetchingAllprivatefemalehostelFailed,
-    fetchingAllprivatefemalehostelSuccessful,
-  } from "./Redux/Allprivatefemalehostel";
-  
 const Viewoneprivatefemalehostel = () => {
   const { id } = useParams();
   console.log(id);
 
+    const [selectedroom, setSelectedroom] = useState(null);
+
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
 
   const { isFetchinguser, userdata, isFeatchinguserfailed } = useSelector(
     (state) => state.userdata
   );
-
 
   const {
     isFetchingAllprivatefemalehostel,
@@ -45,18 +44,64 @@ const Viewoneprivatefemalehostel = () => {
     console.log(allprivatefemalehostel);
     console.log(allprivatefemalehostel[id]);
   }, []);
+
+  const handleBunkerClick = (roomdetails) => {
+    setSelectedroom(roomdetails);
+    console.log(roomdetails);
+  };
+
+  const handleApply = async () => {
+    console.log(userdata);
+
+    if (!selectedroom || !userdata?.ifusermatricnumber) return;
+
+    // Check if the user is male
+    if (userdata.ifusermatricnumber.gender !== "female") {
+      alert("Only male students can apply for this hostel.");
+      return;
+    }
+    // Check if the user already has a room
+    if (userdata.ifusermatricnumber.roomDetails.length !== 0) {
+      alert("You already have a room. You cannot apply for another.");
+      return;
+    }
+
+    try {
+      // Proceed with application and payment
+      const applicationData = {
+        matric_number: userdata.ifusermatricnumber.matric_number,
+        hostel_type: "private female hostel",
+        rent_amount: allprivatefemalehostel[id].rent,
+        room_id: selectedroom.room_id,
+        privatefemalehostel_id: allprivatefemalehostel[id]._id,
+        email: userdata.ifusermatricnumber.email, // Required for Paystack
+        subaccount: allprivatefemalehostel[id].subaccount, // Subaccount for payment split
+      };
+
+      console.log(applicationData);
+
+      const response = await axios.post(
+        "http://localhost:5000/user/api/payforfemaleprivatehostel",
+        {
+          email: applicationData.email,
+          amount: applicationData.rent_amount,
+          privatefemalehostel_id: applicationData.privatefemalehostel_id,
+          room_id: applicationData.room_id,
+          matric_number: applicationData.matric_number,
+          subaccount: applicationData.subaccount,
+        }
+      );
+
+      if (response.data && response.data.data.authorization_url) {
+        window.location.href = response.data.data.authorization_url; // Redirect to Paystack
+      }
+    } catch (error) {
+      console.error("Error applying for room", error);
+    }
+  };
   return (
     <>
       <section>
-      <div className=" mb-2  p-1  ">
-            <p className=" m-0  smalltextnote fst-italic fw-bold font">
-              <span className=" text-capitalize fs-6">Checkbox behavior</span>:
-              If a checkbox is checked, it means that the corresponding room
-              (either top or bottom) is occupied. If it's unchecked, the room is
-              unoccupied.
-            </p>
-          </div>
-
         <div className=" d-flex justify-content-evenly oneprivatehouseholder flex-wrap ">
           <div className=" col-12 col-lg-4 d-flex justify-content-center align-items-center">
             <img
@@ -106,11 +151,25 @@ const Viewoneprivatefemalehostel = () => {
         </div>
         <br />
         <hr />
+        <div className=" mb-2  p-1  ">
+          <p className=" m-0  smalltextnote fst-italic fw-bold font">
+            <span className=" text-capitalize fs-6">Checkbox behavior</span>: If
+            a checkbox is checked, it means that the corresponding room is
+            occupied. If it's unchecked, the room is unoccupied.
+          </p>
+        </div>
        
         <div className=" d-flex flex-wrap ">
           {allprivatefemalehostel[id].rooms.map((item, index) => (
             <div className="col-6 col-md-4 col-lg-3 my-2" key={index}>
-              <div className="oneprivatehouseholderroom d-flex p-2 col-11 rounded justify-content-evenly align-items-center">
+              <div
+                data-bs-toggle="modal"
+                data-bs-target={
+                  item.occupant ? "#notVacantModal" : "#applyModal"
+                }
+                onClick={() => handleBunkerClick(item)}
+                className="oneprivatehouseholderroom d-flex p-2 col-11 rounded justify-content-evenly align-items-center"
+              >
                 <p className="m-0 text-capitalize fs-5 fw-bold">
                   Room: {item.room_id}
                 </p>
@@ -125,9 +184,78 @@ const Viewoneprivatefemalehostel = () => {
             </div>
           ))}
         </div>
-
-      
       </section>
+
+      {/* Modal for Applying */}
+      <div className="modal fade" id="applyModal" tabIndex="-1" role="dialog">
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header modalbgcolorchange">
+              <h5 className="modal-title">Apply for room</h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <p>Do you want to apply for this room?</p>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={handleApply}
+                data-bs-dismiss="modal"
+              >
+                Yes, Apply
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Modal for Not Vacant */}
+      <div
+        className="modal fade"
+        id="notVacantModal"
+        tabIndex="-1"
+        role="dialog"
+      >
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header modalbgcolorchange">
+              <h5 className="modal-title">Room Not Vacant</h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <p>Sorry, this room is already occupied.</p>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

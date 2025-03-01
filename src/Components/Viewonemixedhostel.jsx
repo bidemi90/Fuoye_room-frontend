@@ -1,10 +1,11 @@
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import {
     featchinguser,
@@ -24,6 +25,8 @@ const Viewonemixedhostel = () => {
   const { id } = useParams();
   console.log(id);
 
+  const [selectedroom, setSelectedroom] = useState(null);
+
   const { isFetchinguser, userdata, isFeatchinguserfailed } = useSelector(
     (state) => state.userdata
   );
@@ -41,6 +44,58 @@ const Viewonemixedhostel = () => {
     console.log(allmixedhostel);
     console.log(allmixedhostel[id]);
   }, []);
+
+  const handleBunkerClick = (roomdetails) => {
+    setSelectedroom(roomdetails);
+    console.log(roomdetails);
+  };
+
+  const handleApply = async () => {
+    console.log(userdata);
+
+    if (!selectedroom || !userdata?.ifusermatricnumber) return;
+
+    
+    // Check if the user already has a room
+    if (userdata.ifusermatricnumber.roomDetails.length !== 0) {
+      alert("You already have a room. You cannot apply for another.");
+      return;
+    }
+
+    try {
+      // Proceed with application and payment
+      const applicationData = {
+        matric_number: userdata.ifusermatricnumber.matric_number,
+        hostel_type: "private mixed hostel",
+        rent_amount: allmixedhostel[id].rent,
+        room_id: selectedroom.room_id,
+        privatemixedhostel_id: allmixedhostel[id]._id,
+        email: userdata.ifusermatricnumber.email, // Required for Paystack
+        subaccount: allmixedhostel[id].subaccount, // Subaccount for payment split
+      };
+
+      console.log(applicationData);
+
+      const response = await axios.post(
+        "http://localhost:5000/user/api/payformixedprivatehostel",
+        {
+          email: applicationData.email,
+          amount: applicationData.rent_amount,
+          privatemixedhostel_id: applicationData.privatemixedhostel_id,
+          room_id: applicationData.room_id,
+          matric_number: applicationData.matric_number,
+          subaccount: applicationData.subaccount,
+        }
+      );
+
+      if (response.data && response.data.data.authorization_url) {
+        window.location.href = response.data.data.authorization_url; // Redirect to Paystack
+      }
+    } catch (error) {
+      console.error("Error applying for room", error);
+    }
+  };
+
   return (
     <>
       <section>
@@ -98,13 +153,25 @@ const Viewonemixedhostel = () => {
         </div>
         <br />
         <hr />
-        <p className=" m-0 text-capitalize fw-bold ">
-        Checkbox behavior: If a checkbox is checked, it means that the corresponding room is occupied. If it's unchecked, the room is unoccupied.
-        </p>
+        <div className=" mb-2  p-1  ">
+          <p className=" m-0  smalltextnote fst-italic fw-bold font">
+            <span className=" text-capitalize fs-6">Checkbox behavior</span>:
+          If a checkbox is checked, it means that the
+            corresponding room is occupied. If it's unchecked, the room is
+            unoccupied.
+          </p>
+        </div>
         <div className=" d-flex flex-wrap ">
           {allmixedhostel[id].rooms.map((item, index) => (
             <div className="col-6 col-md-4 col-lg-3 my-2" key={index}>
-              <div className="oneprivatehouseholderroom d-flex p-2 col-11 rounded justify-content-evenly align-items-center">
+              <div
+                data-bs-toggle="modal"
+                data-bs-target={
+                  item.occupant ? "#notVacantModal" : "#applyModal"
+                }
+                onClick={() => handleBunkerClick(item)}
+                className="oneprivatehouseholderroom d-flex p-2 col-11 rounded justify-content-evenly align-items-center"
+              >
                 <p className="m-0 text-capitalize fs-5 fw-bold">
                   Room: {item.room_id}
                 </p>
@@ -120,6 +187,77 @@ const Viewonemixedhostel = () => {
           ))}
         </div>
       </section>
+
+      {/* Modal for Applying */}
+      <div className="modal fade" id="applyModal" tabIndex="-1" role="dialog">
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header modalbgcolorchange">
+              <h5 className="modal-title">Apply for room</h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <p>Do you want to apply for this room?</p>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={handleApply}
+                data-bs-dismiss="modal"
+              >
+                Yes, Apply
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Modal for Not Vacant */}
+      <div
+        className="modal fade"
+        id="notVacantModal"
+        tabIndex="-1"
+        role="dialog"
+      >
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header modalbgcolorchange">
+              <h5 className="modal-title">Room Not Vacant</h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <p>Sorry, this room is already occupied.</p>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
