@@ -56,7 +56,9 @@ const Adminalluser = () => {
                   <div className=" col-4 d-flex  ">
                     <img
                       className=" img-fluid  col-11"
-                      src={profiimg}
+                      src={alluser[index].profileImage !== ""
+                                        ? alluser[index].profileImage
+                                        : profiimg}
                       alt="..."
                     />
                   </div>

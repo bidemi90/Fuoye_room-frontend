@@ -54,7 +54,7 @@ const Adminsignup = () => {
 
       try {
         axios
-          .post("http://localhost:5000/user/adminsignup", {
+          .post("https://fuoye-room-backend.onrender.com/user/adminsignup", {
             adminusername: values.username,
             email: values.email,
             password: values.password,

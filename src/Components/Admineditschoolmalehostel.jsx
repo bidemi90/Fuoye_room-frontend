@@ -66,7 +66,7 @@ const Admineditschoolmalehostel = () => {
         // dispatch(fetchingAllschoolmalehostel);
         axios
           .put(
-            `http://localhost:5000/user/edit-school-male-hostel/${hostelData._id}`,
+            `https://fuoye-room-backend.onrender.com/user/edit-school-male-hostel/${hostelData._id}`,
             {
               roomNumber: values.roomNumber,
               bunkerSpace: values.bunkerSpace,

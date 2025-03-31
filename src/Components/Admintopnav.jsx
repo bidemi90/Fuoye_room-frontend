@@ -75,12 +75,13 @@ const Admintopnav = () => {
                   <Link to="room_management" className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2  w-75">
                     rooms <BsFillHouseGearFill className=" mx-3" />
                   </Link>
-                  <Link className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2  w-75">
-                    request <VscGitPullRequestGoToChanges className=" mx-3" />
-                  </Link>
+              
                   <Link className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2  w-75">
                     payment <RiSecurePaymentFill className=" mx-3" />
                   </Link>
+                  <Link className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2 mt-  w-75">
+                         statistics  <VscGitPullRequestGoToChanges className=" mx-3"/>
+                         </Link>
                   <Link className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2  w-75">
                     admin profile <BsPersonBoundingBox className=" mx-3" />
                   </Link>

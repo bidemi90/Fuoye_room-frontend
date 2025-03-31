@@ -17,24 +17,25 @@ const Adminsidenav = () => {
     <>
       <nav className=" sidenav  d-flex justify-content-between flex-column align-items-center ">
         <div className=" w-75">
-          <Link to="" className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2  w-75">
+          <Link to="" className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2 mt-  w-75">
             dashboard <RiDashboardFill className=" mx-3"/>
           </Link>
-          <Link to="alluser" className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2  w-75">
+          <Link to="alluser" className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2 mt-  w-75">
            all user <FaUsers className=" mx-3"/>
           </Link>
-          <Link to="room_management" className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2  w-75">
+          <Link to="room_management" className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2 mt-  w-75">
             rooms  <BsFillHouseGearFill className=" mx-3"/>
           </Link>
-          <Link className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2  w-75">
-            request  <VscGitPullRequestGoToChanges className=" mx-3"/>
-          </Link>
-          <Link className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2  w-75">
+        
+          <Link className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2 mt-  w-75">
             payment  <RiSecurePaymentFill className=" mx-3"/>
+          </Link>
+          <Link className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2 mt-  w-75">
+          statistics  <VscGitPullRequestGoToChanges className=" mx-3"/>
           </Link>
         </div>
         <div className=" w-75">
-          <Link className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2  w-75">
+          <Link className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2 mt-  w-75">
             log out <LuArrowRightFromLine className=" mx-3"/>
           </Link>
         </div>

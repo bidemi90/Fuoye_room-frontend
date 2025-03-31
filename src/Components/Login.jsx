@@ -52,9 +52,9 @@ const Login = () => {
       console.log(values);
 
       try {
-        dispatch(featchinguser);
+        dispatch(featchinguser());
         axios
-          .post("http://localhost:5000/user/login", {
+          .post("https://fuoye-room-backend.onrender.com/user/login", {
             matric_number: values.matric_number,
             password: values.password,
           })
@@ -63,11 +63,12 @@ const Login = () => {
             console.log(res.data.message);
             toast.success(res.data.message);
 
-            dispatch(featchinguserSuccessful(res.data));
-
+           
             setTimeout(() => {
+              dispatch(featchinguserSuccessful(res.data));
+
               navigate("/dashboard");
-            }, 5000);
+            }, 2000);
           })
           .catch((err) => {
             console.log(err);
@@ -88,8 +89,18 @@ const Login = () => {
 
   console.log(formik.errors);
   console.log(formik.touched);
+  console.log("isFetchinguser");
+  console.log(isFetchinguser);
+
   return (
     <>
+     {/* loading  */}
+
+     {isFetchinguser && (
+        <div className="looder_body">
+          <span className="loader"></span>
+        </div>
+      )}
       <section className="loginsection1 d-flex justify-content-center align-items-center">
         <div className="logformholder p-5 col-10 col-md-8 col-lg-6 mx-auto  rounded-5">
           <form onSubmit={formik.handleSubmit} action="">
@@ -162,6 +173,7 @@ const Login = () => {
           </form>
         </div>
       </section>
+     
     </>
   );
 };

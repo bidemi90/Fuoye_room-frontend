@@ -51,6 +51,8 @@ const Viewoneprivatefemalehostel = () => {
   };
 
   const handleApply = async () => {
+    const [loading, setloading] = useState(false);
+
     console.log(userdata);
 
     if (!selectedroom || !userdata?.ifusermatricnumber) return;
@@ -68,6 +70,8 @@ const Viewoneprivatefemalehostel = () => {
 
     try {
       // Proceed with application and payment
+      setloading(true);
+
       const applicationData = {
         matric_number: userdata.ifusermatricnumber.matric_number,
         hostel_type: "private female hostel",
@@ -81,7 +85,7 @@ const Viewoneprivatefemalehostel = () => {
       console.log(applicationData);
 
       const response = await axios.post(
-        "http://localhost:5000/user/api/payforfemaleprivatehostel",
+        "https://fuoye-room-backend.onrender.com/user/api/payforfemaleprivatehostel",
         {
           email: applicationData.email,
           amount: applicationData.rent_amount,
@@ -97,10 +101,30 @@ const Viewoneprivatefemalehostel = () => {
       }
     } catch (error) {
       console.error("Error applying for room", error);
+      setloading(false);
+
     }
   };
   return (
     <>
+{/* loading  */}
+
+{loading && (
+        <div className="looder_body">
+          <span className="loader"></span>
+        </div>
+      )}
+      
+{isFetchingAllprivatefemalehostel ? (
+        // Display loader while fetching
+        <div className="col 12">
+          <span className=" fs-6 fst-italic fw-bold text-capitalize text-center text-danger">
+            {" "}
+            loading.....{" "}
+          </span>
+        </div>
+      ) : (
+
       <section>
         <div className=" d-flex justify-content-evenly oneprivatehouseholder flex-wrap ">
           <div className=" col-12 col-lg-4 d-flex justify-content-center align-items-center">
@@ -185,6 +209,9 @@ const Viewoneprivatefemalehostel = () => {
           ))}
         </div>
       </section>
+
+)}
+
 
       {/* Modal for Applying */}
       <div className="modal fade" id="applyModal" tabIndex="-1" role="dialog">

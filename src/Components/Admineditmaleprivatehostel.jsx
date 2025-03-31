@@ -86,7 +86,7 @@ const Admineditmaleprivatehostel = () => {
 
         axios
           .put(
-            `http://localhost:5000/user/edit-private-male-hostel/${hostelData._id}`,
+            `https://fuoye-room-backend.onrender.com/user/edit-private-male-hostel/${hostelData._id}`,
             {
               img_array: values.img_array, // Only send if updating image
               building_name: values.building_name,

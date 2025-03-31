@@ -1,38 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: green;
+        margin: 0;
+        padding: 0;
+      }
+      .looder_body {
+        z-index: 99;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #191d32ad;
+        position: fixed;
+      }
+      .loader {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        display: inline-block;
+        position: relative;
+        border: 3px solid;
+        border-color: #191d32 #191d32 transparent transparent;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+      }
+      .loader::after,
+      .loader::before {
+        content: "";
+        box-sizing: border-box;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        border: 3px solid;
+        border-color: transparent transparent #d8dcff #d8dcff;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        box-sizing: border-box;
+        animation: rotationBack 0.5s linear infinite;
+        transform-origin: center center;
+      }
+      .loader::before {
+        width: 32px;
+        height: 32px;
+        border-color: #191d32 #191d32 transparent transparent;
+        animation: rotation 1.5s linear infinite;
+      }
 
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Ensures optimal rendering on mobile devices. -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Optimal Internet Explorer compatibility -->
-    <script type="text/javascript" src="testscript.js"></script>
+      @keyframes rotation {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes rotationBack {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(-360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="looder_body">
+      <span class="loader"></span>
+    </div>
+  </body>
+</html>
 
-</head>
 
-<body>
-    <form onsubmit="makePayment()" id="payment-form">
-        <ul class="form-style-1">
-            <li>
-                <label>Full Name <span class="required">*</span></label>
-                <input type="text" id="js-firstName" name="firstName" class="field-divided" placeholder="First" />&nbsp;
 
-                <input type="text" id="js-lastName" name="lastName" class="field-divided" placeholder="Last" />
-            </li>
-            <li>
-                <label>Email <span class="required">*</span></label>
-                <input type="email" id="js-email" name="email" class="field-long" />
-            </li>
-            <li>
-                <label>Narration <span class="required">*</span></label>
-                <input type="text" id="js-narration" name="narration" class="field-long" />
-            </li>
-            <li>
-                <label>Amount <span class="required">*</span></label>
-                <input type="number" id="js-amount" name="amount" class="field-long" />
-            </li>
-            <li>
-                <input type="button" onclick="makePayment()" value="Pay" />
-            </li>
-        </ul>
-    </form>
-<!-- <script type="text/javascript" src="https://login.remita.net/payment/v1/remita-pay-inline.bundle.js"></script> -->
+
+
+
+
+
+
+
+const [loading, setloading] = useState(false);
+
+
+setloading(true);
+
+
+setloading(false);
+
+
+{/* loading  */}
+
+      {loading && (
+        <div className="looder_body">
+          <span className="loader"></span>
+        </div>
+      )}

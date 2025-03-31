@@ -601,4 +601,134 @@ nav {
 }
 
 
-/* bunker div hover */
+/* profile page */
+.profilestyle{
+  color: #191d32;
+  text-decoration-color: #191d32;
+}
+.profileimgdiv{
+  background-color: #191d32;
+  padding: 20px;
+  position: relative;
+  max-height: inherit;
+  
+}
+
+.profileimg{
+  width: 50%;
+  margin: auto;
+  border-radius: 50%;
+  width: 200px;
+
+}
+.profiletext{
+  background-color: #d8dcff;
+  height: 100%;
+}
+.profilestylecard{
+  box-shadow: 0px 0px 10px #777fa5;
+}
+.uploadprofile{
+  height: fit-content;
+  padding: 20px;
+  background-color: #191d32;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #777fa5;
+
+}
+.uploadimgbox{
+  background-color: #d8dcff;
+  bottom: 0;
+  padding: 10px;
+  width: fit-content;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #d8dcff;
+  margin: auto;
+
+}
+.profileuploadbutton{
+  background-color: #191d32;
+  color: #d8dcff;
+  border-radius: 5px;
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.uploadimgboxpreview{
+  margin: auto;
+  display: block;
+  width: fit-content;
+  max-width: 300px;
+}
+
+
+
+/* loading icon style */
+
+
+.looder_body {
+  z-index: 99;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #191d32ad;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.loader {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  border: 3px solid;
+  border-color: #d8dcff #d8dcff transparent transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after,
+.loader::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 3px solid;
+  border-color: transparent transparent #191d32 #191d32;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: rotationBack 0.5s linear infinite;
+  transform-origin: center center;
+}
+.loader::before {
+  width: 32px;
+  height: 32px;
+  border-color:  #d8dcff #d8dcff transparent transparent;
+  animation: rotation 1.5s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}

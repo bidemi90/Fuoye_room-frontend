@@ -16,6 +16,8 @@ import {
 
 const Adminaddmaleprivatehostel = () => {
   const [img, setimg] = useState("");
+  const [loading, setloading] = useState(false);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -45,8 +47,8 @@ const Adminaddmaleprivatehostel = () => {
     building_amenities: Yup.string(),
     building_rules: Yup.string(),
     is_furnished: Yup.boolean(),
-      subaccount: Yup.string().required(" subaccount is required"), // New field
-  
+    subaccount: Yup.string().required(" subaccount is required"), // New field
+
     whatsappcontact: Yup.string()
       .required("whatsapp contact is required")
       .matches(/^\d+$/, "whatsapp contact must be a number"), // New field
@@ -70,10 +72,12 @@ const Adminaddmaleprivatehostel = () => {
     },
     validationSchema,
     onSubmit: (values) => {
+      setloading(true);
+
       console.log(values);
       try {
         axios
-          .post("http://localhost:5000/user/addingprivatemalehostel", {
+          .post("https://fuoye-room-backend.onrender.com/user/addingprivatemalehostel", {
             img_array: values.img_array,
             building_name: values.building_name,
             address: values.address,
@@ -99,16 +103,26 @@ const Adminaddmaleprivatehostel = () => {
             console.log(err);
             toast.error(err.message);
             toast.error(err.response.data.message);
+            setloading(false);
           });
       } catch (error) {
         console.log(error);
         toast.error(error);
+        setloading(false);
       }
     },
   });
 
   return (
     <>
+      {/* loading  */}
+
+      {loading && (
+        <div className="looder_body">
+          <span className="loader"></span>
+        </div>
+      )}
+
       <section>
         <p className="text-capitalize text-center fs-4 fw-bold">
           Fill form to add to private male hostel
@@ -367,8 +381,8 @@ const Adminaddmaleprivatehostel = () => {
               Create a subaccount using the recipient's account details for
               receiving the rent.
             </p>
-        {/* subaccount  */}
-        <div className="form-floating mb-3">
+            {/* subaccount  */}
+            <div className="form-floating mb-3">
               <input
                 type="text"
                 className="form-control"
@@ -392,7 +406,6 @@ const Adminaddmaleprivatehostel = () => {
               </div>
             </div>
 
-          
             {/* whatsappcontact */}
             <div className="form-floating mb-3">
               <input
@@ -409,7 +422,7 @@ const Adminaddmaleprivatehostel = () => {
                 htmlFor="whatsappcontact"
                 className="text-capitalize fw-bold fs-6"
               >
-               whats app contact
+                whats app contact
               </label>
               <div className="form-text text-capitalize fw-semibold text-danger">
                 {formik.touched.whatsappcontact && formik.errors.whatsappcontact

@@ -61,7 +61,7 @@ const Adminlogin = () => {
       try {
         dispatch(featchingadmin);
         axios
-          .post("http://localhost:5000/user/adminlogin", {
+          .post("https://fuoye-room-backend.onrender.com/user/adminlogin", {
             adminusername: values.username,
             password: values.password,
           })

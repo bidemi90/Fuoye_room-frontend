@@ -8,7 +8,7 @@ export const fetchUpdatedadminData = createAsyncThunk(
   async (email, { rejectWithValue }) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/admin/getadminByemail/${email}`
+        `https://fuoye-room-backend.onrender.com/admin/getadminByemail/${email}`
       );
       const data = await response.json();
       if (!response.ok) {

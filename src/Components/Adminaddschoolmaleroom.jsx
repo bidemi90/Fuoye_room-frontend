@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -20,6 +20,8 @@ import {
 } from "./Redux/Allschoolmalehostel";
 
 const Adminaddschoolmaleroom = () => {
+  const [loading, setloading] = useState(false);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -48,12 +50,13 @@ const Adminaddschoolmaleroom = () => {
       rent: yup.number().required("rent is required"),
     }),
     onSubmit: async (values) => {
+      setloading(true);
       console.log(values);
 
       try {
         // dispatch(featchingadmin);
         axios
-          .post("http://localhost:5000/user/addingschoolmalehostel", {
+          .post("https://fuoye-room-backend.onrender.com/user/addingschoolmalehostel", {
             roomNumber: values.roomNumber,
             bunkerSpace: values.bunkerSpace,
             rent: values.rent,
@@ -77,12 +80,14 @@ const Adminaddschoolmaleroom = () => {
             toast.error(err.response.data.message);
 
             // dispatch(featchingadminfailed(err.response.data.message));
+            setloading(false);
           })
           .finally(() => {});
       } catch (error) {
         console.log(error);
         toast.error(error);
         // dispatch(featchingadminfailed(error));
+        setloading(false);
       }
     },
   });
@@ -92,6 +97,14 @@ const Adminaddschoolmaleroom = () => {
 
   return (
     <>
+      {/* loading  */}
+
+      {loading && (
+        <div className="looder_body">
+          <span className="loader"></span>
+        </div>
+      )}
+
       <section>
         <form
           onSubmit={formik.handleSubmit}

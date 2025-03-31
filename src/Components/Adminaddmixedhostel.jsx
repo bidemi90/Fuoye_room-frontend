@@ -21,6 +21,7 @@ import {
 
 const Adminaddmixedhostel = () => {
   const [img, setimg] = useState("");
+    const [loading, setloading] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -75,13 +76,15 @@ const Adminaddmixedhostel = () => {
     },
     validationSchema,
     onSubmit: (values) => {
+      setloading(true);
+
       console.log(values);
       // Submit the form
 
       try {
         // dispatch(featchingadmin);
         axios
-          .post("http://localhost:5000/user/addingmixedhostel", {
+          .post("https://fuoye-room-backend.onrender.com/user/addingmixedhostel", {
             building_name: values.building_name,
             room_description: values.room_description,
             address: values.address,
@@ -113,12 +116,16 @@ const Adminaddmixedhostel = () => {
             toast.error(err.response.data.message);
 
             // dispatch(featchingadminfailed(err.response.data.message));
+            setloading(false);
+
           })
           .finally(() => {});
       } catch (error) {
         console.log(error);
         toast.error(error);
         // dispatch(featchingadminfailed(error));
+        setloading(false);
+
       }
     },
   });
@@ -128,6 +135,14 @@ const Adminaddmixedhostel = () => {
 
   return (
     <>
+      {/* loading  */}
+
+      {loading && (
+        <div className="looder_body">
+          <span className="loader"></span>
+        </div>
+      )}
+
       <section>
         <p className=" text-capitalize text-center fs-4 fw-bold">
           fill form to add to mixed gender hostel

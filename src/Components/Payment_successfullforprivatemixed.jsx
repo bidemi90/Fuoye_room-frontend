@@ -38,7 +38,7 @@ const Payment_successfullforprivatemixed = () => {
       try {
         console.log(reference);
         const response = await axios.get(
-          `http://localhost:5000/user/api/verifyprivatemixedpayment/${reference}`
+          `https://fuoye-room-backend.onrender.com/user/api/verifyprivatemixedpayment/${reference}`
         );
         console.log("response");
         console.log(response);

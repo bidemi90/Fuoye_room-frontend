@@ -39,7 +39,7 @@ const Payment_successfullforprivatemale = () => {
       try {
         console.log(reference);
         const response = await axios.get(
-          `http://localhost:5000/user/api/verifyprivatemalepayment/${reference}`
+          `https://fuoye-room-backend.onrender.com/user/api/verifyprivatemalepayment/${reference}`
         );
         console.log("response");
         console.log(response);

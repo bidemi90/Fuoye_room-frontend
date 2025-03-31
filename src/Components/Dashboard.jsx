@@ -13,7 +13,6 @@ import {
   fetchUpdatedUserData,
 } from "./Redux/userdata";
 
-
 import {
   fetchUpdatedAllschoolmalehosteldata,
   fetchingAllschoolmalehostelFailed,
@@ -21,14 +20,12 @@ import {
   fetchingAllschoolmalehostel,
 } from "./Redux/Allschoolmalehostel";
 
-
 import {
   fetchUpdatedAllschoolfemalehosteldata,
   fetchingAllschoolfemalehostelFailed,
   fetchingAllschoolfemalehostelSuccessful,
   fetchingAllschoolfemalehostel,
 } from "./Redux/Allschoolfemalehostel";
-
 
 import {
   fetchUpdatedAllprivatemalehosteldata,
@@ -63,7 +60,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -82,7 +78,6 @@ const Dashboard = () => {
     allschoolfemalehostel,
     isFetchingAllschoolfemalehostelFailed,
   } = useSelector((state) => state.Allschoolfemalehostel);
-  
 
   const {
     isFetchingAllprivatemalehostel,
@@ -108,10 +103,9 @@ const Dashboard = () => {
     isFetchingAllcoupleshostelFailed,
   } = useSelector((state) => state.Allcoupleshostel);
 
-
   useEffect(() => {
     axios
-      .get("http://localhost:5000/user/verifyuserondashbord", {
+      .get("https://fuoye-room-backend.onrender.com/user/verifyuserondashbord", {
         headers: {
           Authorization: `Bearer ${userdata.token}`,
           "Content-Type": `application/json`,
@@ -127,34 +121,34 @@ const Dashboard = () => {
           navigate("/login");
         }
       });
-      // dispatch(fetchUpdatedUserData(userdata.ifusermatricnumber.email))
+    // dispatch(fetchUpdatedUserData(userdata.ifusermatricnumber.email))
 
-      dispatch(fetchUpdatedAllschoolmalehosteldata())
-      dispatch(fetchUpdatedAllschoolfemalehosteldata())
-      dispatch(fetchUpdatedAllprivatemalehosteldata());
-      dispatch(fetchUpdatedAllprivatefemalehosteldata());
-      dispatch(fetchUpdatedAllmixedhosteldata());
-      dispatch(fetchUpdatedAllcoupleshosteldata());
-
+    dispatch(fetchUpdatedAllschoolmalehosteldata());
+    dispatch(fetchUpdatedAllschoolfemalehosteldata());
+    dispatch(fetchUpdatedAllprivatemalehosteldata());
+    dispatch(fetchUpdatedAllprivatefemalehosteldata());
+    dispatch(fetchUpdatedAllmixedhosteldata());
+    dispatch(fetchUpdatedAllcoupleshosteldata());
   }, []);
 
-  // useEffect(() => {
-
-  //   console.log("is it working");
-
-  //   dispatch(fetchUpdatedUserData(userdata.ifusermatricnumber.email));
-
-  //   setTimeout(() => {
-
-  //   console.log(isFetchinguser);
-  //   console.log(userdata);
-  //   console.log(isFeatchinguserfailed);
-  //   }, 5000);
-
-  // }, [dispatch])
+  
 
   return (
     <>
+      {/* loading  */}
+
+      {isFetchinguser ||
+        isFetchingAllschoolmalehostel ||
+        isFetchingAllschoolfemalehostel ||
+        isFetchingAllprivatemalehostel ||
+        isFetchingAllprivatefemalehostel ||
+        isFetchingAllmixedhostel ||
+        isFetchingAllcoupleshostel && (
+          <div className="looder_body">
+            <span className="loader"></span>
+          </div>
+        )}
+
       <Topnav />
       <div className=" d-flex">
         <div className=" sidenavholder d-none d-xl-block col-lg-2">

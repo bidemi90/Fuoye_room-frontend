@@ -6,7 +6,7 @@ export const fetchUpdatedAllcoupleshosteldata = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/user/gettingcoupleshostel`
+        `https://fuoye-room-backend.onrender.com/user/gettingcoupleshostel`
       );
       const data = await response.json();
       console.log(response);

@@ -62,7 +62,7 @@ const Signup = () => {
 
       try {
         axios
-          .post("http://localhost:5000/user/signup", {
+          .post("https://fuoye-room-backend.onrender.com/user/signup", {
             matric_number: values.matric_number,
             username: values.username,
             full_name: values.full_name,

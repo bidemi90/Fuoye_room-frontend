@@ -21,6 +21,7 @@ import {
 
 const Adminaddcoupleshostel = () => {
   const [img, setimg] = useState("");
+  const [loading, setloading] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -75,13 +76,15 @@ const Adminaddcoupleshostel = () => {
     },
     validationSchema,
     onSubmit: (values) => {
+      setloading(true);
+
       console.log(values);
       // Submit the form
 
       try {
         // dispatch(featchingadmin);
         axios
-          .post("http://localhost:5000/user/addingcoupleshostel", {
+          .post("https://fuoye-room-backend.onrender.com/user/addingcoupleshostel", {
             building_name: values.building_name,
             room_description: values.room_description,
             address: values.address,
@@ -114,12 +117,13 @@ const Adminaddcoupleshostel = () => {
             toast.error(err.response.data.message);
 
             // dispatch(featchingadminfailed(err.response.data.message));
-          })
-          .finally(() => {});
+            setloading(false);
+          });
       } catch (error) {
         console.log(error);
         toast.error(error);
         // dispatch(featchingadminfailed(error));
+        setloading(false);
       }
     },
   });
@@ -129,6 +133,14 @@ const Adminaddcoupleshostel = () => {
 
   return (
     <>
+      {/* loading  */}
+
+      {loading && (
+        <div className="looder_body">
+          <span className="loader"></span>
+        </div>
+      )}
+
       <section>
         <p className=" text-capitalize text-center fs-4 fw-bold">
           fill form to add to couples hostel

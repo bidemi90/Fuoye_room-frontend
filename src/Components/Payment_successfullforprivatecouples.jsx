@@ -41,7 +41,7 @@ const Payment_successfullforprivatecouples = () => {
       try {
         console.log(reference);
         const response = await axios.get(
-          `http://localhost:5000/user/api/verifyprivatecouplespayment/${reference}`
+          `https://fuoye-room-backend.onrender.com/user/api/verifyprivatecouplespayment/${reference}`
         );
         console.log("response");
         console.log(response);

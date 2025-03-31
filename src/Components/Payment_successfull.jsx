@@ -39,7 +39,7 @@ const Payment_successfull = () => {
       try {
         console.log(reference);
         const response = await axios.get(
-          `http://localhost:5000/user/api/verifyschoolmalepayment/${reference}`
+          `https://fuoye-room-backend.onrender.com/user/api/verifyschoolmalepayment/${reference}`
         );
         console.log("response");
         console.log(response);

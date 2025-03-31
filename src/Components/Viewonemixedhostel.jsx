@@ -22,6 +22,8 @@ import {
 } from "./Redux/Allmixedhostel";
 
 const Viewonemixedhostel = () => {
+  const [loading, setloading] = useState(false);
+
   const { id } = useParams();
   console.log(id);
 
@@ -64,6 +66,8 @@ const Viewonemixedhostel = () => {
 
     try {
       // Proceed with application and payment
+      
+setloading(true);
       const applicationData = {
         matric_number: userdata.ifusermatricnumber.matric_number,
         hostel_type: "private mixed hostel",
@@ -77,7 +81,7 @@ const Viewonemixedhostel = () => {
       console.log(applicationData);
 
       const response = await axios.post(
-        "http://localhost:5000/user/api/payformixedprivatehostel",
+        "https://fuoye-room-backend.onrender.com/user/api/payformixedprivatehostel",
         {
           email: applicationData.email,
           amount: applicationData.rent_amount,
@@ -89,15 +93,39 @@ const Viewonemixedhostel = () => {
       );
 
       if (response.data && response.data.data.authorization_url) {
-        window.location.href = response.data.data.authorization_url; // Redirect to Paystack
+        window.location.href = response.data.data.authorization_url; 
+        // Redirect to Paystack
+
       }
     } catch (error) {
       console.error("Error applying for room", error);
+      setloading(false);
+
     }
   };
 
   return (
     <>
+
+{/* loading  */}
+
+{loading && (
+        <div className="looder_body">
+          <span className="loader"></span>
+        </div>
+      )}
+
+    {isFetchingAllmixedhostel ? (
+        // Display loader while fetching
+        <div className="col 12">
+          <span className=" fs-6 fst-italic fw-bold text-capitalize text-center text-danger">
+            {" "}
+            loading.....{" "}
+          </span>
+        </div>
+      ) : (
+
+
       <section>
         <h3 className=" text-capitalize text-center fw-bold ">
           mixed gender hostel
@@ -187,6 +215,9 @@ const Viewonemixedhostel = () => {
           ))}
         </div>
       </section>
+
+
+)}
 
       {/* Modal for Applying */}
       <div className="modal fade" id="applyModal" tabIndex="-1" role="dialog">

@@ -66,7 +66,6 @@ import {
   fetchingAllcoupleshostelSuccessful,
 } from "./Redux/Allcoupleshostel";
 
-
 const Admindashboard = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -109,17 +108,15 @@ const Admindashboard = () => {
     isFetchingAllmixedhostelFailed,
   } = useSelector((state) => state.Allmixedhostel);
 
-  
   const {
     isFetchingAllcoupleshostel,
     allcoupleshostel,
     isFetchingAllcoupleshostelFailed,
   } = useSelector((state) => state.Allcoupleshostel);
 
-
   useEffect(() => {
     axios
-      .get("http://localhost:5000/user/verifyadminondashbord", {
+      .get("https://fuoye-room-backend.onrender.com/user/verifyadminondashbord", {
         headers: {
           Authorization: `Bearer ${admindata.token}`,
           "Content-Type": `application/json`,
@@ -143,26 +140,27 @@ const Admindashboard = () => {
     dispatch(fetchUpdatedAllprivatefemalehosteldata());
     dispatch(fetchUpdatedAllmixedhosteldata());
     dispatch(fetchUpdatedAllcoupleshosteldata());
-    
   }, []);
 
-  // useEffect(() => {
-
-  //   console.log("is it working");
-
-  //   dispatch(fetchUpdatedUserData(userdata.ifusermatricnumber.email));
-
-  //   setTimeout(() => {
-
-  //   console.log(isFetchinguser);
-  //   console.log(userdata);
-  //   console.log(isFeatchinguserfailed);
-  //   }, 5000);
-
-  // }, [dispatch])
+  
 
   return (
     <>
+      {/* loading  */}
+
+      {isFetchingadmin ||
+        isFetchingalluser ||
+        isFetchingAllschoolmalehostel ||
+        isFetchingAllschoolfemalehostel ||
+        isFetchingAllprivatemalehostel ||
+        isFetchingAllprivatefemalehostel ||
+        isFetchingAllmixedhostel ||
+        (isFetchingAllcoupleshostel && (
+          <div className="looder_body">
+            <span className="loader"></span>
+          </div>
+        ))}
+
       <Admintopnav />
       <div className=" d-flex">
         <div className=" sidenavholder d-none d-xl-block col-lg-2">

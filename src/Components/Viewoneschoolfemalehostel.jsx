@@ -21,6 +21,8 @@ import {
 } from "./Redux/Allschoolfemalehostel";
 
 const Viewoneschoolfemalehostel = () => {
+  const [loading, setloading] = useState(false);
+
   const { id } = useParams();
   const dispatch = useDispatch();
   const [selectedBunker, setSelectedBunker] = useState(null);
@@ -62,6 +64,8 @@ const Viewoneschoolfemalehostel = () => {
 
     try {
       // Proceed with application and payment
+      setloading(true);
+
       const applicationData = {
         matric_number: userdata.ifusermatricnumber.matric_number,
         hostel_type: "school female hostel",
@@ -73,7 +77,7 @@ const Viewoneschoolfemalehostel = () => {
 
       console.log(applicationData);
 
-      const response = await axios.post("http://localhost:5000/user/api/payforfemaleschoolhostel", {
+      const response = await axios.post("https://fuoye-room-backend.onrender.com/user/api/payforfemaleschoolhostel", {
         email: applicationData.email,
         amount: applicationData.rent_amount,
         hostel_id: applicationData.hostel_id,
@@ -86,11 +90,32 @@ const Viewoneschoolfemalehostel = () => {
       }
     } catch (error) {
       console.error("Error applying for room", error);
+      setloading(false);
+
     }
   };
 
   return (
     <>
+
+{/* loading  */}
+
+{loading && (
+        <div className="looder_body">
+          <span className="loader"></span>
+        </div>
+      )}
+
+{isFetchingAllschoolfemalehostel ? (
+        // Display loader while fetching
+        <div className="col 12">
+          <span className=" fs-6 fst-italic fw-bold text-capitalize text-center text-danger">
+            {" "}
+            loading.....{" "}
+          </span>
+        </div>
+      ) : (
+
       <section>
         <h3 className="text-capitalize text-center fw-bold">
           school female hostel
@@ -141,6 +166,10 @@ const Viewoneschoolfemalehostel = () => {
           </div>
         </div>
       </section>
+   )}
+
+
+
 
       {/* Modal for Applying */}
       <div className="modal fade" id="applyModal" tabIndex="-1" role="dialog">

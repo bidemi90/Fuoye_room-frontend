@@ -77,7 +77,7 @@ const Adminviewoneschoolmaleroom = () => {
       });
 
       axios
-        .post("http://localhost:5000/user/updatemale-bunker-occupant", {
+        .post("https://fuoye-room-backend.onrender.com/user/updatemale-bunker-occupant", {
           occupant: values.occupant,
           old_occupant: occupantcurrentid.occupant,
           malehostel_id: allschoolmalehostel[id]._id,
@@ -90,7 +90,6 @@ const Adminviewoneschoolmaleroom = () => {
           setTimeout(() => {
             resetForm(); // Reset form fields after submission
 
-           
             // // 🔄 Redirect to the page
             navigate(`/management_page/school_male_hostel`);
             dispatch(fetchUpdatedAllschoolmalehosteldata());
@@ -106,67 +105,88 @@ const Adminviewoneschoolmaleroom = () => {
 
   return (
     <>
-      <section>
-        <h3 className=" text-capitalize text-center fw-bold ">
-          school male hostel
-        </h3>
-        <hr />{" "}
-        <p className=" fs-6 fw-semibold fst-italic">
-          Note: You can update the details, add occupants, adjust the price, and
-          change the availability status.
-        </p>
-        <div className=" col-11 mx-auto rounded-2 todisplayoneroominadmin">
-          <p className=" text-capitalize fs-4 p-3 fw-bold mb-0 oneroomdetailsheader d-flex justify-content-between align-items-center">
-            <span> room number : {allschoolmalehostel[id].roomNumber}</span>
-            <span className=" fs-6">
-              Availability :{" "}
-              {allschoolmalehostel[id].availability
-                ? "Available"
-                : "Not Available"}
-            </span>
+      {isFetchingAllschoolmalehostel ? (
+        // Display loader while fetching
+        <div className="col 12">
+          <span className=" fs-6 fst-italic fw-bold text-capitalize text-center text-danger">
+            {" "}
+            loading.....{" "}
+          </span>
+        </div>
+      ) : (
+        <section>
+          <h3 className=" text-capitalize text-center fw-bold ">
+            school male hostel
+          </h3>
+          <hr />{" "}
+          <p className=" fs-6 fw-semibold fst-italic">
+            Note: You can update the details, add occupants, adjust the price,
+            and change the availability status.
           </p>
-          <div className=" bodydetailsoneroom text-capitalize fs-6 p-3 fw-bold mb-0 ">
-            <p className=" mb-0 fs-6">
-              bunker Space :{allschoolmalehostel[id].bunkerSpace}
+          <div className=" col-11 mx-auto rounded-2 todisplayoneroominadmin">
+            <p className=" text-capitalize fs-4 p-3 fw-bold mb-0 oneroomdetailsheader d-flex justify-content-between align-items-center">
+              <span> room number : {allschoolmalehostel[id].roomNumber}</span>
+              <span className=" fs-6">
+                Availability :{" "}
+                {allschoolmalehostel[id].availability
+                  ? "Available"
+                  : "Not Available"}
+              </span>
             </p>
-            <p className=" mb-0 fs-6">rent : ₦{allschoolmalehostel[id].rent}</p>
+            <div className=" bodydetailsoneroom text-capitalize fs-6 p-3 fw-bold mb-0 ">
+              <p className=" mb-0 fs-6">
+                bunker Space :{allschoolmalehostel[id].bunkerSpace}
+              </p>
+              <p className=" mb-0 fs-6">
+                rent : ₦{allschoolmalehostel[id].rent}
+              </p>
 
-            <p className=" mb-0 fs-5 mt-2 mb-2">bunkerDetails</p>
-            <p className=" text-capitalize fs-6 fst-italic  fw-normal">
-              <span className="  fs-6 fw-bold text-capitalize"> note:</span>{" "}
-              click on each bunker to edit occupant
-            </p>
-            <div className=" d-flex flex-wrap">
-              {allschoolmalehostel[id].bunkerDetails.map((item, index) => (
-                //  {/* <!-- Button trigger modal --> */}
+              <p className=" mb-0 fs-5 mt-2 mb-2">bunkerDetails</p>
+              <p className=" text-capitalize fs-6 fst-italic  fw-normal">
+                <span className="  fs-6 fw-bold text-capitalize"> note:</span>{" "}
+                click on each bunker to edit occupant
+              </p>
+              <div className=" d-flex flex-wrap">
+                {allschoolmalehostel[id].bunkerDetails.map((item, index) => (
+                  //  {/* <!-- Button trigger modal --> */}
 
-                <div
-                  onClick={() => editingoccupant(item)}
-                  data-bs-toggle="modal"
-                  data-bs-target="#staticBackdrop"
-                  key={index}
-                  className=" col-12 col-md-6 col-lg-4 my-1 "
-                >
-                  <div className=" col-11 mx-auto rounded-2 showingoneuserforroom p-2">
-                    <p>bunker : {item.id}</p>
-                    <p>occupant: {item.occupant} </p>
+                  <div
+                    onClick={() => editingoccupant(item)}
+                    data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop"
+                    key={index}
+                    className=" col-12 col-md-6 col-lg-4 my-1 "
+                  >
+                    <div className=" col-11 mx-auto rounded-2 showingoneuserforroom p-2">
+                      <p>bunker : {item.id}</p>
+                      <p>occupant: {item.occupant} </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-        <div className=" text-center mt-4">
-          <Link
-            to={`/management_page/editschoolmaleroom/${id}`}
-            className="Linkforsidenav px-4 py-2  text-capitalize fw-bold"
-          >
-            edit hostel details
-          </Link>
-        </div>
-      </section>
-
+          <div className=" text-center mt-4">
+            <Link
+              to={`/management_page/editschoolmaleroom/${id}`}
+              className="Linkforsidenav px-4 py-2  text-capitalize fw-bold"
+            >
+              edit hostel details
+            </Link>
+          </div>
+        </section>
+      )}
       {/* <!-- Modal --> */}
+
+      {isFetchingAllschoolmalehostel ? (
+        // Display loader while fetching
+        <div className="col 12">
+          <span className=" fs-6 fst-italic fw-bold text-capitalize text-center text-danger">
+            {" "}
+            loading.....{" "}
+          </span>
+        </div>
+      ) : (
       <div
         class="modal fade"
         id="staticBackdrop"
@@ -240,6 +260,7 @@ const Adminviewoneschoolmaleroom = () => {
           </div>
         </form>
       </div>
+      )}
       <ToastContainer />
     </>
   );

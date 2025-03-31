@@ -69,6 +69,8 @@ import Payment_successfullforprivatemale from "./Components/Payment_successfullf
 import Payment_successfullforprivatefemale from "./Components/Payment_successfullforprivatefemale";
 import Payment_successfullforprivatemixed from "./Components/Payment_successfullforprivatemixed";
 import Payment_successfullforprivatecouples from "./Components/Payment_successfullforprivatecouples";
+import Profile from "./Components/Profile";
+import Bookinghistory from "./Components/Bookinghistory";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -231,6 +233,7 @@ function App() {
               {/* this is a nested routes for user dashboard */}
               <Route path="dashboard" element={<Dashboard />}>
                 <Route path="" element={<Dashboardhome />} />
+                <Route path="profile" element={<Profile />} />
                 <Route path="currentroom" element={<Currentroom />} />
                 <Route path="schoolmalehostel" element={<Schoolmalehostel />} />
                 <Route
@@ -294,6 +297,10 @@ function App() {
                 <Route
                   path="Payment_successfullforprivatcoupleshostel"
                   element={<Payment_successfullforprivatecouples />}
+                />
+                <Route
+                  path="booking_history"
+                  element={<Bookinghistory />}
                 />
 
 

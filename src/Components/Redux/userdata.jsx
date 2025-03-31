@@ -8,7 +8,7 @@ export const fetchUpdatedUserData = createAsyncThunk(
   async (email, { rejectWithValue }) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/user/getUserByemail/${email}`
+        `https://fuoye-room-backend.onrender.com/user/getUserByemail/${email}`
       );
       const data = await response.json();
       if (!response.ok) {
