@@ -59,7 +59,7 @@ const Adminlogin = () => {
       console.log(values);
 
       try {
-        dispatch(featchingadmin);
+        dispatch(featchingadmin());
         axios
           .post("https://fuoye-room-backend.onrender.com/user/adminlogin", {
             adminusername: values.username,
@@ -97,6 +97,14 @@ const Adminlogin = () => {
   console.log(formik.touched);
   return (
     <>
+      {/* loading  */}
+
+      {isFetchingadmin && (
+        <div className="looder_body">
+          <span className="loader"></span>
+        </div>
+      )}
+
       <section className="loginsection1 d-flex justify-content-center align-items-center">
         <div className="logformholder p-5 col-10 col-md-8 col-lg-6 mx-auto  rounded-5">
           <form onSubmit={formik.handleSubmit} action="">

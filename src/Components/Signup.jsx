@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -12,6 +12,7 @@ import applogo from "../assets/sochool management system logog.png";
 
 const Signup = () => {
   const navigate = useNavigate();
+  const [loading, setloading] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -50,6 +51,8 @@ const Signup = () => {
         .required("Confirm Password is required"),
     }),
     onSubmit: async (values) => {
+      setloading(true);
+
       console.log(values);
       console.log({
         matric_number: values.matric_number,
@@ -74,6 +77,7 @@ const Signup = () => {
             console.log(res.data);
             console.log(res.data.message);
             toast.success(res.data.message);
+            setloading(false);
 
             setTimeout(() => {
               navigate("/login");
@@ -83,12 +87,16 @@ const Signup = () => {
             console.log(err);
 
             toast.error(err.message);
+            setloading(false);
+
             toast.error(err.response.data.message);
           })
           .finally(() => {});
       } catch (error) {
         console.log(error);
         toast.error(error);
+        setloading(false);
+
       }
     },
   });
@@ -97,6 +105,14 @@ const Signup = () => {
   console.log(formik.touched);
   return (
     <>
+
+     {/* loading  */}
+
+     {loading && (
+        <div className="looder_body">
+          <span className="loader"></span>
+        </div>
+      )}
       <section className="loginsection1 d-flex justify-content-center align-items-center">
         <div className="logformholder p-5 col-10 col-md-8 col-lg-6 mx-auto  rounded-5">
           <form action="" onSubmit={formik.handleSubmit}>

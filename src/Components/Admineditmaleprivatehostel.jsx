@@ -18,6 +18,7 @@ const Admineditmaleprivatehostel = () => {
   const [img, setimg] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [loading, setloading] = useState(false);
 
   const {
     isFetchingAllprivatemalehostel,
@@ -56,10 +57,10 @@ const Admineditmaleprivatehostel = () => {
     building_amenities: Yup.string(),
     building_rules: Yup.string(),
     is_furnished: Yup.boolean(),
-      subaccount: Yup.string().required(" subaccount is required"), // New field
-       whatsappcontact: Yup.string()
-         .required("whatsapp contact is required")
-         .matches(/^\d+$/, "whatsapp contact must be a number"), // New field
+    subaccount: Yup.string().required(" subaccount is required"), // New field
+    whatsappcontact: Yup.string()
+      .required("whatsapp contact is required")
+      .matches(/^\d+$/, "whatsapp contact must be a number"), // New field
   });
 
   // Initialize Formik
@@ -80,6 +81,8 @@ const Admineditmaleprivatehostel = () => {
     },
     validationSchema,
     onSubmit: (values) => {
+      setloading(true);
+
       console.log(values);
       try {
         // dispatch(fetchingAllprivatemalehostel);
@@ -108,6 +111,7 @@ const Admineditmaleprivatehostel = () => {
 
             // dispatch(fetchingAllprivatemalehostelSuccessful(res.data));
             dispatch(fetchUpdatedAllprivatemalehosteldata());
+            setloading(false);
 
             setTimeout(() => {
               navigate("/management_page/private_male_hostel");
@@ -116,6 +120,8 @@ const Admineditmaleprivatehostel = () => {
           .catch((err) => {
             console.log(err);
             toast.error(err.response?.data?.message || "Error updating hostel");
+            setloading(false);
+
             // dispatch(
             //   fetchingAllprivatemalehostelFailed(
             //     err.response?.data?.message || "Error updating room"
@@ -125,6 +131,8 @@ const Admineditmaleprivatehostel = () => {
       } catch (error) {
         console.log(error);
         toast.error(error);
+        setloading(false);
+
         // dispatch(fetchingAllprivatemalehostelFailed(error));
       }
     },
@@ -132,6 +140,16 @@ const Admineditmaleprivatehostel = () => {
 
   return (
     <>
+
+{/* loading  */}
+
+{loading && (
+        <div className="looder_body">
+          <span className="loader"></span>
+        </div>
+      )}
+
+
       <section>
         <p className="text-capitalize text-center fs-4 fw-bold">
           edit private male hostel
@@ -387,7 +405,6 @@ const Admineditmaleprivatehostel = () => {
               />
             </div>
 
-     
             <p className=" text-white fw-semibold fst-italic small text-capitalize ">
               Create a subaccount using the recipient's account details for
               receiving the rent.
@@ -417,8 +434,6 @@ const Admineditmaleprivatehostel = () => {
               </div>
             </div>
 
-          
-         
             {/* whatsappcontact  */}
             <div className="form-floating mb-3">
               <input
@@ -435,7 +450,7 @@ const Admineditmaleprivatehostel = () => {
                 htmlFor="whatsappcontact"
                 className="text-capitalize fw-bold fs-6"
               >
-               whats app contact
+                whats app contact
               </label>
               <div className="form-text text-capitalize fw-semibold text-danger">
                 {formik.touched.whatsappcontact && formik.errors.whatsappcontact

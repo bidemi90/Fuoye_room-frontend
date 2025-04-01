@@ -101,6 +101,7 @@ const Adminaddmaleprivatehostel = () => {
           })
           .catch((err) => {
             console.log(err);
+            setloading(false);
             toast.error(err.message);
             toast.error(err.response.data.message);
             setloading(false);

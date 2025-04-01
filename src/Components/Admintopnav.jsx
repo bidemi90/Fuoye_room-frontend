@@ -14,6 +14,15 @@ import { VscGitPullRequestGoToChanges } from "react-icons/vsc";
 import { RiSecurePaymentFill } from "react-icons/ri";
 import { IoMenu } from "react-icons/io5";
 import profiimg from "../assets/proimg.png"
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import admindata, {
+  featchingadmin,
+  featchingadminSuccessful,
+  featchingadminfailed,
+  fetchUpdatedadminData,
+} from "./Redux/admindata";
 
 const Admintopnav = () => {
   const [currentTime, setCurrentTime] = useState("");
@@ -29,6 +38,19 @@ const Admintopnav = () => {
     const timer = setInterval(updateTime, 1000); // Update every second
     return () => clearInterval(timer); // Cleanup timer on component unmount
   }, []);
+
+   const navigate = useNavigate();
+    const dispatch = useDispatch();
+  
+    const { isFetchingadmin, admindata, isFeatchingadminfailed } = useSelector(
+      (state) => state.admindata
+    );
+  
+    const handlelogout = () => {
+      navigate("/management_login");
+  
+      dispatch(featchingadminfailed(null));
+    };
 
   return (
     <>
@@ -87,9 +109,9 @@ const Admintopnav = () => {
                   </Link>
                 </div>
                 <div className=" w-100">
-                  <Link className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2  w-75">
+                  <button onClick={handlelogout} className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2  w-75">
                     log out <LuArrowRightFromLine className=" mx-3" />
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>

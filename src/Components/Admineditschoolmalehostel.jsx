@@ -22,6 +22,7 @@ import {
 const Admineditschoolmalehostel = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+    const [loading, setloading] = useState(false);
 
   const {
     isFetchingAllschoolmalehostel,
@@ -60,6 +61,8 @@ const Admineditschoolmalehostel = () => {
       rent: yup.number().required("rent is required"),
     }),
     onSubmit: async (values) => {
+      setloading(true);
+
       console.log(values);
 
       try {
@@ -79,6 +82,7 @@ const Admineditschoolmalehostel = () => {
 
           // dispatch(featchingadminSuccessful(res.data));
             dispatch(fetchUpdatedAllschoolmalehosteldata());
+            setloading(false);
 
             setTimeout(() => {
               navigate("/management_page/school_male_hostel");
@@ -88,7 +92,8 @@ const Admineditschoolmalehostel = () => {
           .catch((err) => {
             console.log(err);
             toast.error(err.response?.data?.message || "Error updating room");
-            
+            setloading(false);
+
             // dispatch(
             //   fetchingAllschoolmalehostelFailed(
             //     err.response?.data?.message || "Error updating room"
@@ -98,7 +103,9 @@ const Admineditschoolmalehostel = () => {
           .finally(() => {});
       } catch (error) {
         console.log(error);
-        toast.error(error);
+        toast.error(error);      
+              setloading(false);
+
         // dispatch(fetchingAllschoolmalehostelFailed(error));
       }
     },
@@ -109,6 +116,15 @@ const Admineditschoolmalehostel = () => {
 
   return (
     <>
+    {/* loading  */}
+  
+    {loading && (
+          <div className="looder_body">
+            <span className="loader"></span>
+          </div>
+        )}
+
+        
       <section>
         <form
           onSubmit={formik.handleSubmit}

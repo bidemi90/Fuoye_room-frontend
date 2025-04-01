@@ -140,6 +140,17 @@ const Admineditmixedhostel = () => {
 
   return (
     <>
+
+
+{/* loading  */}
+
+{loading && (
+        <div className="looder_body">
+          <span className="loader"></span>
+        </div>
+      )}
+
+
       <section>
         <p className=" text-capitalize text-center fs-4 fw-bold">
           edit mixed gender hostel

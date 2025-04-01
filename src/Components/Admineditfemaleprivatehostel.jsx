@@ -18,6 +18,7 @@ const Admineditfemaleprivatehostel = () => {
   const [img, setimg] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+    const [loading, setloading] = useState(false);
 
   const {
     isFetchingAllprivatefemalehostel,
@@ -80,6 +81,8 @@ const Admineditfemaleprivatehostel = () => {
     },
     validationSchema,
     onSubmit: (values) => {
+      setloading(true);
+
       console.log(values);
       try {
         // dispatch(fetchingAllprivatefemalehostel);
@@ -108,6 +111,7 @@ const Admineditfemaleprivatehostel = () => {
 
             // dispatch(fetchingAllprivatefemalehostelSuccessful(res.data));
             dispatch(fetchUpdatedAllprivatefemalehosteldata());
+            setloading(false);
 
             setTimeout(() => {
               navigate("/management_page/private_female_hostel");
@@ -116,6 +120,8 @@ const Admineditfemaleprivatehostel = () => {
           .catch((err) => {
             console.log(err);
             toast.error(err.response?.data?.message || "Error updating hostel");
+            setloading(false);
+
             // dispatch(
             //   fetchingAllprivatefemalehostelFailed(
             //     err.response?.data?.message || "Error updating room"
@@ -125,6 +131,9 @@ const Admineditfemaleprivatehostel = () => {
       } catch (error) {
         console.log(error);
         toast.error(error);
+
+        setloading(false);
+
         // dispatch(fetchingAllprivatefemalehostelFailed(error));
       }
     },
@@ -132,6 +141,17 @@ const Admineditfemaleprivatehostel = () => {
 
   return (
     <>
+
+ {/* loading  */}
+
+ {loading && (
+        <div className="looder_body">
+          <span className="loader"></span>
+        </div>
+      )}
+
+
+
       <section>
         <p className="text-capitalize text-center fs-4 fw-bold">
           edit private female hostel
