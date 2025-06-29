@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Outlet } from "react-router-dom";
 import Topnav from "./Topnav";
@@ -105,13 +105,16 @@ const Dashboard = () => {
 
   useEffect(() => {
     axios
-      .get("https://fuoye-room-backend.onrender.com/user/verifyuserondashbord", {
-        headers: {
-          Authorization: `Bearer ${userdata.token}`,
-          "Content-Type": `application/json`,
-          Accept: `application/json`,
-        },
-      })
+      .get(
+        "https://fuoye-room-backend.onrender.com/user/verifyuserondashbord",
+        {
+          headers: {
+            Authorization: `Bearer ${userdata.token}`,
+            "Content-Type": `application/json`,
+            Accept: `application/json`,
+          },
+        }
+      )
       .then((res) => {
         console.log(res);
       })
@@ -131,8 +134,6 @@ const Dashboard = () => {
     dispatch(fetchUpdatedAllcoupleshosteldata());
   }, []);
 
-  
-
   return (
     <>
       {/* loading  */}
@@ -143,11 +144,11 @@ const Dashboard = () => {
         isFetchingAllprivatemalehostel ||
         isFetchingAllprivatefemalehostel ||
         isFetchingAllmixedhostel ||
-        isFetchingAllcoupleshostel && (
+        (isFetchingAllcoupleshostel && (
           <div className="looder_body">
             <span className="loader"></span>
           </div>
-        )}
+        ))}
 
       <Topnav />
       <div className=" d-flex">
@@ -155,7 +156,41 @@ const Dashboard = () => {
           <Sidenav />
         </div>
         <div className=" outletdivholder px-4 py-3 col-12 col-xl-10">
-          <Outlet />
+          <div className=" outletholdernew">
+            <Outlet />
+          </div>
+
+          <footer className=" w-100 d-flex flex-column footernew mt-5 pt-5 pb-5">
+            <div className=" col-8 d-flex justify-content-evenly align-items-center m-auto flex-wrap">
+              <a
+                className=" fs-6 text-light mx-2 fw-semibold text-decoration-none "
+                href="#"
+              >
+                About Us
+              </a>
+              <a
+                className=" fs-6 text-light mx-2 fw-semibold text-decoration-none "
+                href="#"
+              >
+                Contact
+              </a>
+              <a
+                className=" fs-6 text-light mx-2 fw-semibold text-decoration-none "
+                href="#"
+              >
+                Terms of Service
+              </a>
+              <a
+                className=" fs-6 text-light mx-2 fw-semibold text-decoration-none "
+                href="#"
+              >
+                Privacy Policy
+              </a>
+            </div>
+            <p className=" d-flex justify-content-evenly align-items-center text-light mt-3  ">
+              @2025 FUOYE ROOM. All rights reserved.
+            </p>
+          </footer>
         </div>
       </div>
     </>

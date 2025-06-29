@@ -195,120 +195,85 @@ function App() {
               </Route>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
               {/* this is a nested routes for user dashboard */}
-              <Route path="dashboard" element={<Dashboard />}>
-                <Route path="" element={<Dashboardhome />} />
-                <Route path="profile" element={<Profile />} />
-                <Route path="currentroom" element={<Currentroom />} />
-                <Route path="schoolmalehostel" element={<Schoolmalehostel />} />
-                <Route
-                  path="Viewoneschoolmalehostel/:id"
-                  element={<Viewoneschoolmalehostel />}
-                />
-                <Route
-                  path="schoolfemalehostel"
-                  element={<Schoolfemalehostel />}
-                />
-                <Route
-                  path="Viewoneschoolfemalehostel/:id"
-                  element={<Viewoneschoolfemalehostel />}
-                />
-                <Route
-                  path="privatemalehostel"
-                  element={<Privatemalehostel />}
-                />
-                <Route
-                  path="check_one_privatemale_hostel/:id"
-                  element={<Viewonemaleprivatemalehostel />}
-                />
-                <Route
-                  path="privatefemalehostel"
-                  element={<Privatefemalehostel />}
-                />
-                <Route
-                  path="check_one_privatefemale_hostel/:id"
-                  element={<Viewoneprivatefemalehostel />}
-                />{" "}
-                <Route path="Mixedhostel" element={<Mixedhostel />} />
-                <Route
-                  path="check_one_mixedgender_hostel/:id"
-                  element={<Viewonemixedhostel />}
-                />
-                <Route path="Coupleshostel" element={<Coupleshostel />} />
-                <Route
-                  path="check_one_couples_hostel/:id"
-                  element={<Viewonecoupleshostel />}
-                />
-                <Route
-                  path="Payment_successfull_formaleschoolhostel"
-                  element={<Payment_successfull />}
-                />
-                <Route
-                  path="Payment_successfull_forfemaleschoolhostel"
-                  element={<Payment_successfullschoolfemale />}
-                />
-                <Route
-                  path="Payment_successfullforprivatemalehostel"
-                  element={<Payment_successfullforprivatemale />}
-                />
-                <Route
-                  path="Payment_successfullforprivatefemalehostel"
-                  element={<Payment_successfullforprivatefemale />}
-                />
-                <Route
-                  path="Payment_successfullforprivatemixedhostel"
-                  element={<Payment_successfullforprivatemixed />}
-                />
-                <Route
-                  path="Payment_successfullforprivatcoupleshostel"
-                  element={<Payment_successfullforprivatecouples />}
-                />
-                <Route
-                  path="booking_history"
-                  element={<Bookinghistory />}
-                />
+                <Route path="dashboard" element={<Dashboard />}>
+                  <Route path="" element={<Dashboardhome />} />
+                  <Route path="profile" element={<Profile />} />
+                  <Route path="currentroom" element={<Currentroom />} />
+                  <Route path="schoolmalehostel" element={<Schoolmalehostel />} />
+                  <Route
+                    path="Viewoneschoolmalehostel/:id"
+                    element={<Viewoneschoolmalehostel />}
+                  />
+                  <Route
+                    path="schoolfemalehostel"
+                    element={<Schoolfemalehostel />}
+                  />
+                  <Route
+                    path="Viewoneschoolfemalehostel/:id"
+                    element={<Viewoneschoolfemalehostel />}
+                  />
+                  <Route
+                    path="privatemalehostel"
+                    element={<Privatemalehostel />}
+                  />
+                  <Route
+                    path="check_one_privatemale_hostel/:id"
+                    element={<Viewonemaleprivatemalehostel />}
+                  />
+                  <Route
+                    path="privatefemalehostel"
+                    element={<Privatefemalehostel />}
+                  />
+                  <Route
+                    path="check_one_privatefemale_hostel/:id"
+                    element={<Viewoneprivatefemalehostel />}
+                  />{" "}
+                  <Route path="Mixedhostel" element={<Mixedhostel />} />
+                  <Route
+                    path="check_one_mixedgender_hostel/:id"
+                    element={<Viewonemixedhostel />}
+                  />
+                  <Route path="Coupleshostel" element={<Coupleshostel />} />
+                  <Route
+                    path="check_one_couples_hostel/:id"
+                    element={<Viewonecoupleshostel />}
+                  />
+                  <Route
+                    path="Payment_successfull_formaleschoolhostel"
+                    element={<Payment_successfull />}
+                  />
+                  <Route
+                    path="Payment_successfull_forfemaleschoolhostel"
+                    element={<Payment_successfullschoolfemale />}
+                  />
+                  <Route
+                    path="Payment_successfullforprivatemalehostel"
+                    element={<Payment_successfullforprivatemale />}
+                  />
+                  <Route
+                    path="Payment_successfullforprivatefemalehostel"
+                    element={<Payment_successfullforprivatefemale />}
+                  />
+                  <Route
+                    path="Payment_successfullforprivatemixedhostel"
+                    element={<Payment_successfullforprivatemixed />}
+                  />
+                  <Route
+                    path="Payment_successfullforprivatcoupleshostel"
+                    element={<Payment_successfullforprivatecouples />}
+                  />
+                  <Route
+                    path="booking_history"
+                    element={<Bookinghistory />}
+                  />
 
 
 
 
-                <Route path="*" element={<Pagenotfound />} />
-                {/* Add other routes inside this nested structure if needed */}
-              </Route>
+                  <Route path="*" element={<Pagenotfound />} />
+                  {/* Add other routes inside this nested structure if needed */}
+                </Route>
             </Routes>
           </BrowserRouter>
         </Provider>

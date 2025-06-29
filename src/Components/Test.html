@@ -1,109 +1,185 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      body {
-        background-color: green;
-        margin: 0;
-        padding: 0;
-      }
-      .looder_body {
-        z-index: 99;
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #191d32ad;
-        position: fixed;
-      }
-      .loader {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        display: inline-block;
-        position: relative;
-        border: 3px solid;
-        border-color: #191d32 #191d32 transparent transparent;
-        box-sizing: border-box;
-        animation: rotation 1s linear infinite;
-      }
-      .loader::after,
-      .loader::before {
-        content: "";
-        box-sizing: border-box;
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        border: 3px solid;
-        border-color: transparent transparent #d8dcff #d8dcff;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        box-sizing: border-box;
-        animation: rotationBack 0.5s linear infinite;
-        transform-origin: center center;
-      }
-      .loader::before {
-        width: 32px;
-        height: 32px;
-        border-color: #191d32 #191d32 transparent transparent;
-        animation: rotation 1.5s linear infinite;
-      }
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
+    />
 
-      @keyframes rotation {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-      @keyframes rotationBack {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(-360deg);
-        }
-      }
-    </style>
+    <title>Stitch Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   </head>
   <body>
-    <div class="looder_body">
-      <span class="loader"></span>
+    <div
+      class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden"
+      style='--select-button-svg: url(&apos;data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724px%27 height=%2724px%27 fill=%27rgb(99,120,136)%27 viewBox=%270 0 256 256%27%3e%3cpath d=%27M181.66,170.34a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-48-48a8,8,0,0,1,11.32-11.32L128,212.69l42.34-42.35A8,8,0,0,1,181.66,170.34Zm-96-84.68L128,43.31l42.34,42.35a8,8,0,0,0,11.32-11.32l-48-48a8,8,0,0,0-11.32,0l-48,48A8,8,0,0,0,85.66,85.66Z%27%3e%3c/path%3e%3c/svg%3e&apos;); font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'
+    >
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f3f4] px-10 py-3">
+          <div class="flex items-center gap-4 text-[#111518]">
+            <div class="size-4">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor"></path>
+              </svg>
+            </div>
+            <h2 class="text-[#111518] text-lg font-bold leading-tight tracking-[-0.015em]">StayEase</h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a class="text-[#111518] text-sm font-medium leading-normal" href="#">Overview</a>
+              <a class="text-[#111518] text-sm font-medium leading-normal" href="#">Rooms</a>
+              <a class="text-[#111518] text-sm font-medium leading-normal" href="#">Services</a>
+              <a class="text-[#111518] text-sm font-medium leading-normal" href="#">Contact</a>
+            </div>
+            <button
+              class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#1990e5] text-white text-sm font-bold leading-normal tracking-[0.015em]"
+            >
+              <span class="truncate">Book Now</span>
+            </button>
+          </div>
+        </header>
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <div class="flex flex-wrap gap-2 p-4">
+              <a class="text-[#637888] text-base font-medium leading-normal" href="#">Rooms</a>
+              <span class="text-[#637888] text-base font-medium leading-normal">/</span>
+              <span class="text-[#111518] text-base font-medium leading-normal">Room 101</span>
+            </div>
+            <div class="@container">
+              <div class="@[480px]:px-4 @[480px]:py-3">
+                <div
+                  class="bg-cover bg-center flex flex-col justify-end overflow-hidden bg-white @[480px]:rounded-xl min-h-80"
+                  style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 25%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCeHuwAVeEJlurJFNSX8lklzGw9bow6L_eKZHXxIPgnwiynARzwlrNwr_kSQRSO0ZYv3OqYuB96fT39dDaAmT7loyT1WrweWzFlcjvTZIhWz2wAFYrGIWqXL3mZWaJP_R22r_D6pUvu4EIPesvdScoRPq81aUiF9NdZidtn6n3xg4ifcEmP58VbcqL6GWA6zlAxeMZNGrMMWSjpKVTAt64t8H-HhUTvmNKVzWMLoYKDr3LnjQJIc2Y2PF4dBxKxM2gQ_Xqn1f5Q8Es");'
+                >
+                  <div class="flex p-4"><p class="text-white tracking-light text-[28px] font-bold leading-tight">Room 101</p></div>
+                </div>
+              </div>
+            </div>
+            <h2 class="text-[#111518] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">About this room</h2>
+            <p class="text-[#111518] text-base font-normal leading-normal pb-3 pt-1 px-4">
+              Room 101 is a shared dormitory-style room with bunk beds, suitable for budget travelers and groups. It features individual reading lights, power outlets, and storage
+              lockers for each bed. The room is air-conditioned and has access to shared bathroom facilities.
+            </p>
+            <h2 class="text-[#111518] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Amenities</h2>
+            <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+              <div class="flex flex-1 gap-3 rounded-lg border border-[#dce1e5] bg-white p-4 items-center">
+                <div class="text-[#111518]" data-icon="WifiHigh" data-size="24px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                    <path
+                      d="M140,204a12,12,0,1,1-12-12A12,12,0,0,1,140,204ZM237.08,87A172,172,0,0,0,18.92,87,8,8,0,0,0,29.08,99.37a156,156,0,0,1,197.84,0A8,8,0,0,0,237.08,87ZM205,122.77a124,124,0,0,0-153.94,0A8,8,0,0,0,61,135.31a108,108,0,0,1,134.06,0,8,8,0,0,0,11.24-1.3A8,8,0,0,0,205,122.77Zm-32.26,35.76a76.05,76.05,0,0,0-89.42,0,8,8,0,0,0,9.42,12.94,60,60,0,0,1,70.58,0,8,8,0,1,0,9.42-12.94Z"
+                    ></path>
+                  </svg>
+                </div>
+                <h2 class="text-[#111518] text-base font-bold leading-tight">Free Wi-Fi</h2>
+              </div>
+              <div class="flex flex-1 gap-3 rounded-lg border border-[#dce1e5] bg-white p-4 items-center">
+                <div class="text-[#111518]" data-icon="Wind" data-size="24px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                    <path
+                      d="M184,184a32,32,0,0,1-32,32c-13.7,0-26.95-8.93-31.5-21.22a8,8,0,0,1,15-5.56C137.74,195.27,145,200,152,200a16,16,0,0,0,0-32H40a8,8,0,0,1,0-16H152A32,32,0,0,1,184,184Zm-64-80a32,32,0,0,0,0-64c-13.7,0-26.95,8.93-31.5,21.22a8,8,0,0,0,15,5.56C105.74,60.73,113,56,120,56a16,16,0,0,1,0,32H24a8,8,0,0,0,0,16Zm88-32c-13.7,0-26.95,8.93-31.5,21.22a8,8,0,0,0,15,5.56C193.74,92.73,201,88,208,88a16,16,0,0,1,0,32H32a8,8,0,0,0,0,16H208a32,32,0,0,0,0-64Z"
+                    ></path>
+                  </svg>
+                </div>
+                <h2 class="text-[#111518] text-base font-bold leading-tight">Air Conditioning</h2>
+              </div>
+              <div class="flex flex-1 gap-3 rounded-lg border border-[#dce1e5] bg-white p-4 items-center">
+                <div class="text-[#111518]" data-icon="Lock" data-size="24px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                    <path
+                      d="M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Zm-68-56a12,12,0,1,1-12-12A12,12,0,0,1,140,152Z"
+                    ></path>
+                  </svg>
+                </div>
+                <h2 class="text-[#111518] text-base font-bold leading-tight">Lockers</h2>
+              </div>
+            </div>
+            <h2 class="text-[#111518] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">More Images</h2>
+            <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+              <div class="flex flex-col gap-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBJUuR2BSNG-sZJ_JYsO_b-pJnO8FjwTYsjDcJkRLmAQ5EzFxuaKF3xVZ8W5uzCx33kAAK7kvdvIKL9TU_xyrZQ5pTMBBjZlSwd-nfudJfoP75WYdCPFkOJS3lEyE-sUCB1rAIS2-QYkZJaMQewllPxWtVvvgzWPq_8mokSiS-QcKgF7iJ11t3_MicwZg3D_sBWrX2BweAv4WDVe8cmjq2Ab8mVANItyyuill7sO5Qs46dvmBIyW_HrEql6qbIafPRl9aJeVxn1kHU");'
+                ></div>
+              </div>
+              <div class="flex flex-col gap-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC1oEKUOlT1zb628TrYoqIIcSpmWaWEy7qVQcVfvitdNJyN5bXJgLkj67-WagSFiJB68JFYOFprZxPu_8ih60JZXLBQinBN4u5RKYhDkmeGn-9pltA0ayOyPcHfEQDVmXUJzSrPVmf51HvJ2xJFF-9ponBgVSQOF1B2mdI7WK87gC-OYgZXplCnVQenePNyM5hcPwGnx9h4jcXNdk3yfbui9jG-JMc3Cdn1p41Pxfo7gtNr4OEIVX1y6O9l7XTKhEqhR20VtDOsMGs");'
+                ></div>
+              </div>
+              <div class="flex flex-col gap-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAlU8W39ibxP3kxkMwyH89d4kEOJTkzXGgLxNQCQWgo7ZZr3pnptI2EiiEDQ4AsA4gzhg-aKFtob4FEwQt1-pHel8dSv1N6SMH1TI4G-IKvU71Srt4E62I53lm2hhQ_Sj9E-wx6XwoWpBavYWIpKpLo_QbiAVBeh6Q8Y1B2mJsQEjaq-yJDtiH8PcW5DY8Xy5NyZ0SxVvc2rSjoM_pix0HgZzDRXGLIgfbgp6YnoTeRR3wqfpxG-0-Pownjx_W2rcNp7c_WPLDc0II");'
+                ></div>
+              </div>
+            </div>
+            <h2 class="text-[#111518] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Apply for this room</h2>
+            <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+              <label class="flex flex-col min-w-40 flex-1">
+                <p class="text-[#111518] text-base font-medium leading-normal pb-2">Full Name</p>
+                <input
+                  placeholder="Enter your full name"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111518] focus:outline-0 focus:ring-0 border-none bg-[#f0f3f4] focus:border-none h-14 placeholder:text-[#637888] p-4 text-base font-normal leading-normal"
+                  value=""
+                />
+              </label>
+            </div>
+            <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+              <label class="flex flex-col min-w-40 flex-1">
+                <p class="text-[#111518] text-base font-medium leading-normal pb-2">Email</p>
+                <input
+                  placeholder="Enter your email"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111518] focus:outline-0 focus:ring-0 border-none bg-[#f0f3f4] focus:border-none h-14 placeholder:text-[#637888] p-4 text-base font-normal leading-normal"
+                  value=""
+                />
+              </label>
+            </div>
+            <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+              <label class="flex flex-col min-w-40 flex-1">
+                <p class="text-[#111518] text-base font-medium leading-normal pb-2">Phone Number</p>
+                <input
+                  placeholder="Enter your phone number"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111518] focus:outline-0 focus:ring-0 border-none bg-[#f0f3f4] focus:border-none h-14 placeholder:text-[#637888] p-4 text-base font-normal leading-normal"
+                  value=""
+                />
+              </label>
+            </div>
+            <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+              <label class="flex flex-col min-w-40 flex-1">
+                <p class="text-[#111518] text-base font-medium leading-normal pb-2">Desired Move-in Date</p>
+                <select
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111518] focus:outline-0 focus:ring-0 border-none bg-[#f0f3f4] focus:border-none h-14 bg-[image:--select-button-svg] placeholder:text-[#637888] p-4 text-base font-normal leading-normal"
+                >
+                  <option value="one">Select a date</option>
+                  <option value="two">two</option>
+                  <option value="three">three</option>
+                </select>
+              </label>
+            </div>
+            <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+              <label class="flex flex-col min-w-40 flex-1">
+                <p class="text-[#111518] text-base font-medium leading-normal pb-2">Why are you interested in this room?</p>
+                <textarea
+                  placeholder="Tell us a bit about yourself"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111518] focus:outline-0 focus:ring-0 border-none bg-[#f0f3f4] focus:border-none min-h-36 placeholder:text-[#637888] p-4 text-base font-normal leading-normal"
+                ></textarea>
+              </label>
+            </div>
+            <div class="flex px-4 py-3 justify-end">
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#1990e5] text-white text-sm font-bold leading-normal tracking-[0.015em]"
+              >
+                <span class="truncate">Submit Application</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-const [loading, setloading] = useState(false);
-
-
-setloading(true);
-
-
-setloading(false);
-
-
-{/* loading  */}
-
-      {loading && (
-        <div className="looder_body">
-          <span className="loader"></span>
-        </div>
-      )}

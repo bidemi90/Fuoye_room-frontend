@@ -266,7 +266,6 @@ nav {
   background-color: lightblue; /* Light blue track */
 }
 
-
 .loglogoimg {
   width: 100px;
   height: 70px;
@@ -406,77 +405,74 @@ nav {
 .flotdropinnav:focus-within .flotnavposition {
   display: flex;
 }
-.categorytypeicontext{
+.categorytypeicontext {
   font-size: 150%;
 }
-@media screen and (max-width:1000px) {
+@media screen and (max-width: 1000px) {
   .categorytypeicon {
     font-size: 400%;
   }
-  .categorytypeicontext{
+  .categorytypeicontext {
     font-size: 120%;
   }
 }
 
-@media screen and (max-width:800px) {
+@media screen and (max-width: 800px) {
   .categorytypeicon {
     font-size: 300%;
   }
 }
 
-@media screen and (max-width:450px) {
+@media screen and (max-width: 450px) {
   .categorytypeicon {
     font-size: 250%;
   }
-  .categorytypeicontext{
+  .categorytypeicontext {
     font-size: 120%;
   }
 }
 
-
-.todisplayoneroominadmin{
+.todisplayoneroominadmin {
   border: 2px solid #191d32;
 }
-.oneroomdetailsheader{
+.oneroomdetailsheader {
   background-color: #191d32;
   color: #d8dcff;
 }
-.bodydetailsoneroom{
-  
+.bodydetailsoneroom {
   background-color: #d8dcff;
   color: #191d32;
 }
-.showingoneuserforroom{
+.showingoneuserforroom {
   background-color: #191d32;
   color: #d8dcff;
 }
-.showingoneuserforroom:hover{
+.showingoneuserforroom:hover {
   box-shadow: 0px 0px 20px #191d32;
 }
 
-.flotbuttonspecial{
+.flotbuttonspecial {
   width: 100px;
   height: 100px;
   border-radius: 50px;
   background-color: #191d32;
-  color: #d8dcff; 
+  color: #d8dcff;
   padding: 20px;
   position: fixed;
   right: 50px;
   bottom: 30px;
 }
-.flotbuttonspecial:hover{
+.flotbuttonspecial:hover {
   box-shadow: 0px 0px 15px #191d32;
 }
 
-
-@media screen and (max-width:700px) {
-  .flotbuttonspecial{
+@media screen and (max-width: 700px) {
+  .flotbuttonspecial {
     width: 100px;
     height: 100px;
     border-radius: 50px;
     background-color: #191d32;
-    color: #d8dcff; 
+    color: #d8dcff;
     padding: 20px;
     position: fixed;
     right: 20px;
@@ -484,159 +480,139 @@ nav {
   }
 }
 
-.addingformholder{
+.addingformholder {
   background-color: #191d32;
   color: #d8dcff;
 }
-.buttononadmindash{
+.buttononadmindash {
   height: 200px;
   background-color: #191d32;
   color: #d8dcff;
   border: none;
-  
 }
-.iconinbuttononadmindash{
+.iconinbuttononadmindash {
   font-size: 500%;
-
 }
-.textinbuttononadmindash{
+.textinbuttononadmindash {
   font-size: 30px;
   font-weight: bolder;
 }
 
-
-@media screen and (max-width:700px) {
-
-  .buttononadmindash{
+@media screen and (max-width: 700px) {
+  .buttononadmindash {
     height: 200px;
     background-color: #191d32;
     color: #d8dcff;
     border: none;
-    
   }
-  .iconinbuttononadmindash{
+  .iconinbuttononadmindash {
     font-size: 300%;
-  
   }
-  .textinbuttononadmindash{
+  .textinbuttononadmindash {
     font-size: 20px;
     font-weight: bolder;
   }
-  
-
 }
 
-.adminshowingoneuser{
+.adminshowingoneuser {
   background-color: #191d32;
   color: #d8dcff;
 }
-.adminshowingoneuserroomdetails{
+.adminshowingoneuserroomdetails {
   background-color: #191d32;
   color: #d8dcff;
 }
 
-.oneprivateroomholder{
+.oneprivateroomholder {
   background-color: #191d32;
   color: #d8dcff;
-
 }
 
-
-
-
-.oneprivatehouseholder{
+.oneprivatehouseholder {
   border: 10px solid #191d32;
   background-color: #191d32;
   color: #d8dcff;
-   border-radius: 20px;
+  border-radius: 20px;
 }
-.oneprivatehouseholderimg{
+.oneprivatehouseholderimg {
   max-height: 350px;
   min-height: 0px;
   min-width: 0px;
   max-width: 350px;
 }
-.oneprivatehouseholderroom{
+.oneprivatehouseholderroom {
   background-color: #191d32;
   color: #d8dcff;
 }
-.oneprivatehouseholderroom:hover{
+.oneprivatehouseholderroom:hover {
   box-shadow: 0px 0px 20px #191d32;
 }
 
 /*  */
 
-.addingform{
+.addingform {
   background-color: #191d32;
-  
 }
-.addingform label{
+.addingform label {
   color: #191d32;
   background-color: #191d3200;
 }
-.addingform input{
+.addingform input {
   padding-top: 30px;
 }
-.firsttablehead{
+.firsttablehead {
   background-color: #d8dcff;
-  border:  2px solid #191d32;
+  border: 2px solid #191d32;
 }
-.secondtablehead{
+.secondtablehead {
   background-color: #191d32;
   color: #d8dcff;
-  border:  2px solid #191d32;
+  border: 2px solid #191d32;
   font-weight: bold;
 }
-.tableholder{
+.tableholder {
   background-color: #191d32;
 }
 
-
-
-
 /* modal edit */
-.modalbgcolorchange{
+.modalbgcolorchange {
   background-color: #191d32;
   color: #d8dcff;
 }
 
-
 /* profile page */
-.profilestyle{
+.profilestyle {
   color: #191d32;
   text-decoration-color: #191d32;
 }
-.profileimgdiv{
+.profileimgdiv {
   background-color: #191d32;
   padding: 20px;
   position: relative;
   max-height: inherit;
-  
 }
 
-.profileimg{
+.profileimg {
   width: 50%;
   margin: auto;
   border-radius: 50%;
   width: 200px;
-
 }
-.profiletext{
+.profiletext {
   background-color: #d8dcff;
   height: 100%;
 }
-.profilestylecard{
+.profilestylecard {
   box-shadow: 0px 0px 10px #777fa5;
 }
-.uploadprofile{
+.uploadprofile {
   height: fit-content;
   padding: 20px;
   background-color: #191d32;
   border-radius: 10px;
   box-shadow: 0px 0px 10px #777fa5;
-
 }
-.uploadimgbox{
+.uploadimgbox {
   background-color: #d8dcff;
   bottom: 0;
   padding: 10px;
@@ -644,9 +620,8 @@ nav {
   border-radius: 10px;
   box-shadow: 0px 0px 10px #d8dcff;
   margin: auto;
-
 }
-.profileuploadbutton{
+.profileuploadbutton {
   background-color: #191d32;
   color: #d8dcff;
   border-radius: 5px;
@@ -655,17 +630,14 @@ nav {
   margin-top: 10px;
 }
 
-.uploadimgboxpreview{
+.uploadimgboxpreview {
   margin: auto;
   display: block;
   width: fit-content;
   max-width: 300px;
 }
 
-
-
 /* loading icon style */
-
 
 .looder_body {
   z-index: 99;
@@ -712,7 +684,7 @@ nav {
 .loader::before {
   width: 32px;
   height: 32px;
-  border-color:  #d8dcff #d8dcff transparent transparent;
+  border-color: #d8dcff #d8dcff transparent transparent;
   animation: rotation 1.5s linear infinite;
 }
 
@@ -731,4 +703,36 @@ nav {
   100% {
     transform: rotate(-360deg);
   }
+}
+.testingnewcompo {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0) 25%
+    ),
+    url("./assets/image0_large.jpg");
+  height: 400px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  box-shadow: 0px 0px 15px #99a2cf;
+}
+
+.testingnewcompodiv {
+  background-color: #191d32a2;
+}
+
+.amenitiesholdernew {
+  background-color: #191d32;
+}
+.amenitiesholdernew:hover {
+  background-color: #191d32e8;
+  box-shadow: 0px 0px 15px #99a2cf;
+}
+.footernew {
+  background-color: #191d32;
+}
+.outletholdernew {
+  min-height: 75vh;
 }
