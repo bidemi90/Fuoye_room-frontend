@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
 
-
 import {
   featchinguser,
   featchinguserfailed,
@@ -19,82 +18,110 @@ import {
   fetchUpdatedUserData,
 } from "./Redux/userdata";
 
-
-
 const Dashboardhome = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
 
   const { isFetchinguser, userdata, isFeatchinguserfailed } = useSelector(
     (state) => state.userdata
   );
 
-      // dispatch(fetchUpdatedUserData(userdata.ifusermatricnumber.email))
-
+  // dispatch(fetchUpdatedUserData(userdata.ifusermatricnumber.email))
 
   return (
     <>
+      <h1 className=" fw-semibold fs-2 text-capitalize">overview</h1>
+      <div className=" d-flex flex-wrap justify-content-evenly align-items-center">
+        <div className=" col-4 my-2">
+          <div className=" col-11 m-auto newboxholderdash text-light">
+            <p className=" fs-5 fw-bold text-capitalize m-0 mb-3">
+              Applications
+            </p>
+            <p className=" fs-4 fw-mediumx">1</p>
+          </div>
+        </div>
+        <div className=" col-4 my-2">
+          <div className=" col-11 m-auto newboxholderdash text-light">
+            <p className=" fs-5 fw-bold text-capitalize m-0 mb-3">payments</p>
+            <p className=" fs-4 fw-mediumx">1</p>
+          </div>
+        </div>
+        <div className=" col-4 my-2">
+          <div className=" col-11 m-auto newboxholderdash text-light">
+            <p className=" fs-5 fw-bold text-capitalize m-0 mb-3">messages</p>
+            <p className=" fs-4 fw-mediumx">1</p>
+          </div>
+        </div>
+      </div>
+
       <section>
-        <p className=" fs-4 fw-bold text-uppercase ">room category</p>
-        <div className=" onecategoryholder mt-4 p-4 rounded-4 ">
-          <p className=" fs-5 text-capitalize fw-semibold">school hostel</p>
-          <div className=" d-flex justify-content-between align-items-center">
-          <div className=" col-6">
-          <Link to="/dashboard/schoolmalehostel" className=" categorytypediv col-11 m-auto p-2 border-0 rounded-3 d-flex flex-column justify-content-center align-items-center py-5">
-              <FaMale className=" categorytypeicon" />
-              <p className="  categorytypeicontext fw-bold text-capitalize mt-3 text-center">
+        <p className=" fs-6 fw-bold text-uppercase ">room category</p>
+        <div className="  ">
+          <p class=" fs-6 m-0 text-capitalize fw-semibold">school hostel</p>
+          <div className=" d-flex flex-wrap">
+            <Link
+              to="/dashboard/schoolmalehostel"
+              className=" categorytypedivnew my-2 mx-1 d-flex justify-content-evenly align-items-center p-2 px-4 rounded-5"
+            >
+              <FaMale className=" me-2 " />
+              <p className="   fw-bold text-capitalize m-0  text-center">
                 male hostel
               </p>
             </Link>
-          </div>
-          <div className=" col-6">
-          <Link to="/dashboard/schoolfemalehostel" className=" categorytypediv col-11 m-auto p-2 border-0 rounded-3 d-flex flex-column justify-content-center align-items-center py-5">
-              <FaFemale className=" categorytypeicon" />
-              <p className="  categorytypeicontext fw-bold text-capitalize mt-3 text-center">
+            <Link
+              to="/dashboard/schoolfemalehostel"
+              className=" categorytypedivnew my-2 mx-1 d-flex justify-content-evenly align-items-center p-2 px-4 rounded-5"
+            >
+              <FaFemale className=" me-2 " />
+              <p className="   fw-bold text-capitalize m-0  text-center">
                 female hostel
               </p>
             </Link>
           </div>
-          </div>
-        </div>
+          <p className=" fs-6 m-0 text-capitalize fw-semibold">
+            private hostel
+          </p>
 
-        <div className=" onecategoryholder mt-4 p-4 rounded-4 ">
-          <p className=" fs-5 text-capitalize fw-semibold">private hostel</p>
+          <div className="d-flex flex-wrap">
+            <Link
+              to="/dashboard/privatemalehostel"
+              className=" categorytypedivnew my-2 mx-1 d-flex justify-content-evenly align-items-center p-2 px-4 rounded-5"
+            >
+              <FaMale className=" me-2 " />
+              <p className="   fw-bold text-capitalize m-0  text-center">
+                male only hostel
+              </p>
+            </Link>
 
-          <div className=" d-flex justify-content-between align-items-center flex-wrap">
-            <div className=" col-6  col-md-3 ">
-              <Link to="/dashboard/privatemalehostel" className=" categorytypediv m-auto col-11 mb-3  p-2 border-0 rounded-3 d-flex flex-column justify-content-center align-items-center py-5">
-                <FaMale className=" categorytypeicon" />
-                <p className="  categorytypeicontext fw-bold text-capitalize mt-3 text-center">
-                  male only hostel
-                </p>
-              </Link>
-            </div>
-            <div className=" col-6  col-md-3 ">
-              <Link to="/dashboard/privatefemalehostel"  className=" categorytypediv m-auto col-11 mb-3  p-2 border-0 rounded-3 d-flex flex-column justify-content-center align-items-center py-5">
-                <FaFemale className=" categorytypeicon" />
-                <p className="  categorytypeicontext fw-bold text-capitalize mt-3 text-center">
-                  female only hostel
-                </p>
-              </Link>
-            </div>
-            <div className=" col-6  col-md-3 ">
-              <Link to="/dashboard/Mixedhostel"  className=" categorytypediv m-auto col-11 mb-3  p-2 border-0 rounded-3 d-flex flex-column justify-content-center align-items-center py-5">
-                <BiMaleFemale className=" categorytypeicon" />
-                <p className="  categorytypeicontext fw-bold text-capitalize mt-3 text-center">
-                  mixed hostel
-                </p>
-              </Link>
-            </div>
-            <div className=" col-6  col-md-3 ">
-              <Link to="/dashboard/Coupleshostel" className=" categorytypediv m-auto col-11 mb-3  p-2 border-0 rounded-3 d-flex flex-column justify-content-center align-items-center py-5">
-                <IoIosBed className=" categorytypeicon" />
-                <p className="  categorytypeicontext fw-bold text-capitalize mt-3 text-center">
-                  couples hostel
-                </p>
-              </Link>
-            </div>
+            <Link
+              to="/dashboard/privatefemalehostel"
+              className=" categorytypedivnew my-2 mx-1 d-flex justify-content-evenly align-items-center p-2 px-4 rounded-5"
+            >
+              <FaFemale className=" me-2 " />
+              <p className="   fw-bold text-capitalize m-0  text-center">
+                female only hostel
+              </p>
+            </Link>
+
+            <Link
+              to="/dashboard/Mixedhostel"
+              className=" categorytypedivnew my-2 mx-1 d-flex justify-content-evenly align-items-center p-2 px-4 rounded-5"
+            >
+              <BiMaleFemale className=" me-2 " />
+              <p className="   fw-bold text-capitalize m-0  text-center">
+                mixed hostel
+              </p>
+            </Link>
+
+            <Link
+              to="/dashboard/Coupleshostel"
+              className=" categorytypedivnew my-2 mx-1 d-flex justify-content-evenly align-items-center p-2 px-4 rounded-5"
+            >
+              <IoIosBed className=" me-2 " />
+              <p className="   fw-bold text-capitalize m-0  text-center">
+                couples hostel
+              </p>
+            </Link>
           </div>
         </div>
       </section>

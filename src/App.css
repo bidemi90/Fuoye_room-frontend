@@ -341,6 +341,15 @@ nav {
   color: #191d32;
   text-decoration: none;
 }
+
+.categorytypedivnew{
+  background-color: #191d32;
+  color: #d8dcff;
+  width: fit-content;
+    text-decoration: none;
+
+}
+
 .categorytypeicon {
   font-size: 600%;
 }
@@ -734,4 +743,10 @@ nav {
 }
 .outletholdernew {
   min-height: 75vh;
+}
+.newboxholderdash{
+    box-shadow: 0px 0px 15px #99a2cf;
+background-color: #191d32;
+border-radius: 10px;
+padding: 10px;
 }
