@@ -58,18 +58,18 @@ const Schoolmalehostel = () => {
           <section className=" d-flex flex-wrap justify-content-between">
             {allschoolmalehostel.map((item, index) => (
               <div
-                className="oneschoolmaleroom m-auto mx-md-0 col-11 col-md-5  col-lg-4 mt-3 mb-3"
+                className="oneschoolmaleroom m-auto mx-md-0 col-6  col-md-5  col-lg-4 mt-3 mb-3"
                 key={index}
               >
-                <div className=" rounded-3 contentofoneschoolroom  overflow-hidden col-11 ">
+                <div className=" m-auto rounded-3 contentofoneschoolroom  overflow-hidden col-11 ">
                   <img
                     className="card-img-top"
                     src={schoolHostelImage}
                     alt="Title"
                   />
 
-                  <div className=" col-11  rounded-3 p-2 d-flex justify-content-evenly">
-                    <div className=" textinoneschoolroom   pe-1 me-1 ">
+                  <div className=" col-11  rounded-3 p-2 d-block d-md-flex justify-content-evenly">
+                    <div className=" textinoneschoolroom  col-12 col-md-3   pe-1 me-1 ">
                       <p className=" m-0 fs-5 fw-semibold text-capitalize">
                         room no: {item.roomNumber}
                       </p>
@@ -77,7 +77,7 @@ const Schoolmalehostel = () => {
                         no of bunkers: {item.bunkerSpace}
                       </p>
                     </div>
-                    <div className=" w-75 d-flex flex-wrap align-items-start">
+                    <div className="  d-flex flex-wrap align-items-start">
                       {item.bunkerDetails.map((item, index) => (
                         <div
                           className=" d-flex justify-content-evenly align-items-center"
@@ -99,7 +99,7 @@ const Schoolmalehostel = () => {
                     </div>
                   </div>
                 </div>
-                <div className="col-11 mt-4">
+                <div className=" m-auto col-11 mt-4">
                   <Link
                     className=" buttonforlog  px-3 py-2 rounded-2"
                     to={`/dashboard/Viewoneschoolmalehostel/${index}`}
