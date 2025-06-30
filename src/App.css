@@ -614,11 +614,11 @@ nav {
   box-shadow: 0px 0px 10px #777fa5;
 }
 .uploadprofile {
-  height: fit-content;
+  /* height: fit-content;
   padding: 20px;
   background-color: #191d32;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px #777fa5;
+  box-shadow: 0px 0px 10px #777fa5; */
 }
 .uploadimgbox {
   background-color: #d8dcff;
@@ -627,7 +627,7 @@ nav {
   width: fit-content;
   border-radius: 10px;
   box-shadow: 0px 0px 10px #d8dcff;
-  margin: auto;
+  /* margin: auto; */
 }
 .profileuploadbutton {
   background-color: #191d32;
@@ -749,4 +749,30 @@ nav {
 background-color: #191d32;
 border-radius: 10px;
 padding: 10px;
+
+
+}
+
+.activiyiconholdernew{
+  background-color: #191d32b6;
+  width: fit-content;
+}
+.newprofileprofileimg {
+  height: 65px;
+  width: 65px;
+  border: none;
+  border-radius: 50px;
+  color: #191d32;
+  background: rgb(255, 255, 255);
+  text-decoration: none;
+  background-color: #d8dcff;
+  box-shadow: 0px 0px 10px #d8dcff;
+   width: 50%;
+  margin: auto;
+  border-radius: 50%;
+  width: 200px;
+}
+
+.newprofileimgholderer{
+  width: fit-content;
 }
