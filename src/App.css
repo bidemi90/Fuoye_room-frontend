@@ -45,20 +45,13 @@ nav {
   height: 10vh;
   color: #d8dcff;
 }
-.profileimginusernav {
-  height: 65px;
-  width: 65px;
-  border: none;
-  border-radius: 50px;
-  color: #191d32;
-  background: rgb(255, 255, 255);
-  text-decoration: none;
-  background-color: #d8dcff;
-  box-shadow: 0px 0px 10px #d8dcff;
-}
+
 .profileimginusernavimg {
   width: 70px;
+  height: 70px;
   border-radius: 50%;
+    box-shadow: 0px 0px 10px #d8dcff;
+
 }
 .applogo {
   width: 100px;

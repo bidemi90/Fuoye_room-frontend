@@ -71,7 +71,7 @@ const Topnav = () => {
                   ? "loading..."
                   : userdata?.ifusermatricnumber?.matric_number}
               </Link>
-              <button className="  profileimginusernav d-flex justify-content-center align-items-center">
+              
                 <img
                   className="  profileimginusernavimg"
                   src={
@@ -81,7 +81,6 @@ const Topnav = () => {
                   }
                   alt=""
                 />
-              </button>
             </div>
 
             <div className=" flotdropinnav d-flex d-xl-none">
@@ -117,7 +116,7 @@ const Topnav = () => {
                 </div>
                 <div className=" w-100">
                   <button
-                    className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2 mt-3  w-75"
+                    className=" w-100 d-flex justify-content-center align-items-center Linkforsidenav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 my-2 mt-3 mb-5  w-75"
                     onClick={handlelogout}
                   >
                     log out <LuArrowRightFromLine className=" mx-3" />

@@ -56,7 +56,6 @@ const Privatemalehostel = () => {
 
         <div className=" d-flex flex-wrap justify-content-center">
           {allprivatemalehostel.map((item, index) => (
-          
             <div
               className="oneschoolmaleroom m-auto mx-md-0 col-6  col-md-5  col-lg-4 mt-3 mb-3"
               key={index}
@@ -77,26 +76,23 @@ const Privatemalehostel = () => {
                       </span>{" "}
                     </p>
                     <p className=" fs-6 mb-1 onelinetext text-capitalize">
-                       building address:{" "}
+                      building address:{" "}
                       <span className=" text-capitalize fs-6 fw-bold">
                         {item.building_address}
                       </span>{" "}
-                     
                     </p>
-                    <p className=" fs-6 mb-1 onelinetext text-capitalize">
-                       numbers of active room:{" "}
+                    <p className=" fs-6 mb-1 onelinetext text-capitalize d-none d-md-block">
+                      numbers of active room:{" "}
                       <span className=" text-capitalize fs-6 fw-bold">
-                       {item.room_count}
+                        {item.room_count}
                       </span>{" "}
-                      
                     </p>
                     <p className=" fs-6 mb-1 onelinetext text-capitalize">
-                       rent per room :{" "}
+                      rent per room :{" "}
                       <span className=" text-capitalize fs-6 fw-bold">
                         {" "}
-                       ₦ {item.rent}
+                        ₦ {item.rent}
                       </span>{" "}
-                     
                     </p>
                   </div>
                 </div>
@@ -111,8 +107,6 @@ const Privatemalehostel = () => {
                 </Link>
               </div>{" "}
             </div>
-
-          
           ))}
         </div>
       </section>
