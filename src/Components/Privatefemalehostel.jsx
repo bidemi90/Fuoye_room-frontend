@@ -59,55 +59,57 @@ const Privatefemalehostel = () => {
 
         <div className=" d-flex flex-wrap justify-content-center">
           {allprivatefemalehostel.map((item, index) => (
-            <div className=" col-12 col-md-6 ">
-              <div className=" oneprivateroomholder p-2 rounded-2 col-11">
-                <div className=" d-flex ">
-                  <div className=" col-4 d-flex justify-content-center align-items-center ">
-                    <img
-                      className=" img-fluid my-auto mx-auto"
-                      src={item.img_array}
-                      alt=""
-                    />
-                  </div>
-                  <div className=" ms-3 col-8">
-                    <p className=" onelinetext text-capitalize">
-                      <span className=" text-capitalize fs-6 fw-bold">
-                        building name:
-                      </span>{" "}
-                      {item.building_name}
-                    </p>
-                    <p className=" onelinetext text-capitalize">
-                      <span className=" text-capitalize fs-6 fw-bold">
-                        building address:
-                      </span>{" "}
-                      {item.building_address}
-                    </p>
-                    <p className=" onelinetext text-capitalize">
-                      <span className=" text-capitalize fs-6 fw-bold">
-                        numbers of active room:
-                      </span>{" "}
-                      {item.room_count}
-                    </p>
-                    <p className=" onelinetext text-capitalize">
-                      <span className=" text-capitalize fs-6 fw-bold">
-                        {" "}
-                        rent per room :₦
-                      </span>{" "}
-                      {item.rent}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className=" py-3">
-                <Link
-                  to={`/dashboard/check_one_privatefemale_hostel/${index}`}
-                  className=" Linkforsidenav p-2 px-3 rounded-1 fw-bold my-2"
-                >
-                  {" "}
-                  view buliding
-                </Link>
-              </div>
-            </div>
+            <div
+                        className="oneschoolmaleroom m-auto mx-md-0 col-6  col-md-5  col-lg-4 mt-3 mb-3"
+                        key={index}
+                      >
+                        <div className=" m-auto rounded-3 contentofoneschoolroom  overflow-hidden col-11 ">
+                          <img
+                            className="card-img-top"
+                            src={item.img_array}
+                            alt="Title"
+                          />
+          
+                          <div className=" col-11  rounded-3 p-2 d-block d-md-flex flex-column justify-content-evenly">
+                            <div className=" textinonebuilding  col-12    pe-1 me-1 ">
+                              <p className=" fs-6 mb-1 onelinetext text-capitalize">
+                                building name:{" "}
+                                <span className=" text-capitalize fs-6 fw-bold">
+                                  {item.building_name}
+                                </span>{" "}
+                              </p>
+                              <p className=" fs-6 mb-1 onelinetext text-capitalize">
+                                building address:{" "}
+                                <span className=" text-capitalize fs-6 fw-bold">
+                                  {item.building_address}
+                                </span>{" "}
+                              </p>
+                              <p className=" fs-6 mb-1 onelinetext text-capitalize d-none d-md-block">
+                                numbers of active room:{" "}
+                                <span className=" text-capitalize fs-6 fw-bold">
+                                  {item.room_count}
+                                </span>{" "}
+                              </p>
+                              <p className=" fs-6 mb-1 onelinetext text-capitalize">
+                                rent per room :{" "}
+                                <span className=" text-capitalize fs-6 fw-bold">
+                                  {" "}
+                                  ₦ {item.rent}
+                                </span>{" "}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className=" m-auto col-11 mt-4">
+                          <Link
+                            to={`/dashboard/check_one_privatemale_hostel/${index}`}
+                            className=" Linkforsidenav p-2 px-3 rounded-1 fw-bold my-2"
+                          >
+                            {" "}
+                            view buliding
+                          </Link>
+                        </div>{" "}
+                      </div>
           ))}
         </div>
       </section>

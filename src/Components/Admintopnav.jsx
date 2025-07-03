@@ -67,13 +67,12 @@ const Admintopnav = () => {
               <button className="d-flex justify-content-evenly align-items-center Linkfornav p-1 fs-6 fw-semibold text-capitalize text-center px-3 py-2 rounded-3 mx-2 fw-bold">
                 admin profile <BsPersonBoundingBox className=" mx-2" />
               </button>
-              <button className="  profileimginusernav d-flex justify-content-center align-items-center">
+            
                 <img
                   className="  profileimginusernavimg"
                   src={profiimg}
                   alt=""
                 />
-              </button>
             </div>
 
             <div className=" flotdropinnav d-flex d-xl-none">

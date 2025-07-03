@@ -28,10 +28,22 @@ const Dashboardhome = () => {
     (state) => state.userdata
   );
 
+   console.log(userdata.ifusermatricnumber.payment_history.length);
+   
+
   // dispatch(fetchUpdatedUserData(userdata.ifusermatricnumber.email))
 
   return (
+
     <>
+
+    {/* loading  */}
+
+      {isFetchinguser && (
+          <div className="looder_body">
+            <span className="loader"></span>
+          </div>
+        )}
       <h1 className=" fw-semibold fs-2 text-capitalize">overview</h1>
       <div className=" d-flex flex-wrap justify-content-evenly align-items-center">
         <div className=" col-4 my-2">
@@ -39,19 +51,19 @@ const Dashboardhome = () => {
             <p className=" fs-5 fw-bold text-capitalize m-0 mb-3">
               Applications
             </p>
-            <p className=" fs-4 fw-mediumx">1</p>
+            <p className=" fs-4 fw-mediumx">{userdata.ifusermatricnumber.payment_history.length}</p>
           </div>
         </div>
         <div className=" col-4 my-2">
           <div className=" col-11 m-auto newboxholderdash text-light">
             <p className=" fs-5 fw-bold text-capitalize m-0 mb-3">payments</p>
-            <p className=" fs-4 fw-mediumx">1</p>
+            <p className=" fs-4 fw-mediumx">{userdata.ifusermatricnumber.payment_history.length}</p>
           </div>
         </div>
         <div className=" col-4 my-2">
           <div className=" col-11 m-auto newboxholderdash text-light">
             <p className=" fs-5 fw-bold text-capitalize m-0 mb-3">messages</p>
-            <p className=" fs-4 fw-mediumx">1</p>
+            <p className=" fs-4 fw-mediumx">0</p>
           </div>
         </div>
       </div>

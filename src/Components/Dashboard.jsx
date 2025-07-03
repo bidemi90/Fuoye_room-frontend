@@ -144,11 +144,11 @@ const Dashboard = () => {
         isFetchingAllprivatemalehostel ||
         isFetchingAllprivatefemalehostel ||
         isFetchingAllmixedhostel ||
-        (isFetchingAllcoupleshostel && (
+        isFetchingAllcoupleshostel && (
           <div className="looder_body">
             <span className="loader"></span>
           </div>
-        ))}
+        )}
 
       <Topnav />
       <div className=" d-flex">
