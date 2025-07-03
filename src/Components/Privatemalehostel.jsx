@@ -6,14 +6,11 @@ import { Link } from "react-router-dom";
 import { VscDiffAdded } from "react-icons/vsc";
 
 import {
-    featchinguser,
-    featchinguserfailed,
-    featchinguserSuccessful,
-    fetchUpdatedUserData,
-  } from "./Redux/userdata";
-  
-  
-
+  featchinguser,
+  featchinguserfailed,
+  featchinguserSuccessful,
+  fetchUpdatedUserData,
+} from "./Redux/userdata";
 
 import {
   fetchUpdatedAllprivatemalehosteldata,
@@ -29,7 +26,6 @@ const Privatemalehostel = () => {
   const { isFetchinguser, userdata, isFeatchinguserfailed } = useSelector(
     (state) => state.userdata
   );
-
 
   const {
     isFetchingAllprivatemalehostel,
@@ -49,56 +45,63 @@ const Privatemalehostel = () => {
         </p>
 
         <div className=" mb-2  p-1  ">
-            <p className=" m-0  smalltextnote fst-italic fw-bold font">
-            <span className="  text-uppercase fs-6">note</span>: <span className=" text-capitalize fs-6 fw-bold">
-                        numbers of active room:
-                      </span> is the number of the room available in a buliding <br />
-             
-            </p>
-          </div>
+          <p className=" m-0  smalltextnote fst-italic fw-bold font">
+            <span className="  text-uppercase fs-6">note</span>:{" "}
+            <span className=" text-capitalize fs-6 fw-bold">
+              numbers of active room:
+            </span>{" "}
+            is the number of the room available in a buliding <br />
+          </p>
+        </div>
 
         <div className=" d-flex flex-wrap justify-content-center">
           {allprivatemalehostel.map((item, index) => (
-            <div className=" col-12 col-md-6 ">
-              <div className=" oneprivateroomholder p-2 rounded-2 col-11">
-                <div className=" d-flex ">
-                  <div className=" col-4 d-flex justify-content-center align-items-center ">
-                    <img
-                      className=" img-fluid my-auto mx-auto"
-                      src={item.img_array}
-                      alt=""
-                    />
-                  </div>
-                  <div className=" ms-3 col-8">
-                    <p className=" onelinetext text-capitalize">
+          
+            <div
+              className="oneschoolmaleroom m-auto mx-md-0 col-6  col-md-5  col-lg-4 mt-3 mb-3"
+              key={index}
+            >
+              <div className=" m-auto rounded-3 contentofoneschoolroom  overflow-hidden col-11 ">
+                <img
+                  className="card-img-top"
+                  src={item.img_array}
+                  alt="Title"
+                />
+
+                <div className=" col-11  rounded-3 p-2 d-block d-md-flex flex-column justify-content-evenly">
+                  <div className=" textinonebuilding  col-12    pe-1 me-1 ">
+                    <p className=" fs-6 mb-1 onelinetext text-capitalize">
+                      building name:{" "}
                       <span className=" text-capitalize fs-6 fw-bold">
-                        building name:
+                        {item.building_name}
                       </span>{" "}
-                      {item.building_name}
                     </p>
-                    <p className=" onelinetext text-capitalize">
+                    <p className=" fs-6 mb-1 onelinetext text-capitalize">
+                       building address:{" "}
                       <span className=" text-capitalize fs-6 fw-bold">
-                        building address:
+                        {item.building_address}
                       </span>{" "}
-                      {item.building_address}
+                     
                     </p>
-                    <p className=" onelinetext text-capitalize">
+                    <p className=" fs-6 mb-1 onelinetext text-capitalize">
+                       numbers of active room:{" "}
                       <span className=" text-capitalize fs-6 fw-bold">
-                        numbers of active room:
+                       {item.room_count}
                       </span>{" "}
-                      {item.room_count}
+                      
                     </p>
-                    <p className=" onelinetext text-capitalize">
+                    <p className=" fs-6 mb-1 onelinetext text-capitalize">
+                       rent per room :{" "}
                       <span className=" text-capitalize fs-6 fw-bold">
                         {" "}
-                        rent per room :₦
+                       ₦ {item.rent}
                       </span>{" "}
-                      {item.rent}
+                     
                     </p>
                   </div>
                 </div>
               </div>
-              <div className=" py-3">
+              <div className=" m-auto col-11 mt-4">
                 <Link
                   to={`/dashboard/check_one_privatemale_hostel/${index}`}
                   className=" Linkforsidenav p-2 px-3 rounded-1 fw-bold my-2"
@@ -106,12 +109,13 @@ const Privatemalehostel = () => {
                   {" "}
                   view buliding
                 </Link>
-              </div>
+              </div>{" "}
             </div>
+
+          
           ))}
         </div>
       </section>
-      
     </>
   );
 };
