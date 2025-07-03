@@ -360,6 +360,8 @@ nav {
 }
 .contentofoneschoolroom {
   background-color: #191d32;
+    box-shadow: 0px 0px 20px #7980a3;
+
   color: #d8dcff;
 }
 .searchbarholder {
@@ -753,9 +755,15 @@ padding: 10px;
   background-color: #191d32b6;
   width: fit-content;
 }
+.newprofileimgholderer{
+ width: 250px;
+ height: 250px;
+ border-radius: 150px;
+
+}
 .newprofileprofileimg {
-  height: 65px;
-  width: 65px;
+  /* height: inherit; */
+  width:inherit;
   border: none;
   border-radius: 50px;
   color: #191d32;
@@ -769,6 +777,3 @@ padding: 10px;
   width: 200px;
 }
 
-.newprofileimgholderer{
-  width: fit-content;
-}
