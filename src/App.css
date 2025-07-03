@@ -50,8 +50,7 @@ nav {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-    box-shadow: 0px 0px 10px #d8dcff;
-
+  box-shadow: 0px 0px 10px #d8dcff;
 }
 .applogo {
   width: 100px;
@@ -335,12 +334,11 @@ nav {
   text-decoration: none;
 }
 
-.categorytypedivnew{
+.categorytypedivnew {
   background-color: #191d32;
   color: #d8dcff;
   width: fit-content;
-    text-decoration: none;
-
+  text-decoration: none;
 }
 
 .categorytypeicon {
@@ -355,12 +353,11 @@ nav {
 .textinoneschoolroom {
   border-right: 2px solid #d8dcff;
 }
-.textinonebuilding{
-
+.textinonebuilding {
 }
 .contentofoneschoolroom {
   background-color: #191d32;
-    box-shadow: 0px 0px 20px #7980a3;
+  box-shadow: 0px 0px 20px #7980a3;
 
   color: #d8dcff;
 }
@@ -540,11 +537,18 @@ nav {
   color: #d8dcff;
   border-radius: 20px;
 }
-.oneprivatehouseholderimg {
-  max-height: 350px;
-  min-height: 0px;
-  min-width: 0px;
-  max-width: 350px;
+.oneprivatehouseholderdiv{
+  background-color: #d8dcff;
+  color: #191d32;
+}
+.oneprivatehouseholderbox{
+  background-color: #d8dcff;
+  color: #191d32;
+  padding: 10px;
+  border-radius: 10px 10px 10px 10px ;
+}
+.oneprivatehouseholderbox1{
+  border-right: 1px solid #191d32;
 }
 .oneprivatehouseholderroom {
   background-color: #191d32;
@@ -724,6 +728,14 @@ nav {
   border-radius: 20px;
   box-shadow: 0px 0px 15px #99a2cf;
 }
+.testingnewcompo2 {
+  
+  height: 400px;
+background-position: bottom;
+background-size: cover;
+  border-radius: 20px;
+  box-shadow: 0px 0px 15px #99a2cf;
+}
 
 .testingnewcompodiv {
   background-color: #191d32a2;
@@ -742,28 +754,25 @@ nav {
 .outletholdernew {
   min-height: 75vh;
 }
-.newboxholderdash{
-    box-shadow: 0px 0px 15px #99a2cf;
-background-color: #191d32;
-border-radius: 10px;
-padding: 10px;
-
-
+.newboxholderdash {
+  box-shadow: 0px 0px 15px #99a2cf;
+  background-color: #191d32;
+  border-radius: 10px;
+  padding: 10px;
 }
 
-.activiyiconholdernew{
+.activiyiconholdernew {
   background-color: #191d32b6;
   width: fit-content;
 }
-.newprofileimgholderer{
- width: 250px;
- height: 250px;
- border-radius: 150px;
-
+.newprofileimgholderer {
+  width: 250px;
+  height: 250px;
+  border-radius: 150px;
 }
 .newprofileprofileimg {
   /* height: inherit; */
-  width:inherit;
+  width: inherit;
   border: none;
   border-radius: 50px;
   color: #191d32;
@@ -771,9 +780,8 @@ padding: 10px;
   text-decoration: none;
   background-color: #d8dcff;
   box-shadow: 0px 0px 10px #d8dcff;
-   width: 50%;
+  width: 50%;
   margin: auto;
   border-radius: 50%;
   width: 200px;
 }
-
